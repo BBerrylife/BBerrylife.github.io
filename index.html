@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BerryBus - Đóng góp dữ liệu</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hero h1 { font-size: 3em; margin-bottom: 15px; font-weight: bold; }
+        .hero p { font-size: 1.2em; opacity: 0.95; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
+
+        .card {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .card-header h2 { font-size: 1.8em; margin-bottom: 8px; }
+        .card-header p { opacity: 0.9; font-size: 1em; }
+
+        .card-body { padding: 36px; }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            color: #666;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+        .tab-btn.active {
+            color: #70cbff;
+            border-bottom-color: #70cbff;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .form-group { margin-bottom: 20px; }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        label span { color: #e53935; }
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
+            font-size: 15px;
+            color: #333;
+            background: #fafafa;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus {
+            border-color: #70cbff;
+            background: white;
+        }
+        textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
+        .note { font-size: 12px; color: #999; margin-top: 5px; }
+
+        .direction-group {
+            background: #f9f9f9;
+            border: 1.5px solid #eee;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .direction-group h4 {
+            font-size: 13px;
+            color: #70cbff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .stop-list { border: 1.5px solid #ddd; background: white; }
+        .stop-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-bottom: 1px solid #eee;
+            gap: 8px;
+        }
+        .stop-row:last-child { border-bottom: none; }
+        .stop-num {
+            width: 26px; height: 26px;
+            background: #70cbff;
+            color: white;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+        .stop-row input {
+            border: none;
+            background: transparent;
+            padding: 4px 8px;
+            font-size: 14px;
+            flex: 1;
+        }
+        .stop-row input:focus { background: transparent; border: none; }
+        .remove-btn {
+            background: none; border: none;
+            color: #ccc; cursor: pointer;
+            font-size: 20px; padding: 0 4px; line-height: 1;
+        }
+        .remove-btn:hover { color: #e53935; }
+        .add-stop-btn {
+            width: 100%; padding: 10px;
+            background: #e8f7ff;
+            border: 1.5px dashed #70cbff;
+            color: #70cbff;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .add-stop-btn:hover { background: #c8ecff; }
+
+        .submit-btn {
+            width: 100%; padding: 14px;
+            background: #70cbff;
+            color: white; border: none;
+            font-size: 16px; font-weight: bold;
+            cursor: pointer; margin-top: 8px;
+            transition: background 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .submit-btn:hover { background: #4fa3d1; }
+        .submit-btn:disabled { background: #b8e5ff; cursor: not-allowed; }
+
+        .success-msg {
+            display: none;
+            background: #E8F5E9;
+            border: 1.5px solid #A5D6A7;
+            padding: 20px;
+            text-align: center;
+            color: #2E7D32;
+            margin-top: 16px;
+            font-size: 15px;
+        }
+        .success-msg .icon { font-size: 36px; margin-bottom: 8px; }
+
+        footer {
+            background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer h2 { font-size: 2em; margin-bottom: 15px; font-weight: bold; }
+        footer p { font-size: 1.1em; margin-bottom: 25px; opacity: 0.95; }
+        footer a {
+            background: white;
+            color: #70cbff;
+            padding: 10px 24px;
+            font-weight: bold;
+            font-size: 0.95em;
+            text-decoration: none;
+            display: inline-block;
+        }
+        footer a:hover { background: #e8f7ff; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>🚌 BerryBus</h1>
+    <p>Đóng góp dữ liệu điểm dừng & tuyến xe buýt Hà Nội</p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>📝 Gửi đóng góp dữ liệu</h2>
+            <p>Giúp BerryBus ngày càng chính xác hơn — chọn loại dữ liệu bạn muốn đóng góp bên dưới</p>
+        </div>
+        <div class="card-body">
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('stop')">🚏 Điểm dừng mới</button>
+                <button class="tab-btn" onclick="switchTab('route')">🚌 Tuyến xe mới</button>
+            </div>
+
+            <div id="tab-stop" class="tab-content active">
+                <form id="form-stop">
+                    <div class="form-group">
+                        <label>Tên điểm dừng <span>*</span></label>
+                        <input type="text" name="stop_name" placeholder="VD: Ga Hà Nội, Bệnh viện Bạch Mai..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ cụ thể <span>*</span></label>
+                        <input type="text" name="stop_address" placeholder="VD: 120 Lê Duẩn, Đống Đa, Hà Nội" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Các tuyến bus đi qua <span>*</span></label>
+                        <input type="text" name="stop_buses" placeholder="VD: 01, 08, 32, 38...">
+                        <p class="note">Nhập số tuyến, cách nhau bằng dấu phẩy</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú thêm</label>
+                        <textarea name="stop_note" placeholder="Mô tả vị trí, đặc điểm nhận dạng..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên bạn (không bắt buộc)</label>
+                        <input type="text" name="sender_name" placeholder="Để lại tên để chúng tôi cảm ơn bạn 😊">
+                    </div>
+                    <button type="submit" class="submit-btn">Gửi đóng góp</button>
+                    <div class="success-msg" id="success-stop">
+                        <div class="icon">✅</div>
+                        Cảm ơn bạn! Dữ liệu đã được gửi thành công.<br>
+                        Chúng tôi sẽ xem xét và cập nhật sớm nhất.
+                    </div>
+                </form>
+            </div>
+
+            <div id="tab-route" class="tab-content">
+                <form id="form-route">
+                    <div class="form-group">
+                        <label>Số tuyến <span>*</span></label>
+                        <input type="text" name="route_num" placeholder="VD: 01, 03A, 32..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên tuyến <span>*</span></label>
+                        <input type="text" name="route_name" placeholder="VD: BX Gia Lâm - BX Yên Nghĩa" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá vé</label>
+                        <input type="text" name="route_fare" placeholder="VD: 10.000đ">
+                    </div>
+                    <div class="form-group">
+                        <label>Giờ hoạt động</label>
+                        <input type="text" name="route_time" placeholder="VD: 5h00 - 21h00">
+                    </div>
+
+                    <div class="direction-group">
+                        <h4>📍 Chiều đi — Danh sách điểm dừng</h4>
+                        <div id="stops-go" class="stop-list">
+                            <div class="stop-row">
+                                <div class="stop-num">1</div>
+                                <input type="text" placeholder="Tên điểm dừng đầu tiên...">
+                                <button type="button" class="remove-btn" onclick="removeStop(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-stop-btn" onclick="addStop('stops-go')">+ Thêm điểm dừng</button>
+                    </div>
+
+                    <div class="direction-group">
+                        <h4>📍 Chiều về — Danh sách điểm dừng</h4>
+                        <div id="stops-back" class="stop-list">
+                            <div class="stop-row">
+                                <div class="stop-num">1</div>
+                                <input type="text" placeholder="Tên điểm dừng đầu tiên...">
+                                <button type="button" class="remove-btn" onclick="removeStop(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-stop-btn" onclick="addStop('stops-back')">+ Thêm điểm dừng</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ghi chú thêm</label>
+                        <textarea name="route_note" placeholder="Thông tin bổ sung về tuyến..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên bạn (không bắt buộc)</label>
+                        <input type="text" name="sender_name" placeholder="Để lại tên để chúng tôi cảm ơn bạn 😊">
+                    </div>
+                    <button type="submit" class="submit-btn">Gửi đóng góp</button>
+                    <div class="success-msg" id="success-route">
+                        <div class="icon">✅</div>
+                        Cảm ơn bạn! Dữ liệu đã được gửi thành công.<br>
+                        Chúng tôi sẽ xem xét và cập nhật sớm nhất.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <h2>Theo Dõi Chúng Tôi</h2>
+    <p>Cập nhật tin tức mới nhất về BerryBus trên Facebook</p>
+    <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+</footer>
+
+<script>
+    var FORMSPREE_URL = "https://formspree.io/f/xdawvere";
+
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+        document.querySelector('.tab-btn[onclick="switchTab(\''+tab+'\')"]').classList.add('active');
+        document.getElementById('tab-'+tab).classList.add('active');
+    }
+
+    function addStop(containerId) {
+        var container = document.getElementById(containerId);
+        var rows = container.querySelectorAll('.stop-row');
+        var num = rows.length + 1;
+        var row = document.createElement('div');
+        row.className = 'stop-row';
+        row.innerHTML =
+            '<div class="stop-num">'+num+'</div>' +
+            '<input type="text" placeholder="Tên điểm dừng...">' +
+            '<button type="button" class="remove-btn" onclick="removeStop(this)">×</button>';
+        container.appendChild(row);
+        row.querySelector('input').focus();
+    }
+
+    function removeStop(btn) {
+        var container = btn.closest('.stop-list');
+        if(container.querySelectorAll('.stop-row').length <= 1) return;
+        btn.closest('.stop-row').remove();
+        container.querySelectorAll('.stop-row').forEach(function(row, i) {
+            row.querySelector('.stop-num').textContent = i + 1;
+        });
+    }
+
+    function collectStops(containerId) {
+        var stops = [];
+        document.getElementById(containerId).querySelectorAll('input').forEach(function(inp) {
+            if(inp.value.trim()) stops.push(inp.value.trim());
+        });
+        return stops;
+    }
+
+    document.getElementById('form-stop').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('.submit-btn');
+        btn.disabled = true; btn.textContent = 'Đang gửi...';
+        var data = {
+            type: 'ĐIỂM DỪNG MỚI',
+            stop_name: this.stop_name.value,
+            stop_address: this.stop_address.value,
+            stop_buses: this.stop_buses.value,
+            stop_note: this.stop_note.value,
+            sender_name: this.sender_name.value || 'Ẩn danh'
+        };
+        fetch(FORMSPREE_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(function(r) {
+            if(r.ok) {
+                document.getElementById('success-stop').style.display = 'block';
+                document.getElementById('form-stop').reset();
+            } else { alert('Gửi thất bại. Vui lòng thử lại.'); }
+        })
+        .catch(function() { alert('Lỗi kết nối. Vui lòng thử lại.'); })
+        .finally(function() { btn.disabled = false; btn.textContent = 'Gửi đóng góp'; });
+    });
+
+    document.getElementById('form-route').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('.submit-btn');
+        btn.disabled = true; btn.textContent = 'Đang gửi...';
+        var data = {
+            type: 'TUYẾN XE MỚI',
+            route_num: this.route_num.value,
+            route_name: this.route_name.value,
+            route_fare: this.route_fare.value || 'Chưa rõ',
+            route_time: this.route_time.value || 'Chưa rõ',
+            stops_going: collectStops('stops-go').join(' → '),
+            stops_back: collectStops('stops-back').join(' → '),
+            route_note: this.route_note.value,
+            sender_name: this.sender_name.value || 'Ẩn danh'
+        };
+        fetch(FORMSPREE_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(function(r) {
+            if(r.ok) {
+                document.getElementById('success-route').style.display = 'block';
+                document.getElementById('form-route').reset();
+                ['stops-go','stops-back'].forEach(function(id) {
+                    document.getElementById(id).innerHTML =
+                        '<div class="stop-row"><div class="stop-num">1</div><input type="text" placeholder="Tên điểm dừng đầu tiên..."><button type="button" class="remove-btn" onclick="removeStop(this)">×</button></div>';
+                });
+            } else { alert('Gửi thất bại. Vui lòng thử lại.'); }
+        })
+        .catch(function() { alert('Lỗi kết nối. Vui lòng thử lại.'); })
+        .finally(function() { btn.disabled = false; btn.textContent = 'Gửi đóng góp'; });
+    });
+</script>
+</body>
+</html>
