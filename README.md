@@ -1,2 +1,2 @@
-# berrybus.github.io
-BerryBus - Đóng góp dữ liệu xe buýt Hà Nội
+# bberrylife.github.io
+BerryLife - Everything For BlackBerry Users
