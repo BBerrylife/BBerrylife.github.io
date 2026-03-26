@@ -1,33 +1,545 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berry Core</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng dẫn cài đặt & sử dụng BerryCore trên BB10 - BerryLife</title>
+  <style>
+    :root {
+      --blue: #70cbff;
+      --blue-dark: #4fa3d1;
+      --orange: #ff5722;
+      --pink: #ff66c4;
+      --purple: #667eea;
+      --green: #4caf50;
+      --text-dark: #2c3e50;
+      --text-muted: #666;
+      --text-light: #999;
+      --bg-light: #f8f9fa;
+      --border: #e0e0e0;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #efefef;
+      color: var(--text-dark);
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: white;
+      padding: 0;
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 30px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header-brand h1 {
+      font-size: 3em;
+      font-weight: bold;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .header-brand p {
+      font-size: 1em;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+    .header-follow a {
+      background: white;
+      color: var(--blue);
+      padding: 10px 22px;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .header-follow a:hover { opacity: 0.85; }
+
+    /* ── NAV BAR ── */
+    .site-nav {
+      background: var(--blue-dark);
+      border-top: 2px solid rgba(255,255,255,0.25);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .nav-inner a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85em;
+      padding: 12px 16px;
+      display: inline-block;
+      transition: background .15s;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .nav-inner a:hover { background: rgba(255,255,255,0.15); }
+
+    /* ── MAIN LAYOUT ── */
+    .site-wrapper {
+      max-width: 1280px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── POST SECTION ── */
+    .post-section {
+      background: var(--bg-light);
+      padding: 28px;
+      border: 2px solid var(--border);
+    }
+
+    .post-thumbnail {
+      width: 100%;
+      height: auto;
+      margin-bottom: 28px;
+      border: 2px solid var(--border);
+      display: block;
+    }
+
+    .post-title {
+      color: var(--text-dark);
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .post-date {
+      color: var(--text-light);
+      font-size: 0.9em;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .post-content h2 {
+      color: var(--text-dark);
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 28px;
+      margin-bottom: 16px;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 16px 0 16px 24px;
+      line-height: 1.8;
+    }
+
+    .post-content li {
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .post-content p {
+      margin-bottom: 16px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .post-content a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .post-content a:hover {
+      color: var(--blue-dark);
+    }
+
+    .highlight-box {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 15px 20px;
+      margin: 20px 0;
+    }
+
+    .info-box {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      border-left: 5px solid #17a2b8;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .info-box p {
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .step-box {
+      background: #e8f4f8;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 5px solid #17a2b8;
+    }
+
+    .success-box {
+      background: #d4edda;
+      border-left: 5px solid #28a745;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .code-block {
+      background: #2c3e50;
+      color: #2ecc71;
+      padding: 15px;
+      margin: 20px 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+
+    .post-image {
+      width: 100%;
+      height: auto;
+      margin: 30px 0;
+      border: 2px solid var(--border);
+      display: block;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .image-caption {
+      color: var(--text-light);
+      font-size: 0.9em;
+      margin-top: 10px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 22px; }
+
+    .sidebar-box {
+      background: var(--bg-light);
+      border: 2px solid var(--border);
+      padding: 22px;
+    }
+
+    .sidebar-title {
+      color: var(--text-dark);
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 16px;
+      border-bottom: 3px solid var(--blue);
+      padding-bottom: 8px;
+    }
+
+    /* Categories */
+    .cat-group { margin-bottom: 18px; }
+    .cat-group-label {
+      color: var(--blue-dark);
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 10px;
+    }
+    .cat-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cat-links a {
+      background: white;
+      padding: 7px 14px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.82em;
+      display: inline-block;
+      transition: background .15s, color .15s;
+    }
+
+    /* Follow box */
+    .follow-box {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: white;
+      text-align: center;
+      padding: 26px 20px;
+      border: 2px solid var(--blue-dark);
+    }
+    .follow-box h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
+    .follow-box p { font-size: 0.88em; opacity: 0.92; margin-bottom: 18px; line-height: 1.5; }
+    .follow-box a {
+      background: white;
+      color: var(--blue);
+      padding: 10px 22px;
+      font-weight: bold;
+      font-size: 0.88em;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity .15s;
+    }
+    .follow-box a:hover { opacity: 0.85; }
+
+    /* Sticky sidebar */
+    .sidebar-sticky { position: sticky; top: 20px; }
+
+    /* BerryBus button */
+    .berrybus-btn {
+      display: block;
+      background: #667eea;
+      color: white;
+      text-align: center;
+      padding: 16px 20px;
+      font-weight: bold;
+      font-size: 1em;
+      text-decoration: none;
+      border: 2px solid #5567d4;
+      transition: opacity .15s;
+    }
+    .berrybus-btn:hover { opacity: 0.88; }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .newsletter-section h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .newsletter-section p {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+    .newsletter-section a {
+      background: white;
+      color: var(--blue);
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* Navigation buttons */
+    .post-nav {
+      text-align: center;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    .post-nav a {
+      width: 45%;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      text-align: center;
+      border: 2px solid var(--blue);
+      transition: opacity .15s;
+    }
+    .post-nav a:hover { opacity: 0.85; }
+    .post-nav a.btn-home {
+      background: white;
+      color: var(--blue);
+    }
+    .post-nav a.btn-all {
+      background: var(--blue);
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1><img src="Media/BerryCore/BerryCore.png" alt="Berry Core Thumbnail"> Berry Core</h1>
-            <p>28/12/2025</p>
-        </header>
-        <div class="content">
-            <!-- Main Content Area -->
-            <div class="main-content" style="width:70%; float:left;">
-                <p>Welcome to the Berry Core page. Here we will discuss the various aspects of Berry Core.</p>
-                <img src="Media/BerryCore/berrycore-pic-1.png" alt="Berry Core Image 1">
-                <img src="Media/BerryCore/berrycore-pic-2.png" alt="Berry Core Image 2">
-                <img src="Media/BerryCore/berrycore-pic-3.png" alt="Berry Core Image 3">
-                <img src="Media/BerryCore/berrycore-pic-4.png" alt="Berry Core Image 4">
-            </div>
 
-            <!-- Sidebar Area -->
-            <div class="sidebar" style="width:30%; float:right;">
-                <h3>Sidebar</h3>
-                <p>Additional content can be added here.</p>
-            </div>
-        </div>
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <h1>BerryLife</h1>
+      <p>Everything for BlackBerry Users</p>
     </div>
+    <div class="header-follow">
+      <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/">Trang Chủ</a>
+      <a href="/category/news">Tin Tức</a>
+      <a href="/category/tutorials">Hướng Dẫn</a>
+      <a href="/category/apps">Ứng Dụng</a>
+      <a href="/category/games">Games</a>
+      <a href="/category/themes">Themes</a>
+      <a href="/category/tips">Mẹo &amp; Thủ Thuật</a>
+      <a href="/category/blackberry-10">BB10</a>
+      <a href="/blog">Tất Cả Bài Viết</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══ MAIN + SIDEBAR ═══ -->
+<div class="site-wrapper">
+
+  <!-- ── LEFT COLUMN (70%) ── -->
+  <main>
+    <section class="post-section">
+      
+      <!-- Thumbnail -->
+      <img src="Media/BerryCore/BerryCore.png" alt="BerryCore" class="post-thumbnail">
+      
+      <!-- Title & Date -->
+      <h1 class="post-title">Hướng dẫn cài đặt &amp; sử dụng BerryCore trên BB10</h1>
+      <p class="post-date">28/12/2025</p>
+
+      <!-- Content -->
+      <div class="post-content">
+
+        <h2>Chuẩn bị - Cài đặt</h2>
+        
+        <ul>
+          <li>Term49 và BGShell (File bar).</li>
+          <li>DBBT 3.1.0.1.zip</li>
+          <li>BerryCore.zip</li>
+          <li>BlackBerry Desktop Software cho BB10 [Chủ yếu cần driver]</li>
+        </ul>
+
+        <div class="highlight-box">
+          <strong>Đầu tiên</strong>, bạn cần truy cập link sau trên máy tính:
+        </div>
+
+        <ol>
+          <li><a href="https://www.mediafire.com/folder/of2n1zcj3ryy0/BerryLife" target="_blank">https://www.mediafire.com/folder/BerryLife</a></li>
+        </ol>
+
+        <div class="info-box">
+          <p><strong>Ở link</strong> → tải xuống <strong>[BerryCore.zip]</strong></p>
+          <p><strong>Sau đó</strong> → truy cập BerryLife\BlackBerry 10 và <strong>[tải xuống như ảnh 1]</strong>, tiếp đó, truy cập BerryLife\BlackBerry 10\Coding và <strong>[tải xuống như ảnh 3].</strong> Cuối cùng, truy cập BerryLife\BlackBerry 10\Desktop Software và <strong>[tải xuống như ảnh 2]</strong></p>
+          <p>Sau khi tải <strong>[BlackBerry 10 Tools 3-9-2025]</strong> → Giải nén → Lấy <strong>DBBTool 3.1.0.1</strong> ra Desktop → Xóa <strong>[BlackBerry 10 Tools 3-9-2025]</strong> vì không cần thiết nữa.</p>
+        </div>
+
+        <img src="Media/BerryCore/berrycore-pic-1.png" alt="Hướng dẫn tải file" class="post-image">
+        <p class="image-caption">Hướng dẫn tải các file cần thiết</p>
+
+        <h2>Thực Hiện</h2>
+
+        <div class="step-box">
+          <p><strong style="color: #17a2b8; font-size: 1.1em">Bước 1:</strong> Mở DBBT trên màn hình desktop đã chuẩn bị từ trước, kết nối với BlackBerry 10 của bạn, lưu ý là phải có BlackBerry Desktop Manager 10, hãy thực hiện từng thao tác giống như trong ảnh: (2 file bar thường sẽ ở nơi bạn tải chúng xuống)</p>
+        </div>
+
+        <img src="Media/BerryCore/berrycore-pic-3.png" alt="Cài đặt .bar trên DBBT" class="post-image">
+        <p class="image-caption">Hướng dẫn cài đặt file .bar trên DBBT</p>
+
+        <div class="step-box">
+          <p><strong style="color: #17a2b8; font-size: 1.1em">Bước 2:</strong> Sau khi cài đặt thành công, chuyển sang chế độ USB Mass Storage Mode trên BlackBerry 10 trong phần cài đặt, sau đó truyền 3 tệp đã nói ở link 1 vào thư mục Document trong thẻ SD. Sau đó, rút dây kết nối, lựa chọn 3 tệp trong thư mục Doc của thẻ SD và chuyển chúng vào thư mục Document của điện thoại (tức bộ nhớ chính):</p>
+        </div>
+
+        <img src="Media/BerryCore/berrycore-pic-2.png" alt="Di chuyển file đến Documents" class="post-image">
+        <p class="image-caption">Di chuyển file đến Documents</p>
+
+        <p>Sau khi làm xong các bước trên, mở Term49 lên và gõ:</p>
+
+        <div class="code-block">cd /accounts/1000/shared/documents
+chmod +x install.sh
+./install.sh</div>
+
+        <div class="success-box">
+          <p>Chỉ cần đợi tầm 10 phút cho nó cài đặt, đóng term49 và mở lại và làm theo hướng dẫn hiển thị trên màn hình (env.sh), nếu nó hiển thị như ảnh dưới là bạn đã thành công (ảnh dưới được thực hiện trên BGShell, khuyên nên dùng Term49 để cài đặt và BGShell để sử dụng dễ dàng.)</p>
+        </div>
+
+        <img src="Media/BerryCore/berrycore-pic-4.png" alt="Hoàn thiện BerryCore" class="post-image">
+        <p class="image-caption">Hoàn thiện BerryCore</p>
+
+        <div class="info-box">
+          <p><strong>Nếu bạn có mạng khỏe và không thích bước 2?</strong> Chỉ cần mở Wifi trên BlackBerry 10 song song với Term49 và gõ lệnh này là xong.</p>
+        </div>
+
+        <h2>Sử dụng BerryCore</h2>
+
+        <p><em>(Bạn nên có một chút kiến thức về câu lệnh trong môi trường Linux)</em></p>
+
+        <p><strong>Xem có những thứ gì để cài đặt:</strong></p>
+        <div class="code-block">qpkg catalog</div>
+
+        <p><strong>Cài đặt:</strong></p>
+        <div class="code-block">qpkg install (vật cần cài đặt)</div>
+
+        <p><strong>Nâng cấp BerryCore từ bản 0.73 &amp; sớm hơn:</strong></p>
+        <div class="code-block">qpkg update</div>
+
+        <p><strong>Cài đặt BerryPy:</strong></p>
+        <div class="code-block">qpkg install berrypy
+berrypy start</div>
+
+        <div class="success-box">
+          <p>Sau khi cài đặt xong và chạy berrypy, thoát term49 nhưng không đóng nó mà mở trình duyệt chạy <strong>127.0.0.1:8001</strong> và bạn đã truy cập được BerryCore thành công để sử dụng những ứng dụng như Tele, Doc, Game, Maps, Task,….</p>
+        </div>
+
+      </div>
+
+      <!-- Newsletter -->
+      <div class="newsletter-section">
+        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
+        <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="post-nav">
+        <a href="/" class="btn-home">← Về Trang Chủ</a>
+        <span style="display: inline-block; width: 15px;"></span>
+        <a href="/blog" class="btn-all">Xem Thêm Bài Viết →</a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ── RIGHT COLUMN (30%) ── -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+
+      <!-- Follow -->
+      <div class="follow-box">
+        <h3>Theo Dõi Chúng Tôi</h3>
+        <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
+        <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+      </div>
+
+      <!-- Categories -->
+      <div class="sidebar-box">
+        <h3 class="sidebar-title">Danh Mục</h3>
+
+        <div class="cat-group">
+          <div class="cat-group-label">Hệ Điều Hành</div>
+          <div class="cat-links">
+            <a href="/category/blackberry-10" style="color:#2196f3;border:2px solid #2196f3">BlackBerry 10</a>
+            <a href="/category/blackberry-7-1" style="color:#00bcd4;border:2px solid #00bcd4">BlackBerry 7.1</a>
+            <a href="/category/blackberry-6" style="color:#009688;border:2px solid #009688">BlackBerry 6</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BerryBus -->
+      <a href="/berrybus/" class="berrybus-btn">Đóng Góp Dữ Liệu BerryBus</a>
+
+    </div>
+  </aside>
+
+</div>
+
 </body>
 </html>
