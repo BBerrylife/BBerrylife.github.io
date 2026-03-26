@@ -1,0 +1,108 @@
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:freeform -->
+<h1 style="text-align: center;color: #2c3e50;font-size: 2em;font-weight: bold;margin-bottom: 40px;border-bottom: 3px solid #3498db;padding-bottom: 15px">Hướng dẫn cài đặt &amp; sử dụng BerryCore trên BB10</h1>
+
+<h2 style="color: #2980b9;font-size: 1.5em;font-weight: bold;margin-top: 35px;margin-bottom: 20px"># Chuẩn bị - Cài đặt</h2>
+
+<ul style="background: #f8f9fa;padding: 20px 40px;border-left: 4px solid #3498db;margin: 20px 0">
+<li>Term49 và BGShell (File bar).</li>
+<li>DBBT 3.1.0.1.zip</li>
+<li>BerryCore.zip</li>
+<li>BlackBerry Desktop Software cho BB10 [Chủ yếu cần driver]</li>
+</ul>
+
+<div style="background: #fff3cd;border-left: 5px solid #ffc107;padding: 15px 20px;margin: 20px 0">
+    <strong>Đầu tiên</strong>, bạn cần truy cập link sau trên máy tính:
+</div>
+
+<ol>
+<li><a href="https://www.mediafire.com/folder/of2n1zcj3ryy0/BerryLife" target="_blank">https://www.mediafire.com/folder/BerryLife</a></li>
+</ol>
+
+<div style="background: #d1ecf1;border: 1px solid #bee5eb;border-left: 5px solid #17a2b8;padding: 15px;margin: 20px 0">
+<p><strong>Ở link</strong> → tải xuống <strong>[BerryCore.zip]</strong></p>
+<p><strong>Sau đó</strong> → truy cập BerryLife\BlackBerry 10 và <strong>[tải xuống như ảnh 1]</strong>, tiếp đó, truy cập BerryLife\BlackBerry 10\Coding và <strong>[tải xuống như ảnh 3].</strong>
+  Cuối cùng, truy cập BerryLife\BlackBerry 10\Desktop Software và <strong>[tải xuống như ảnh 2]</strong></p>
+<p>Sau khi tải <strong>[BlackBerry 10 Tools 3-9-2025]</strong> → Giải nén → Lấy <strong>DBBTool 3.1.0.1</strong> ra Desktop → Xóa <strong>[BlackBerry 10 Tools 3-9-2025]</strong> vì không cần thiết nữa.</p>
+</div>
+
+<!-- Thêm ảnh hướng dẫn ở đây -->
+<div style="text-align: center;margin: 30px 0">
+    <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2025/12/berrycore-pic-1.png" alt="Hướng dẫn tải file" style="max-width: 100%;box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
+<p style="color: #666;font-size: 0.9em;margin-top: 10px;font-style: italic">Hướng dẫn tải các file cần thiết</p>
+</div>
+
+<h2 style="color: #2980b9;font-size: 1.5em;font-weight: bold;margin-top: 35px;margin-bottom: 20px"># Thực Hiện:</h2>
+
+<div style="background: #e8f4f8;padding: 20px;margin: 25px 0;border-left: 5px solid #17a2b8">
+<p><strong style="color: #17a2b8;font-size: 1.1em">Bước 1:</strong> Mở DBBT trên màn hình desktop đã chuẩn bị từ trước, kết nối với BlackBerry 10 của bạn, lưu ý là phải có BlackBerry Desktop Manager 10, hãy thực hiện từng thao tác giống như trong ảnh: (2 file bar thường sẽ ở nơi bạn tải chúng xuống)</p>
+</div>
+
+<!-- Thêm ảnh hướng dẫn ở đây -->
+<div style="text-align: center;margin: 30px 0">
+    <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2025/12/berrycore-pic-3.png" alt="Cài đặt .bar trên DBBT" style="max-width: 100%;box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
+<p style="color: #666;font-size: 0.9em;margin-top: 10px;font-style: italic">Hướng dẫn cài đặt file .bar trên DBBT</p>
+</div>
+
+<div style="background: #e8f4f8;padding: 20px;margin: 25px 0;border-left: 5px solid #17a2b8">
+<p><strong style="color: #17a2b8;font-size: 1.1em">Bước 2:</strong> Sau khi cài đặt thành công, chuyển sang chế độ USB Mass Storage Mode trên BlackBerry 10 trong phần cài đặt, sau đó truyền 3 tệp đã nói ở link 1 vào thư mục Document trong thẻ SD. Sau đó, rút dây kết nối, lựa chọn 3 tệp trong thư mục Doc của thẻ SD và chuyển chúng vào thư mục Document của điện thoại (tức bộ nhớ chính):</p>
+</div>
+
+<!-- Thêm ảnh hướng dẫn ở đây -->
+<div style="text-align: center;margin: 30px 0">
+    <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2025/12/berrycore-pic-2.png" alt="Di chuyển file đến Documents" style="max-width: 100%;box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
+<p style="color: #666;font-size: 0.9em;margin-top: 10px;font-style: italic">Di chuyển file đến Documents</p>
+</div>
+
+<p>Sau khi làm xong các bước trên, mở Term49 lên và gõ:</p>
+
+<pre style="background: #2c3e50;color: #2ecc71;padding: 15px;margin: 20px 0"><code>cd /accounts/1000/shared/documents
+chmod +x install.sh
+./install.sh</code></pre>
+
+<div style="background: #d4edda;border-left: 5px solid #28a745;padding: 15px;margin: 20px 0">
+<p>Chỉ cần đợi tầm 10 phút cho nó cài đặt, đóng term49 và mở lại và làm theo hướng dẫn hiển thị trên màn hình (env.sh), nếu nó hiển thị như ảnh dưới là bạn đã thành công (ảnh dưới được thực hiện trên BGShell, khuyên nên dùng Term49 để cài đặt và BGShell để sử dụng dễ dàng.)</p>
+</div>
+
+<div style="text-align: center;margin: 30px 0">
+    <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2025/12/berrycore-pic-4.png" alt="Hoàn thiện BerryCore" style="max-width: 100%;box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
+<p style="color: #666;font-size: 0.9em;margin-top: 10px;font-style: italic">Hoàn thiện BerryCore</p>
+</div>
+  
+<div style="background: #d1ecf1;border: 1px solid #bee5eb;border-left: 5px solid #17a2b8;padding: 15px;margin: 20px 0">
+<p><strong>Nếu bạn có mạng khỏe và không thích bước 2?</strong> Chỉ cần mở Wifi trên BlackBerry 10 song song với Term49 và gõ lệnh này là xong.</p>
+</div>
+
+<h2 style="color: #2980b9;font-size: 1.5em;font-weight: bold;margin-top: 35px;margin-bottom: 20px"># Sử dụng BerryCore (bạn nên có một chút kiến thức về câu lệnh trong môi trường Linux)</h2>
+
+<p><strong>Xem có những thứ gì để cài đặt:</strong> <code style="background: #2c3e50;color: #2ecc71;padding: 3px 8px">qpkg catalog</code></p>
+
+<p><strong>Cài đặt:</strong> <code style="background: #2c3e50;color: #2ecc71;padding: 3px 8px">qpkg install (vật cần cài đặt)</code></p>
+
+<p><strong>Nâng cấp BerryCore từ bản 0.73 &amp; sớm hơn:</strong> <code style="background: #2c3e50;color: #2ecc71;padding: 3px 8px">qpkg update</code></p>
+
+<p><strong>Cài đặt BerryPy:</strong></p>
+
+<pre style="background: #2c3e50;color: #2ecc71;padding: 15px;margin: 20px 0"><code>qpkg install berrypy
+berrypy start</code></pre>
+
+<div style="background: #d4edda;border-left: 5px solid #28a745;padding: 15px;margin: 20px 0">
+<p>Sau khi cài đặt xong và chạy berrypy, thoát term49 nhưng không đóng nó mà mở trình duyệt chạy <strong>127.0.0.1:8001</strong> và bạn đã truy cập được BerryCore thành công để sử dụng những ứng dụng như Tele, Doc, Game, Maps, Task,….</p>
+</div>
+
+    <!-- Newsletter Section -->
+    <div style="background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);color: white;padding: 40px;text-align: center;margin-bottom: 40px">
+        <h2 style="font-size: 2em;margin-bottom: 15px;font-weight: bold">📬 Theo Dõi Chúng Tôi</h2>
+        <p style="font-size: 1.1em;margin-bottom: 25px;opacity: 0.95">
+            Cập nhật tin tức mới nhất về BlackBerry trên Facebook
+        </p>
+        <div style="max-width: 500px;margin: 0 auto">
+            <a href="https://www.facebook.com/BBerryLife/" target="_blank" style="background: white;color: #70cbff;padding: 10px 20px;border: none;font-weight: bold;font-size: 0.9em;text-decoration: none;display: inline-block">Theo Dõi Facebook</a>
+        </div>
+    </div>
+
+<div style="text-align: center;margin: 40px auto;max-width: 600px">
+        <a style="width: 45%;background: white;color: #70cbff;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/">← Về Trang Chủ</a><br />
+        <span style="display: inline-block;width: 15px"></span><br />
+        <a style="width: 45%;background: #70cbff;color: white;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/blog">Xem Thêm Bài Viết →</a>
+    </div>
+</div><!-- /wp:freeform -->
