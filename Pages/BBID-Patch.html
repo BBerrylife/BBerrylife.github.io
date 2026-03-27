@@ -1,0 +1,48 @@
+<div style="max-width: 800px;margin: 0 auto;padding: 20px">
+<h1 style="text-align: center;color: #2c3e50;font-size: 2.5em;font-weight: bold;margin-bottom: 20px">Hướng Dẫn Duy Trì Patch &amp; Xóa Thông Báo BBID trên BB10</h1>
+<div style="background: #fff3cd;border-left: 5px solid #ffc107;padding: 15px 20px;margin: 20px 0"><strong>⚠️ Lưu ý quan trọng:</strong> Hướng dẫn này dành cho thiết bị BB10 chạy ROM được mod thông qua BlackBerry 10 Tools và có sẵn ứng dụng <strong>Term49</strong>.Trước khi thực hiện, bạn nên tạo và flash bản ROM được tạo bởi <strong><a href="https://www.mediafire.com/file/n4pi1o8hxflx0ev/BlackBerry_10_Tools_%255B3-9-2025%255D.rar/file">BlackBerry 10 Tools (3/9/2025)</a></strong>.
+Hướng dẫn tạo - flash ROM tại đây: <strong><a href="https://wordbooksorg.wordpress.com/2026/02/11/bb10tools8/">Link</a></strong>.
+
+<strong>Hãy tải</strong> bản 3/9/2025 bằng link trên thay vì link trong bài viết hướng dẫn đó vì bản này <strong>ỔN ĐỊNH</strong> hơn bản 11/2/2026 (mặc dù thiếu Root SSH và Unsigned Apps). Nếu bạn muốn trải nghiệm tính năng mới và không ngại rủi ro, có thể chọn bản 11/2/2026.
+
+</div>
+<h2><span style="color: #70cbff"><strong>1. Hướng Dẫn Duy Trì Patch (Getroot)</strong></span></h2>
+<div style="margin-bottom: 30px">Nếu bạn gặp tình trạng mỗi lần khởi động lại máy đều xuất hiện thông báo BBID hoặc không tìm thấy thư mục <code>/q</code> hoặc <code>/.installer</code> do bị xóa, hãy thực hiện các bước sau:
+<ol>
+ 	<li>Sau khi chạy <strong>Autoloader.exe</strong>, hãy đợi máy khởi động hoàn tất.</li>
+ 	<li>Mở ứng dụng <strong>[Term49]</strong> trên điện thoại.</li>
+ 	<li>Nhập chính xác các dòng lệnh sau (nhấn Enter sau mỗi dòng):</li>
+</ol>
+<code style="display: block;background: #272822;color: #f8f8f2;padding: 15px;border-radius: 5px;margin: 10px 0;font-family: Consolas, Monaco, 'Andale Mono', monospace">cd /accounts/1000/shared/.installer
+./run.sh</code>
+<div style="background: #f8d7da;border-left: 5px solid #dc3545;padding: 15px 20px;margin: 20px 0"><strong>🚨 Cảnh báo:</strong> Bạn <strong>BẮT BUỘC</strong> phải làm điều này ngay sau khi máy khởi động xong. Nếu bạn quên, để máy hết sạch pin hoặc khởi động lại xong mới gõ thì lệnh không còn tác dụng, bạn sẽ phải <strong>chạy lại ROM</strong> và <strong>làm lại từ đầu</strong>.</div>
+</div>
+<h2><span style="color: #70cbff"><strong>2. Hướng Dẫn Xóa Thông Báo BBID Tạm Thời</strong></span></h2>
+<div style="margin-bottom: 30px">Để loại bỏ thông báo BBID:
+<ol>
+ 	<li>Mở ứng dụng <strong>[Term49]</strong>.</li>
+ 	<li>Nhập các lệnh sau (nhấn Enter sau mỗi dòng):</li>
+</ol>
+<code style="display: block;background: #272822;color: #f8f8f2;padding: 15px;border-radius: 5px;margin: 10px 0;font-family: Consolas, Monaco, 'Andale Mono', monospace">/q/u_bbid
+slay bbidd</code>
+
+Sau đó, bạn chỉ cần vào <strong>BlackBerry Hub</strong> và xóa thông báo BBID đi.
+<p style="margin-top: 15px"><strong>Kết quả:</strong> Thông báo BBID sẽ biến mất hoàn toàn cho đến khi bạn khởi động lại máy.</p>
+
+</div>
+<h2><span style="color: #70cbff"><strong>🎯 Ghi Nhớ</strong></span></h2>
+<div style="background: #d1ecf1;border-left: 5px solid #0c5460;padding: 15px 20px;margin: 20px 0">
+<ul>
+ 	<li><strong>Duy trì Root:</strong> Phải thực hiện Getroot liên tục ngay sau mỗi lần khởi động thiết bị.</li>
+ 	<li><strong>Hậu quả khi không duy trì:</strong> Nếu mất Root, các thư mục hệ thống quan trọng sẽ bị khóa hoặc bị xóa, buộc bạn phải flash lại ROM.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);color: white;padding: 40px;text-align: center;margin: 40px 0">
+<h2 style="font-size: 2em;margin-bottom: 15px;font-weight: bold">📬 Theo Dõi Chúng Tôi</h2>
+<p style="font-size: 1.1em;margin-bottom: 25px;opacity: 0.95">Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
+
+<div style="max-width: 500px;margin: 0 auto"><a style="background: white;color: #70cbff;padding: 10px 20px;border: none;font-weight: bold;font-size: 0.9em;text-decoration: none;display: inline-block" href="https://www.facebook.com/BBerryLife/" target="_blank" rel="noopener">Theo Dõi Facebook</a></div>
+</div>
+<div style="text-align: center;margin: 40px auto;max-width: 600px"><a style="width: 45%;background: white;color: #70cbff;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/">← Về Trang Chủ</a>
+<a style="width: 45%;background: #70cbff;color: white;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/blog">Xem Thêm Bài Viết →</a></div>
+</div>
