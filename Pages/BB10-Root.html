@@ -1,113 +1,282 @@
-<div style="max-width: 800px;margin: 0 auto;padding: 20px">
-<h1 style="text-align: center;color: #2c3e50;font-size: 2.5em;font-weight: bold;margin-bottom: 20px">Đột Phá Lịch Sử: BlackBerry 10 Chính Thức Được Root!</h1>
-<div style="background: #28a745;border-left: 5px solid #1e7e34;padding: 15px 20px;margin: 20px 0;color: white"><strong>🎉 Tin vui lớn:</strong> Sau hơn 10 năm được coi là "không thể root", BlackBerry 10 cuối cùng đã bị chinh phục bởi nhà phát triển Oleksandr!</div>
-<h2><span style="color: #70cbff"><strong>Tin Tức Đột Phá</strong></span></h2>
-<div style="margin-bottom: 30px">Trong một sự kiện được coi là bước ngoặt lịch sử đối với cộng đồng BlackBerry, nhà phát triển <strong>Oleksandr</strong> đã thành công trong việc đạt được quyền root (quyền truy cập siêu người dùng) trên hệ điều hành BlackBerry 10.Đây là một thành tựu đáng kinh ngạc, vì BlackBerry 10 từ lâu được biết đến với lớp bảo mật cực kỳ chặt chẽ - một trong những hệ điều hành di động an toàn nhất từng được tạo ra. Trong khi Android và iOS đã bị root/jailbreak từ rất sớm, BB10 đã kháng cự thành công suốt hơn một thập kỷ.
-<div style="background: #e3f2fd;border-left: 5px solid #2196f3;padding: 15px 20px;margin: 20px 0"><strong>📝 Cập nhật quan trọng:</strong> Theo thông tin mới nhất từ tác giả, hiện tại đây chỉ là <strong>quyền truy cập ở chế độ read-only</strong> (chỉ đọc). Việc thực sự có thể sửa đổi dữ liệu hệ thống vẫn đang chờ thêm bằng chứng và nghiên cứu tiếp theo.</div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đột Phá Lịch Sử: BlackBerry 10 Chính Thức Được Root! – BerryLife</title>
+<style>
+  :root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#efefef;color:var(--text-dark)}
+  /* HEADER */
+  .site-header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:white}
+  .header-inner{max-width:1280px;margin:0 auto;padding:40px 30px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .header-brand h1{font-size:3em;font-weight:bold;letter-spacing:-1px;line-height:1}
+  .header-brand p{font-size:1em;opacity:.9;margin-top:6px}
+  .header-follow a{background:white;color:var(--blue);padding:10px 22px;font-weight:bold;font-size:.9em;text-decoration:none;display:inline-block;white-space:nowrap}
+  .site-nav{background:var(--blue-dark);border-top:2px solid rgba(255,255,255,.25)}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:0 30px;display:flex;flex-wrap:wrap}
+  .nav-inner a{color:white;text-decoration:none;font-weight:bold;font-size:.85em;padding:12px 16px;display:inline-block;border-right:1px solid rgba(255,255,255,.15)}
+  .nav-inner a:hover{background:rgba(255,255,255,.15)}
+  /* LAYOUT — 2-col grid, main shrinks, sidebar stays 320px */
+  .site-wrapper{max-width:1280px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+  main{min-width:0;overflow:hidden}
+  .article-wrap{background:var(--bg-light);border:2px solid var(--border)}
+  /* COVER */
+  .cover-img{width:100%;max-height:420px;object-fit:cover;display:block;border-bottom:3px solid var(--blue)}
+  /* ARTICLE HEADER */
+  .article-header{padding:28px 32px 20px;border-bottom:2px solid var(--border)}
+  .article-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .tag{padding:4px 12px;font-size:.78em;font-weight:bold;display:inline-block}
+  .article-header h1{font-size:1.9em;font-weight:bold;color:var(--text-dark);line-height:1.35;margin-bottom:10px}
+  .article-date{color:var(--text-light);font-size:.85em}
+  /* ARTICLE BODY */
+  .article-body{padding:28px 32px 36px;font-size:.97em;line-height:1.75;color:var(--text-dark);overflow-wrap:break-word;word-break:break-word}
+  .article-body h2{color:var(--blue-dark);font-size:1.25em;font-weight:bold;margin-top:36px;margin-bottom:16px;border-left:4px solid var(--blue);padding-left:12px}
+  .article-body h3{color:var(--text-dark);font-size:1.05em;font-weight:bold;margin-top:24px;margin-bottom:12px}
+  .article-body p{margin-bottom:14px}
+  .article-body a{color:var(--blue);text-decoration:none;word-break:break-all}
+  .article-body a:hover{color:var(--blue-dark)}
+  /* NOTE BOXES */
+  .note{padding:14px 18px;margin:20px 0;border-left:5px solid;font-size:.93em;line-height:1.65}
+  .note p,.note li{margin-bottom:6px}
+  .note p:last-child{margin-bottom:0}
+  .note-yellow{background:#fff8e1;border-color:#ffc107}
+  .note-blue  {background:#e8f4f8;border-color:var(--teal)}
+  .note-green {background:#eaf7ec;border-color:#28a745}
+  .note-red   {background:#f8d7da;border-color:#dc3545}
+  .note-success{background:#d4edda;border-color:#28a745;color:#155724}
+  /* LISTS */
+  .article-body ul,.article-body ol{background:var(--bg-light);border-left:4px solid var(--blue);padding:14px 14px 14px 36px;margin:16px 0}
+  .article-body li{margin-bottom:6px}
+  /* CODE */
+  .article-body code{background:#2c3e50;color:#2ecc71;padding:2px 7px;font-family:'Courier New',monospace;font-size:.9em;word-break:break-all}
+  .article-body pre{background:#2c3e50;color:#2ecc71;padding:16px 20px;margin:18px 0;overflow-x:auto;font-family:'Courier New',monospace;font-size:.9em;line-height:1.6;white-space:pre-wrap;word-break:break-all}
+  .article-body pre code{background:none;padding:0;word-break:normal}
+  /* IMAGES — always constrained, never overflow */
+  .article-body img{max-width:100%;width:auto;height:auto;display:block;margin:20px auto;border:2px solid var(--border);box-shadow:0 4px 10px rgba(0,0,0,.1)}
+  /* GAME / APP CARDS */
+  .game-card{background:#e8f4f8;padding:20px;margin:25px 0;border-left:5px solid var(--blue)}
+  .game-card-title{color:var(--blue);font-size:1.1em;font-weight:bold;margin-bottom:8px;display:block}
+  .game-card-imgs{text-align:center;margin:15px 0}
+  .game-card-imgs img{max-width:45%;width:45%;display:inline-block;margin:5px;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+  .game-card-dl{text-align:center;margin:16px 0}
+  .btn-dl{display:inline-block;background:var(--blue);color:white;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
+  .btn-dl:hover{opacity:.85}
+  /* INLINE BUTTONS */
+  .btn-inline{display:inline-block;padding:11px 22px;text-decoration:none;font-weight:bold;font-size:.93em;margin:18px 8px 18px 0}
+  .btn-primary{background:var(--blue);color:white}
+  .btn-outline-link{background:white;color:var(--blue);border:2px solid var(--blue)}
+  .btn-inline:hover{opacity:.85}
+  /* SOURCE BOX */
+  .source-box{background:#f8f9fa;padding:18px;margin-top:28px;border-radius:6px;text-align:center}
+  .source-box p{color:#6c757d;font-size:.88em;margin:4px 0}
+  /* FOLLOW BANNER */
+  .follow-banner{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:white;text-align:center;padding:32px 28px}
+  .follow-banner h2{font-size:1.5em;font-weight:bold;margin-bottom:10px}
+  .follow-banner p{font-size:.95em;opacity:.92;margin-bottom:18px}
+  .follow-banner a{background:white;color:var(--blue);padding:10px 24px;font-weight:bold;font-size:.9em;text-decoration:none;display:inline-block}
+  /* FOOTER NAV */
+  .article-footer{padding:22px 32px;border-top:3px solid var(--blue);background:white;display:flex;gap:14px;flex-wrap:wrap}
+  .article-footer a{flex:1;min-width:150px;text-align:center;padding:12px 18px;font-weight:bold;font-size:.9em;text-decoration:none}
+  .btn-outline{background:white;color:var(--blue);border:2px solid var(--blue)}
+  .btn-solid  {background:var(--blue);color:white;border:2px solid var(--blue)}
+  .btn-outline:hover,.btn-solid:hover{opacity:.85}
+  /* SIDEBAR */
+  .sidebar{display:flex;flex-direction:column;gap:22px}
+  .sidebar-sticky{position:sticky;top:20px}
+  .sidebar-box{background:var(--bg-light);border:2px solid var(--border);padding:22px}
+  .sidebar-title{color:var(--text-dark);font-size:1.1em;font-weight:bold;margin-bottom:16px;border-bottom:3px solid var(--blue);padding-bottom:8px}
+  .cat-group{margin-bottom:18px}
+  .cat-group-label{color:var(--blue-dark);font-size:.8em;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .cat-links{display:flex;flex-wrap:wrap;gap:8px}
+  .cat-links a{background:white;padding:7px 14px;text-decoration:none;font-weight:bold;font-size:.82em;display:inline-block}
+  .follow-box{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:white;text-align:center;padding:26px 20px;border:2px solid var(--blue-dark)}
+  .follow-box h3{font-size:1.2em;font-weight:bold;margin-bottom:10px}
+  .follow-box p{font-size:.88em;opacity:.92;margin-bottom:18px;line-height:1.5}
+  .follow-box a{background:white;color:var(--blue);padding:10px 22px;font-weight:bold;font-size:.88em;text-decoration:none;display:inline-block}
+  .berrybus-btn{display:block;background:#667eea;color:white;text-align:center;padding:16px 20px;font-weight:bold;font-size:1em;text-decoration:none;border:2px solid #5567d4}
+  .berrybus-btn:hover{opacity:.88}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand"><h1>BerryLife</h1><p>Everything for BlackBerry Users</p></div>
+    <div class="header-follow"><a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a></div>
+  </div>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/">Trang Chủ</a><a href="/category/news">Tin Tức</a>
+      <a href="/category/tutorials">Hướng Dẫn</a><a href="/category/apps">Ứng Dụng</a>
+      <a href="/category/games">Games</a><a href="/category/themes">Themes</a>
+      <a href="/category/tips">Mẹo &amp; Thủ Thuật</a><a href="/category/blackberry-10">BB10</a>
+      <a href="/blog">Tất Cả Bài Viết</a>
+    </div>
+  </nav>
+</header>
+
+<div class="site-wrapper">
+
+  <main>
+    <article class="article-wrap">
+
+      <img class="cover-img" src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Root/download.png" alt="Đột Phá Lịch Sử: BlackBerry 10 Chính Thức Được Root!" onerror="this.style.display='none'">
+
+      <div class="article-header">
+        <div class="article-meta"><span class="tag" style="background:#fff3cd;color:#ff5722">TIN TỨC</span><span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span><span class="tag" style="background:#eaf7ec;color:#28a745">ROOT</span></div>
+        <h1>Đột Phá Lịch Sử: BlackBerry 10 Chính Thức Được Root!</h1>
+        <div class="article-date">05/02/2026</div>
+      </div>
+
+      <div class="article-body">
+<div class="note note-success"><strong>🎉 Tin vui lớn:</strong> Sau hơn 10 năm được coi là "không thể root", BlackBerry 10 cuối cùng đã bị chinh phục bởi nhà phát triển Oleksandr!
+
+<h2>Tin Tức Đột Phá</h2>
+
+Trong một sự kiện được coi là bước ngoặt lịch sử đối với cộng đồng BlackBerry, nhà phát triển <strong>Oleksandr</strong> đã thành công trong việc đạt được quyền root (quyền truy cập siêu người dùng) trên hệ điều hành BlackBerry 10.Đây là một thành tựu đáng kinh ngạc, vì BlackBerry 10 từ lâu được biết đến với lớp bảo mật cực kỳ chặt chẽ - một trong những hệ điều hành di động an toàn nhất từng được tạo ra. Trong khi Android và iOS đã bị root/jailbreak từ rất sớm, BB10 đã kháng cự thành công suốt hơn một thập kỷ.
+<div class="note note-blue"><strong>📝 Cập nhật quan trọng:</strong> Theo thông tin mới nhất từ tác giả, hiện tại đây chỉ là <strong>quyền truy cập ở chế độ read-only</strong> (chỉ đọc). Việc thực sự có thể sửa đổi dữ liệu hệ thống vẫn đang chờ thêm bằng chứng và nghiên cứu tiếp theo.
+
 Tuy nhiên, ngay cả với giới hạn read-only, đây vẫn là bước đầu tiên cực kỳ quan trọng trong việc mở khóa tiềm năng của BB10.
 
 </div>
-<h2><span style="color: #70cbff"><strong>Tiềm Năng &amp; Khả Năng Trong Tương Lai</strong></span></h2>
-<div style="margin-bottom: 30px">Mặc dù hiện tại việc root mới chỉ ở mức read-only (chỉ đọc), nhưng nếu trong tương lai có thể đạt được quyền truy cập ghi (write access) đầy đủ, đây là những khả năng mà BB10 có thể mở khóa:
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">1. 📦 Cài Đặt Ứng Dụng Unsigned (Không Ký)</h3>
+<h2>Tiềm Năng &amp; Khả Năng Trong Tương Lai</h2>
+
+Mặc dù hiện tại việc root mới chỉ ở mức read-only (chỉ đọc), nhưng nếu trong tương lai có thể đạt được quyền truy cập ghi (write access) đầy đủ, đây là những khả năng mà BB10 có thể mở khóa:
+<h3>1. 📦 Cài Đặt Ứng Dụng Unsigned (Không Ký)</h3>
 <ul>
- 	<li>Cài đặt bất kỳ file .BAR nào mà không cần chữ ký từ BlackBerry</li>
- 	<li>Chạy các ứng dụng tự phát triển, ứng dụng experimental</li>
- 	<li>Cài đặt các phiên bản mod của ứng dụng chính thức</li>
+ <li>Cài đặt bất kỳ file .BAR nào mà không cần chữ ký từ BlackBerry</li>
+ <li>Chạy các ứng dụng tự phát triển, ứng dụng experimental</li>
+ <li>Cài đặt các phiên bản mod của ứng dụng chính thức</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">2. 🔧 Sửa Đổi Hệ Thống Sâu</h3>
+<h3>2. 🔧 Sửa Đổi Hệ Thống Sâu</h3>
 <ul>
- 	<li><strong>Truy cập toàn bộ file system:</strong> Đọc/ghi mọi file trong hệ thống, kể cả các file hệ thống được bảo vệ</li>
- 	<li><strong>Sửa đổi NVRAM:</strong> Chỉnh sửa cấu hình phần cứng, calibration data</li>
- 	<li><strong>Custom boot animation:</strong> Thay đổi màn hình khởi động</li>
- 	<li><strong>Sửa đổi system apps:</strong> Customize các ứng dụng hệ thống như Hub, Browser, Settings</li>
+ <li><strong>Truy cập toàn bộ file system:</strong> Đọc/ghi mọi file trong hệ thống, kể cả các file hệ thống được bảo vệ</li>
+ <li><strong>Sửa đổi NVRAM:</strong> Chỉnh sửa cấu hình phần cứng, calibration data</li>
+ <li><strong>Custom boot animation:</strong> Thay đổi màn hình khởi động</li>
+ <li><strong>Sửa đổi system apps:</strong> Customize các ứng dụng hệ thống như Hub, Browser, Settings</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">3. ⬇️ Downgrade Tùy Ý</h3>
+<h3>3. ⬇️ Downgrade Tùy Ý</h3>
 <ul>
- 	<li>Hạ cấp về bất kỳ phiên bản BB10 nào, kể cả các phiên bản rất cũ như 10.0.x</li>
- 	<li>Sử dụng các tính năng chỉ có trong phiên bản cũ</li>
- 	<li>Tránh các bug có trong phiên bản mới</li>
- 	<li>Thử nghiệm các phiên bản beta/leaked OS</li>
+ <li>Hạ cấp về bất kỳ phiên bản BB10 nào, kể cả các phiên bản rất cũ như 10.0.x</li>
+ <li>Sử dụng các tính năng chỉ có trong phiên bản cũ</li>
+ <li>Tránh các bug có trong phiên bản mới</li>
+ <li>Thử nghiệm các phiên bản beta/leaked OS</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">4. 🎨 Customization Cao Cấp</h3>
+<h3>4. 🎨 Customization Cao Cấp</h3>
 <ul>
- 	<li><strong>Theme system-wide:</strong> Thay đổi màu sắc, font chữ, icon của toàn bộ hệ thống</li>
- 	<li><strong>Sửa đổi UI/UX:</strong> Customize giao diện người dùng theo ý muốn</li>
- 	<li><strong>Custom fonts:</strong> Cài đặt và sử dụng fonts tùy chỉnh</li>
- 	<li><strong>Mod framework:</strong> Cài đặt các framework như Xposed (nếu được port)</li>
+ <li><strong>Theme system-wide:</strong> Thay đổi màu sắc, font chữ, icon của toàn bộ hệ thống</li>
+ <li><strong>Sửa đổi UI/UX:</strong> Customize giao diện người dùng theo ý muốn</li>
+ <li><strong>Custom fonts:</strong> Cài đặt và sử dụng fonts tùy chỉnh</li>
+ <li><strong>Mod framework:</strong> Cài đặt các framework như Xposed (nếu được port)</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">5. ⚡ Tối Ưu Hiệu Năng</h3>
+<h3>5. ⚡ Tối Ưu Hiệu Năng</h3>
 <ul>
- 	<li><strong>CPU/GPU tweaking:</strong> Overlock hoặc underclock CPU/GPU</li>
- 	<li><strong>Kernel modifications:</strong> Sửa đổi kernel để cải thiện hiệu suất</li>
- 	<li><strong>RAM management:</strong> Tối ưu quản lý bộ nhớ</li>
- 	<li><strong>Battery optimization:</strong> Cài đặt các script tối ưu pin</li>
+ <li><strong>CPU/GPU tweaking:</strong> Overlock hoặc underclock CPU/GPU</li>
+ <li><strong>Kernel modifications:</strong> Sửa đổi kernel để cải thiện hiệu suất</li>
+ <li><strong>RAM management:</strong> Tối ưu quản lý bộ nhớ</li>
+ <li><strong>Battery optimization:</strong> Cài đặt các script tối ưu pin</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">6. 🔓 Mở Khóa Tính Năng Ẩn</h3>
+<h3>6. 🔓 Mở Khóa Tính Năng Ẩn</h3>
 <ul>
- 	<li>Kích hoạt các tính năng bị ẩn trong hệ thống</li>
- 	<li>Bypass các giới hạn về region, carrier</li>
- 	<li>Mở khóa bootloader (với một số thiết bị)</li>
- 	<li>Truy cập developer options nâng cao</li>
+ <li>Kích hoạt các tính năng bị ẩn trong hệ thống</li>
+ <li>Bypass các giới hạn về region, carrier</li>
+ <li>Mở khóa bootloader (với một số thiết bị)</li>
+ <li>Truy cập developer options nâng cao</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">7. 📱 Android Runtime Enhancement</h3>
+<h3>7. 📱 Android Runtime Enhancement</h3>
 <ul>
- 	<li>Cải thiện khả năng chạy Android apps</li>
- 	<li>Cài đặt Google Play Services (với patches phù hợp)</li>
- 	<li>Sửa lỗi compatibility với các ứng dụng Android</li>
- 	<li>Nâng cấp Android runtime lên phiên bản mới hơn</li>
+ <li>Cải thiện khả năng chạy Android apps</li>
+ <li>Cài đặt Google Play Services (với patches phù hợp)</li>
+ <li>Sửa lỗi compatibility với các ứng dụng Android</li>
+ <li>Nâng cấp Android runtime lên phiên bản mới hơn</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">8. 🛠️ Development &amp; Debugging</h3>
+<h3>8. 🛠️ Development &amp; Debugging</h3>
 <ul>
- 	<li>SSH access với quyền root đầy đủ</li>
- 	<li>Cài đặt development tools trực tiếp trên thiết bị</li>
- 	<li>Debug ứng dụng ở mức system</li>
- 	<li>Port các ứng dụng Linux sang BB10</li>
+ <li>SSH access với quyền root đầy đủ</li>
+ <li>Cài đặt development tools trực tiếp trên thiết bị</li>
+ <li>Debug ứng dụng ở mức system</li>
+ <li>Port các ứng dụng Linux sang BB10</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">9. 💾 Backup &amp; Recovery Nâng Cao</h3>
+<h3>9. 💾 Backup &amp; Recovery Nâng Cao</h3>
 <ul>
- 	<li>Tạo full system backup (bao gồm cả system partition)</li>
- 	<li>Backup và restore NVRAM</li>
- 	<li>Tạo custom recovery environment</li>
- 	<li>Clone toàn bộ hệ thống sang thiết bị khác</li>
+ <li>Tạo full system backup (bao gồm cả system partition)</li>
+ <li>Backup và restore NVRAM</li>
+ <li>Tạo custom recovery environment</li>
+ <li>Clone toàn bộ hệ thống sang thiết bị khác</li>
 </ul>
-<h3 style="color: #2c3e50;font-size: 1.3em;margin-top: 25px">10. 🌐 Network &amp; Connectivity Mods</h3>
+<h3>10. 🌐 Network &amp; Connectivity Mods</h3>
 <ul>
- 	<li>Sửa đổi network stack</li>
- 	<li>Custom DNS, VPN configurations ở system level</li>
- 	<li>Bypass carrier restrictions</li>
- 	<li>Enable hidden radio bands</li>
+ <li>Sửa đổi network stack</li>
+ <li>Custom DNS, VPN configurations ở system level</li>
+ <li>Bypass carrier restrictions</li>
+ <li>Enable hidden radio bands</li>
 </ul>
-</div>
-<h2><span style="color: #70cbff"><strong>Ý Nghĩa Với Cộng Đồng</strong></span></h2>
-<div style="margin-bottom: 30px">Thành công của Oleksandr mang ý nghĩa to lớn:
+
+<h2>Ý Nghĩa Với Cộng Đồng</h2>
+
+Thành công của Oleksandr mang ý nghĩa to lớn:
 <ul>
- 	<li><strong>Kéo dài tuổi thọ:</strong> BB10 devices có thể được sử dụng lâu hơn với khả năng mod và tùy biến</li>
- 	<li><strong>Mở rộng khả năng:</strong> Cài đặt các ứng dụng và tính năng mà trước đây không thể</li>
- 	<li><strong>Cộng đồng phát triển:</strong> Khuyến khích developers tiếp tục phát triển cho BB10</li>
- 	<li><strong>Bảo tồn di sản:</strong> Giữ gìn một phần lịch sử công nghệ di động</li>
- 	<li><strong>Học hỏi:</strong> Nghiên cứu về bảo mật hệ thống ở mức sâu</li>
+ <li><strong>Kéo dài tuổi thọ:</strong> BB10 devices có thể được sử dụng lâu hơn với khả năng mod và tùy biến</li>
+ <li><strong>Mở rộng khả năng:</strong> Cài đặt các ứng dụng và tính năng mà trước đây không thể</li>
+ <li><strong>Cộng đồng phát triển:</strong> Khuyến khích developers tiếp tục phát triển cho BB10</li>
+ <li><strong>Bảo tồn di sản:</strong> Giữ gìn một phần lịch sử công nghệ di động</li>
+ <li><strong>Học hỏi:</strong> Nghiên cứu về bảo mật hệ thống ở mức sâu</li>
 </ul>
-</div>
-<h2><span style="color: #70cbff"><strong>Lời Kết</strong></span></h2>
-<div style="margin-bottom: 30px">Việc Oleksandr thành công đạt được quyền truy cập root (dù hiện tại mới ở mức read-only) trên BlackBerry 10 là một minh chứng cho tinh thần không ngừng nghỉ của cộng đồng công nghệ. Sau hơn 10 năm, hệ điều hành từng được coi là "bất khả xâm phạm" cuối cùng cũng đã có những vết nứt đầu tiên.Mặc dù hiện tại vẫn chưa thể sửa đổi dữ liệu hệ thống một cách đầy đủ, nhưng đây là bước đột phá quan trọng mở đường cho những nghiên cứu sâu hơn trong tương lai. Khả năng đọc được toàn bộ hệ thống đã cho phép các nhà nghiên cứu hiểu rõ hơn về cách BB10 hoạt động, từ đó tìm ra những cách thức để mở khóa thêm nhiều tính năng.
+
+<h2>Lời Kết</h2>
+
+Việc Oleksandr thành công đạt được quyền truy cập root (dù hiện tại mới ở mức read-only) trên BlackBerry 10 là một minh chứng cho tinh thần không ngừng nghỉ của cộng đồng công nghệ. Sau hơn 10 năm, hệ điều hành từng được coi là "bất khả xâm phạm" cuối cùng cũng đã có những vết nứt đầu tiên.Mặc dù hiện tại vẫn chưa thể sửa đổi dữ liệu hệ thống một cách đầy đủ, nhưng đây là bước đột phá quan trọng mở đường cho những nghiên cứu sâu hơn trong tương lai. Khả năng đọc được toàn bộ hệ thống đã cho phép các nhà nghiên cứu hiểu rõ hơn về cách BB10 hoạt động, từ đó tìm ra những cách thức để mở khóa thêm nhiều tính năng.
 
 Đây không chỉ là chiến thắng của một cá nhân, mà là của toàn bộ cộng đồng BlackBerry - những người vẫn yêu quý và tiếp tục sử dụng những chiếc máy huyền thoại này.
 
 Cảm ơn Oleksandr và tất cả những người đang đóng góp vào việc nghiên cứu BB10. Dù con đường còn dài, nhưng mỗi bước tiến đều mang lại hy vọng mới cho cộng đồng!
 
-</div>
-<div style="background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);color: white;padding: 40px;text-align: center;margin: 40px 0">
-<h2 style="font-size: 2em;margin-bottom: 15px;font-weight: bold">📬 Theo Dõi Chúng Tôi</h2>
-<p style="font-size: 1.1em;margin-bottom: 25px;opacity: 0.95">Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
-
-<div style="max-width: 500px;margin: 0 auto"><a style="background: white;color: #70cbff;padding: 10px 20px;border: none;font-weight: bold;font-size: 0.9em;text-decoration: none;display: inline-block" href="https://www.facebook.com/BBerryLife/" target="_blank" rel="noopener">Theo Dõi Facebook</a></div>
-</div>
-<div style="text-align: center;margin: 40px auto;max-width: 600px"><a style="width: 45%;background: white;color: #70cbff;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/">← Về Trang Chủ</a>
-<a style="width: 45%;background: #70cbff;color: white;border: 2px solid #70cbff;padding: 12px 20px;text-decoration: none;font-weight: bold;display: inline-block;text-align: center" href="/blog">Xem Thêm Bài Viết →</a></div>
-<div style="background: #f8f9fa;padding: 20px;margin-top: 30px;border-radius: 8px">
+<div class="source-box">
 <p style="margin: 0;color: #6c757d;font-size: 0.9em;text-align: center"><strong>Nguồn:</strong> <a href="https://www.reddit.com/r/blackberry/comments/1qvohwm/blackberry_10_root/">Reddit</a> | <a href="https://bb10.root.sx/">Oleksandr</a></p>
 <p style="margin: 10px 0 0 0;color: #6c757d;font-size: 0.85em;text-align: center">Đăng ngày: 05 February 2026</p>
 
 </div>
 </div>
+      </div>
+
+      <div class="follow-banner">
+        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
+        <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+      </div>
+
+      <div class="article-footer">
+        <a href="/index.html" class="btn-outline">← Về Trang Chủ</a>
+        <a href="/Pages/Blog/Blog.html" class="btn-solid">Xem Thêm Bài Viết →</a>
+      </div>
+
+    </article>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+      <div class="follow-box">
+        <h3>Theo Dõi Chúng Tôi</h3>
+        <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
+        <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
+      </div>
+      <div class="sidebar-box">
+        <h3 class="sidebar-title">Danh Mục</h3>
+        <div class="cat-group">
+          <div class="cat-group-label">Hệ Điều Hành</div>
+          <div class="cat-links">
+            <a href="/category/blackberry-10" style="color:#2196f3;border:2px solid #2196f3">BlackBerry 10</a>
+            <a href="/category/blackberry-7-1" style="color:#00bcd4;border:2px solid #00bcd4">BlackBerry 7.1</a>
+            <a href="/category/blackberry-6"  style="color:#009688;border:2px solid #009688">BlackBerry 6</a>
+          </div>
+        </div>
+      </div>
+      <a href="/berrybus/" class="berrybus-btn">Đóng Góp Dữ Liệu BerryBus</a>
+    </div>
+  </aside>
+
+</div>
+</body>
+</html>
