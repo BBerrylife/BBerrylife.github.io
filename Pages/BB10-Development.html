@@ -8,11 +8,16 @@
   :root {
     --blue: #70cbff;
     --blue-dark: #4fa3d1;
+    --orange: #ff5722;
+    --pink: #ff66c4;
+    --purple: #667eea;
+    --green: #4caf50;
     --text-dark: #2c3e50;
     --text-muted: #666;
     --text-light: #999;
     --bg-light: #f8f9fa;
     --border: #e0e0e0;
+    --white: #ffffff;
     --teal: #17a2b8;
   }
 
@@ -30,11 +35,16 @@
     color: white;
   }
   .header-inner {
-    max-width: 1280px; margin: 0 auto; padding: 40px 30px 30px;
-    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
   }
   .header-brand h1 { font-size: 3em; font-weight: bold; letter-spacing: -1px; line-height: 1; }
-  .header-brand p  { font-size: 1em; opacity: 0.9; margin-top: 6px; }
+  .header-brand p { font-size: 1em; opacity: 0.9; margin-top: 6px; }
   .header-follow a {
     background: white; color: var(--blue);
     padding: 10px 22px; font-weight: bold; font-size: 0.9em;
@@ -54,126 +64,258 @@
   }
   .nav-inner a:hover { background: rgba(255,255,255,0.15); }
 
-  /* ── LAYOUT ── */
+  /* ── PAGE LAYOUT ── */
   .site-wrapper {
-    max-width: 1280px; margin: 30px auto; padding: 0 20px;
-    display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start;
+    max-width: 1280px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
   }
 
   /* ── ARTICLE ── */
-  .article-wrap { background: var(--bg-light); border: 2px solid var(--border); }
+  main { min-width: 0; }
 
+  .article-wrap {
+    background: var(--bg-light);
+    border: 2px solid var(--border);
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Cover image */
   .cover-img {
-    width: 100%; max-height: 400px; object-fit: cover; display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
     border-bottom: 3px solid var(--blue);
   }
 
-  .article-header { padding: 28px 32px 20px; border-bottom: 2px solid var(--border); }
+  .article-header {
+    padding: 28px 32px 20px;
+    border-bottom: 2px solid var(--border);
+  }
   .article-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
-  .tag { padding: 4px 12px; font-size: 0.78em; font-weight: bold; display: inline-block; }
-  .article-header h1 { font-size: 1.75em; font-weight: bold; color: var(--text-dark); line-height: 1.35; margin-bottom: 10px; }
+  .tag {
+    padding: 4px 12px;
+    font-size: 0.78em;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .article-header h1 {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
   .article-date { color: var(--text-light); font-size: 0.85em; }
 
-  /* ── BODY ── */
-  .article-body { padding: 28px 32px 36px; font-size: 0.97em; line-height: 1.75; color: var(--text-dark); }
-  .article-body h2 {
-    color: var(--blue-dark); font-size: 1.2em; font-weight: bold;
-    margin-top: 36px; margin-bottom: 14px;
-    border-left: 4px solid var(--blue); padding-left: 12px;
+  /* Article body */
+  .article-body {
+    padding: 28px 32px 36px;
+    font-size: 0.97em;
+    line-height: 1.75;
+    color: var(--text-dark);
   }
-  .article-body h3 { color: var(--teal); font-size: 1em; font-weight: bold; margin-top: 22px; margin-bottom: 10px; }
+
+  .article-body h2 {
+    color: var(--blue-dark);
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--blue);
+    padding-left: 12px;
+  }
+
+  .article-body h3 {
+    color: var(--teal);
+    font-size: 1.05em;
+    font-weight: bold;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
   .article-body p { margin-bottom: 14px; }
 
-  /* quote block */
-  .quote-block {
-    background: #2c3e50; color: #ecf0f1;
-    padding: 18px 24px; margin: 24px 0;
-    border-left: 5px solid var(--blue);
-    font-style: italic;
+  /* Note boxes */
+  .note {
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-left: 5px solid;
+    font-size: 0.93em;
+    line-height: 1.65;
   }
-  .quote-block .author { font-size: 0.88em; opacity: 0.65; margin-top: 8px; }
+  .note-yellow  { background: #fff8e1; border-color: #ffc107; }
+  .note-blue    { background: #e8f4f8; border-color: var(--teal); }
+  .note-green   { background: #eaf7ec; border-color: #28a745; }
+  .note-dark    { background: #2c3e50; color: #ecf0f1; border-color: var(--blue); font-style: italic; border-radius: 0 8px 8px 0; }
+  .note-dark p  { margin: 0; }
+  .note-dark .note-attr { margin-top: 10px; font-size: 0.9em; opacity: 0.7; }
 
-  /* note boxes */
-  .note { padding: 14px 18px; margin: 18px 0; border-left: 5px solid; font-size: 0.93em; line-height: 1.65; }
-  .note-yellow { background: #fff8e1; border-color: #ffc107; }
-  .note-blue   { background: #e8f4f8; border-color: var(--teal); }
-  .note-green  { background: #eaf7ec; border-color: #28a745; }
-  .note-gray   { background: var(--bg-light); border-color: #3498db; }
-
-  /* lists */
+  /* Lists */
   .article-body ul, .article-body ol {
-    background: var(--bg-light); border-left: 4px solid var(--blue);
-    padding: 14px 14px 14px 36px; margin: 16px 0;
+    background: var(--bg-light);
+    border-left: 4px solid var(--blue);
+    padding: 16px 16px 16px 38px;
+    margin: 18px 0;
   }
-  .article-body li { margin-bottom: 6px; line-height: 1.8; }
+  .article-body li { margin-bottom: 6px; }
 
-  /* code */
+  /* Code */
   .article-body code {
-    background: #2c3e50; color: #2ecc71;
-    padding: 2px 7px; font-family: 'Courier New', monospace; font-size: 0.9em;
+    background: #2c3e50;
+    color: #2ecc71;
+    padding: 2px 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92em;
   }
   .article-body pre {
-    background: #2c3e50; color: #2ecc71;
-    padding: 16px 20px; margin: 16px 0; overflow-x: auto;
-    font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6;
+    background: #2c3e50;
+    color: #2ecc71;
+    padding: 16px 20px;
+    margin: 18px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92em;
+    line-height: 1.6;
   }
   .article-body pre code { background: none; padding: 0; }
 
-  /* table */
-  .article-body table { width: 100%; border-collapse: collapse; font-size: 0.93em; margin: 18px 0; }
-  .article-body thead tr { background: #2c3e50; color: white; }
-  .article-body th { padding: 10px 14px; text-align: left; }
-  .article-body td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
-  .article-body tbody tr:nth-child(even) { background: var(--bg-light); }
-  .article-body td code { font-size: 0.83em; }
+  /* Step boxes */
+  .step-box {
+    background: #e8f4f8;
+    border-left: 5px solid var(--teal);
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
 
-  /* images */
-  .article-img-wrap { text-align: center; margin: 22px 0; }
+  /* Article images */
+  .article-img-wrap {
+    text-align: center;
+    margin: 28px 0;
+  }
   .article-img-wrap img {
-    max-width: 100%; border: 2px solid var(--border);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block;
+    max-width: 100%;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: inline-block;
   }
-  .article-img-wrap figcaption { color: var(--text-light); font-size: 0.83em; font-style: italic; margin-top: 7px; }
-
-  /* btn */
-  .btn {
-    display: inline-block; color: white; padding: 8px 18px;
-    text-decoration: none; font-weight: bold; font-size: 0.85em;
+  .article-img-wrap figcaption {
+    color: var(--text-light);
+    font-size: 0.85em;
+    font-style: italic;
+    margin-top: 8px;
   }
-  .btn:hover { opacity: 0.85; }
 
-  /* footer nav */
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .article-body table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    background: var(--bg-light);
+    table-layout: fixed;
+  }
+  .article-body table th:nth-child(1),
+  .article-body table td:nth-child(1) { width: 44%; word-break: break-all; }
+  .article-body table th:nth-child(2),
+  .article-body table td:nth-child(2) { width: 16%; }
+  .article-body table th:nth-child(3),
+  .article-body table td:nth-child(3) { width: 40%; }
+  .article-body thead tr { background: #2c3e50; color: white; }
+  .article-body th { padding: 10px 15px; text-align: left; }
+  .article-body td { padding: 10px 15px; border-bottom: 1px solid var(--border); word-wrap: break-word; }
+  .article-body tbody tr:nth-child(even) { background: white; }
+
+  /* Footer nav */
   .article-footer {
-    padding: 24px 32px; border-top: 3px solid var(--blue);
-    background: white; display: flex; gap: 16px; flex-wrap: wrap;
+    padding: 24px 32px;
+    border-top: 3px solid var(--blue);
+    background: white;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
   }
-  .article-footer a { flex: 1; min-width: 160px; text-align: center; padding: 12px 20px; font-weight: bold; font-size: 0.9em; text-decoration: none; }
+  .article-footer a {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-decoration: none;
+  }
   .btn-outline { background: white; color: var(--blue); border: 2px solid var(--blue); }
   .btn-solid   { background: var(--blue); color: white; border: 2px solid var(--blue); }
+  .btn-outline:hover, .btn-solid:hover { opacity: 0.85; }
 
-  /* follow banner */
+  /* Follow banner */
   .follow-banner {
     background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-    color: white; text-align: center; padding: 30px 28px;
+    color: white;
+    text-align: center;
+    padding: 32px 28px;
+    margin-bottom: 0;
   }
-  .follow-banner h2 { font-size: 1.4em; font-weight: bold; margin-bottom: 10px; }
-  .follow-banner p  { font-size: 0.93em; opacity: 0.92; margin-bottom: 16px; }
-  .follow-banner a  { background: white; color: var(--blue); padding: 10px 24px; font-weight: bold; font-size: 0.88em; text-decoration: none; display: inline-block; }
+  .follow-banner h2 { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; }
+  .follow-banner p  { font-size: 0.95em; opacity: 0.92; margin-bottom: 18px; }
+  .follow-banner a  {
+    background: white; color: var(--blue);
+    padding: 10px 24px; font-weight: bold; font-size: 0.9em;
+    text-decoration: none; display: inline-block;
+  }
+  .follow-banner a:hover { opacity: 0.85; }
 
   /* ── SIDEBAR ── */
   .sidebar { display: flex; flex-direction: column; gap: 22px; }
   .sidebar-sticky { position: sticky; top: 20px; }
+
   .sidebar-box { background: var(--bg-light); border: 2px solid var(--border); padding: 22px; }
-  .sidebar-title { color: var(--text-dark); font-size: 1.1em; font-weight: bold; margin-bottom: 16px; border-bottom: 3px solid var(--blue); padding-bottom: 8px; }
-  .cat-group { margin-bottom: 16px; }
-  .cat-group-label { color: var(--blue-dark); font-size: 0.8em; font-weight: bold; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+  .sidebar-title {
+    color: var(--text-dark); font-size: 1.1em; font-weight: bold;
+    margin-bottom: 16px; border-bottom: 3px solid var(--blue); padding-bottom: 8px;
+  }
+
+  .cat-group { margin-bottom: 18px; }
+  .cat-group-label {
+    color: var(--blue-dark); font-size: 0.8em; font-weight: bold;
+    text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px;
+  }
   .cat-links { display: flex; flex-wrap: wrap; gap: 8px; }
-  .cat-links a { background: white; padding: 7px 14px; text-decoration: none; font-weight: bold; font-size: 0.82em; display: inline-block; }
-  .follow-box { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); color: white; text-align: center; padding: 26px 20px; border: 2px solid var(--blue-dark); }
+  .cat-links a {
+    background: white; padding: 7px 14px; text-decoration: none;
+    font-weight: bold; font-size: 0.82em; display: inline-block;
+  }
+
+  .follow-box {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: white; text-align: center; padding: 26px 20px;
+    border: 2px solid var(--blue-dark);
+  }
   .follow-box h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
   .follow-box p  { font-size: 0.88em; opacity: 0.92; margin-bottom: 18px; line-height: 1.5; }
-  .follow-box a  { background: white; color: var(--blue); padding: 10px 22px; font-weight: bold; font-size: 0.88em; text-decoration: none; display: inline-block; }
-  .berrybus-btn { display: block; background: #667eea; color: white; text-align: center; padding: 16px 20px; font-weight: bold; font-size: 1em; text-decoration: none; border: 2px solid #5567d4; }
+  .follow-box a  {
+    background: white; color: var(--blue);
+    padding: 10px 22px; font-weight: bold; font-size: 0.88em;
+    text-decoration: none; display: inline-block;
+  }
+
+  .berrybus-btn {
+    display: block; background: #667eea; color: white;
+    text-align: center; padding: 16px 20px; font-weight: bold; font-size: 1em;
+    text-decoration: none; border: 2px solid #5567d4;
+  }
   .berrybus-btn:hover { opacity: 0.88; }
 </style>
 </head>
@@ -192,50 +334,53 @@
   </div>
   <nav class="site-nav">
     <div class="nav-inner">
-      <a href="/index.html">Trang Chủ</a>
-      <a href="/Pages/Category/News/News.html">Tin Tức</a>
-      <a href="/Pages/Category/Tutorials/Tutorials.html">Hướng Dẫn</a>
-      <a href="/Pages/Category/Apps/Apps.html">Ứng Dụng</a>
-      <a href="/Pages/Category/Games/Games.html">Games</a>
-      <a href="/Pages/Category/Themes/Themes.html">Themes</a>
-      <a href="/Pages/Category/Tips/Tips.html">Mẹo &amp; Thủ Thuật</a>
-      <a href="/Pages/Category/BlackBerry%2010/BlackBerry-10.html">BB10</a>
-      <a href="/Pages/Blog/Blog.html">Tất Cả Bài Viết</a>
+      <a href="/">Trang Chủ</a>
+      <a href="/category/news">Tin Tức</a>
+      <a href="/category/tutorials">Hướng Dẫn</a>
+      <a href="/category/apps">Ứng Dụng</a>
+      <a href="/category/games">Games</a>
+      <a href="/category/themes">Themes</a>
+      <a href="/category/tips">Mẹo &amp; Thủ Thuật</a>
+      <a href="/category/blackberry-10">BB10</a>
+      <a href="/blog">Tất Cả Bài Viết</a>
     </div>
   </nav>
 </header>
 
 <!-- MAIN -->
 <div class="site-wrapper">
+
   <main>
     <article class="article-wrap">
 
       <!-- COVER -->
-      <img class="cover-img"
+      <img
+        class="cover-img"
         src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/5939119_037_blackberry_q20.jpg"
-        alt="BlackBerry Q20"
+        alt="BlackBerry 10 Development"
         onerror="this.style.display='none'">
 
-      <!-- HEADER -->
+      <!-- ARTICLE HEADER -->
       <div class="article-header">
         <div class="article-meta">
           <span class="tag" style="background:#e1f5fe;color:#01579b">HƯỚNG DẪN</span>
           <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
+          <span class="tag" style="background:#e8f4f8;color:#17a2b8">PHÁT TRIỂN ỨNG DỤNG</span>
         </div>
         <h1>Phát Triển Ứng Dụng BlackBerry 10 Trong Năm 2026 (Và Sau Đó)</h1>
-        <div class="article-date">04/03/2026</div>
+        <div class="article-date">01/03/2026</div>
       </div>
 
-      <!-- BODY -->
+      <!-- ARTICLE BODY -->
       <div class="article-body">
 
-        <div class="quote-block">
+        <div class="note note-dark">
           <p><em>"Chúng tôi cũng không tệ đâu, nhưng bạn không thể chỉ là một tay mơ bình thường — bạn phải thành thạo công cụ, nếu bạn hiểu ý tôi. Hãy chứng tỏ bản thân."</em></p>
-          <p class="author"><em>— Warren Griffin III</em></p>
+          <p class="note-attr"><em>— Warren Griffin III</em></p>
         </div>
 
-        <div class="note note-gray">
-          Như bạn đã biết, BlackBerry đã tắt toàn bộ dịch vụ hệ điều hành BlackBerry OS từ ngày <strong>4 tháng 1 năm 2022</strong>, và các link tải xuống cũ giờ đã chết hoàn toàn. Không chỉ vậy, có vẻ như họ còn yêu cầu xóa các tài nguyên còn sót lại khỏi nhiều trang lưu trữ khác nhau.
+        <div class="note note-blue">
+          <p>Như bạn đã biết, BlackBerry đã tắt toàn bộ dịch vụ hệ điều hành BlackBerry OS từ ngày <strong>4 tháng 1 năm 2022</strong>, và các link tải xuống cũ giờ đã chết hoàn toàn. Không chỉ vậy, có vẻ như họ còn yêu cầu xóa các tài nguyên còn sót lại khỏi nhiều trang lưu trữ khác nhau.</p>
         </div>
 
         <p>Vậy bạn phải làm gì nếu muốn bắt đầu tự phát triển ứng dụng BlackBerry trong năm 2022 trở đi? Về cơ bản bạn cần <strong>ba thành phần chính</strong>:</p>
@@ -246,23 +391,27 @@
           <li><strong>Simulator</strong> — Môi trường để chạy ứng dụng</li>
         </ul>
 
-        <h2>Bước 1: Tải Momentics IDE</h2>
+        <h2># Bước 1: Tải Momentics IDE</h2>
         <p>Tải Momentics IDE phù hợp với hệ điều hành của bạn (tôi chỉ có bản Windows 64-bit):</p>
+
         <ul>
           <li><a href="https://www.mediafire.com/file/t9tc98n14md50io/momentics-2.1.2-201503050937.win32.x86_64.setup_2.exe/file">Windows 64-bit</a></li>
         </ul>
+
         <div class="note note-yellow">
-          <strong>Lưu ý quan trọng:</strong> Các file API level dưới đây <strong>chỉ dành cho nền tảng Windows</strong>. Nếu bạn dùng macOS hoặc Linux, bạn sẽ gặp khó khăn hơn vì các file tương ứng hiện chưa tìm lại được.
+          <p>⚠️ <strong>Lưu ý quan trọng:</strong> Các file API level dưới đây <strong>chỉ dành cho nền tảng Windows</strong>. Nếu bạn dùng macOS hoặc Linux, bạn sẽ gặp khó khăn hơn vì các file tương ứng hiện chưa tìm lại được.</p>
         </div>
 
-        <h2>Bước 2: Tải API Level Files</h2>
+        <h2># Bước 2: Tải API Level Files</h2>
         <p>Sau ngày 4/1/2022, không thể tìm thấy file cho các API level mới nhất (10.3.3.3204 là mới nhất). Vì vậy, chúng ta phải làm việc với <code>10.3.1.995</code>.</p>
+
         <p>Các file gốc từng có thể tìm thấy trên máy chủ BlackBerry theo cấu trúc URL như sau:</p>
+
 <pre><code>http://downloads.blackberry.com/upr/developers/update/bbndk/ndktargetrepo_&lt;API_LEVEL&gt;/packages/bbndk.&lt;PLATFORM&gt;.&lt;PACKAGE&gt;.&lt;API_LEVEL&gt;.zip</code></pre>
 
         <div class="note note-blue">
           <p>Trong đó:</p>
-          <ul style="background:none;border:none;padding:8px 0 0 20px;margin:0">
+          <ul style="background:transparent;border:none;padding:8px 0 0 20px;margin:0">
             <li><code>&lt;API_LEVEL&gt;</code> — Phiên bản API, ví dụ: <code>10.3.1.995</code></li>
             <li><code>&lt;PLATFORM&gt;</code> — Nền tảng: <code>win32</code> / <code>macosx</code> / <code>linux</code></li>
             <li><code>&lt;PACKAGE&gt;</code> — Tên gói: <code>libraries</code>, <code>tools</code>, <code>documents</code>,…</li>
@@ -270,57 +419,88 @@
         </div>
 
         <h3>Danh sách các file cần tải (API 10.3.1.995 — Windows):</h3>
+
+        <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Tên File</th><th>Kích Thước</th><th>Mô Tả</th></tr>
+            <tr>
+              <th>Tên File</th>
+              <th>Kích Thước</th>
+              <th>Mô Tả</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td><code><a href="https://www.mediafire.com/file/cth24ehxl7gj0mp/bbndk.win32.libraries.10.3.1.995.zip/file">bbndk.win32.libraries.10.3.1.995.zip</a></code></td><td>1,50 GB</td><td>Thư viện Native SDK — <strong>quan trọng nhất</strong></td></tr>
-            <tr><td><code><a href="https://www.mediafire.com/file/rlpjhwlpt19nnwc/bbndk.win32.tools.10.3.1.12.zip/file">bbndk.win32.tools.10.3.1.12.zip</a></code></td><td>290,79 MB</td><td>Công cụ Native SDK</td></tr>
-            <tr><td><code><a href="https://www.mediafire.com/file/cejpuw6l8ryqsai/bbndk.win32.cshost.10.3.1.995.zip/file">bbndk.win32.cshost.10.3.1.995.zip</a></code></td><td>19,86 MB</td><td>CS Host</td></tr>
-            <tr><td><code><a href="https://www.mediafire.com/file/d2o53cnjy875b8w/bbndk.win32.documents.10.3.1.995.zip/file">bbndk.win32.documents.10.3.1.995.zip</a></code></td><td>30,64 MB</td><td>Tài liệu Native SDK</td></tr>
-            <tr><td><code><a href="https://www.mediafire.com/file/wn07qu28dncgk30/bbndk.win32.qconfigmk.10.3.1.995.zip/file">bbndk.win32.qconfigmk.10.3.1.995.zip</a></code></td><td>5,36 KB</td><td>Cấu hình QConfig</td></tr>
-            <tr><td><code><a href="https://www.mediafire.com/file/iefqppz0awma83t/bbndk.win32.samples.10.3.1.995.zip/file">bbndk.win32.samples.10.3.1.995.zip</a></code></td><td>104 KB</td><td>Mã nguồn mẫu Native SDK</td></tr>
-            <tr><td><code>bbndk.win32.licenses.10.3.1.995.zip</code></td><td>—</td><td>Giấy phép SDK (không bắt buộc)</td></tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/cth24ehxl7gj0mp/bbndk.win32.libraries.10.3.1.995.zip/file">bbndk.win32.libraries.10.3.1.995.zip</a></code></td>
+              <td>1,50 GB</td>
+              <td>Thư viện Native SDK — <strong>quan trọng nhất</strong></td>
+            </tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/rlpjhwlpt19nnwc/bbndk.win32.tools.10.3.1.12.zip/file">bbndk.win32.tools.10.3.1.12.zip</a></code></td>
+              <td>290,79 MB</td>
+              <td>Công cụ Native SDK</td>
+            </tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/cejpuw6l8ryqsai/bbndk.win32.cshost.10.3.1.995.zip/file">bbndk.win32.cshost.10.3.1.995.zip</a></code></td>
+              <td>19,86 MB</td>
+              <td>CS Host</td>
+            </tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/d2o53cnjy875b8w/bbndk.win32.documents.10.3.1.995.zip/file">bbndk.win32.documents.10.3.1.995.zip</a></code></td>
+              <td>30,64 MB</td>
+              <td>Tài liệu Native SDK</td>
+            </tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/wn07qu28dncgk30/bbndk.win32.qconfigmk.10.3.1.995.zip/file">bbndk.win32.qconfigmk.10.3.1.995.zip</a></code></td>
+              <td>5,36 KB</td>
+              <td>Cấu hình QConfig</td>
+            </tr>
+            <tr>
+              <td><code><a href="https://www.mediafire.com/file/iefqppz0awma83t/bbndk.win32.samples.10.3.1.995.zip/file">bbndk.win32.samples.10.3.1.995.zip</a></code></td>
+              <td>104 KB</td>
+              <td>Mã nguồn mẫu Native SDK</td>
+            </tr>
+            <tr>
+              <td><code>bbndk.win32.licenses.10.3.1.995.zip</code></td>
+              <td>—</td>
+              <td>Giấy phép SDK (không bắt buộc và tôi không có)</td>
+            </tr>
           </tbody>
         </table>
+        </div>
 
-        <h2>Bước 3: Giải Nén Các File</h2>
+        <h2># Bước 3: Giải Nén Các File</h2>
         <p>Tạo thư mục <code>c:\bbndk_api\</code> trước, sau đó:</p>
-        <div class="note note-blue">
+
+        <div class="step-box">
           <p><strong>1.</strong> Giải nén <code>bbndk.win32.tools.10.3.1.12.zip</code> vào <code>c:\bbndk_api\</code> → sẽ tạo ra thư mục <code>host_10_3_1_12</code></p>
-          <p style="margin-top:8px"><strong>2.</strong> Giải nén các file còn lại (cshost, libraries, documents, qconfigmk, samples) vào <code>c:\bbndk_api\</code> → sẽ tạo ra thư mục <code>target_10_3_1_995</code></p>
+          <p style="margin-top:10px"><strong>2.</strong> Giải nén các file còn lại (cshost, libraries, documents, qconfigmk, samples) vào <code>c:\bbndk_api\</code> → sẽ tạo ra thư mục <code>target_10_3_1_995</code></p>
         </div>
 
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-221413.png" alt="Giải nén file">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-01-221413.png" alt="Cấu trúc thư mục sau khi giải nén">
         </figure>
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-221706.png" alt="Cấu trúc thư mục sau giải nén">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-01-221706.png" alt="Cấu trúc thư mục chi tiết">
         </figure>
 
         <div class="note note-green">
-          Sau khi xong, bạn sẽ có thư mục <code>c:\bbndk_api\</code> chứa hai thư mục con: <strong>target_10_3_1_995</strong> và <strong>host_10_3_1_12</strong>.
+          ✅ Sau khi xong, bạn sẽ có thư mục <code>c:\bbndk_api\</code> chứa hai thư mục con: <strong>target_10_3_1_995</strong> và <strong>host_10_3_1_12</strong>.
         </div>
 
-        <h2>Bước 4: Cài Đặt Momentics IDE</h2>
-        <div class="note note-blue">
-          <strong>Cài đặt:</strong> Nhấp đúp vào file <code>momentics-2.1.2-201503050937.win32.x86.setup.exe</code>. Để nguyên thư mục cài đặt mặc định là <code>C:\bbndk</code> và nhấn <strong>Next</strong> vài lần cho đến khi quá trình cài đặt bắt đầu. Sau khi hoàn tất, mở Momentics lên và thấy như ảnh thì chọn <strong>Cancel</strong>:
+        <h2># Bước 4: Cài Đặt Momentics IDE</h2>
+
+        <div class="step-box">
+          <p><strong>Cài đặt:</strong> Nhấp đúp vào file <code>momentics-2.1.2-201503050937.win32.x86.setup.exe</code>. Để nguyên thư mục cài đặt mặc định là <code>C:\bbndk</code> và nhấn <strong>Next</strong> vài lần cho đến khi quá trình cài đặt bắt đầu. Sau khi hoàn tất, bạn mở Momentics lên và thấy như ảnh thì chọn <strong>Cancel</strong>:</p>
         </div>
+
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-222001.png" alt="Màn hình cài đặt Momentics">
-          <figcaption>Màn hình setup Momentics — chọn Cancel</figcaption>
-        </figure>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-222628.png" alt="Momentics IDE mở lần đầu">
-        </figure>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-222656.png" alt="Momentics IDE — chọn Cancel">
-          <figcaption>Chọn Cancel khi Momentics yêu cầu cập nhật</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-01-222656.png" alt="Màn hình Momentics IDE sau khi cài đặt">
         </figure>
 
-        <h2>Bước 5: Nhập SDK vào Momentics</h2>
+        <h2># Bước 5: Nhập SDK vào Momentics</h2>
         <p>Sau khi Momentics IDE mở lên, thực hiện theo các bước sau:</p>
+
         <ol>
           <li>Vào menu <strong>Help</strong> → chọn <strong>Update API Levels...</strong></li>
           <li>Chuyển sang tab <strong>Custom</strong></li>
@@ -330,88 +510,89 @@
           <li>Trường <strong>Version</strong> sẽ tự điền là <code>10.3.1.995</code></li>
           <li>Nhấn <strong>Finish</strong></li>
         </ol>
+
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-222812.png" alt="Import SDK Platform">
-          <figcaption>Cửa sổ Import SDK Platform</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-01-222812.png" alt="Import SDK Platform">
         </figure>
 
-        <h2>Bước 6: Cài đặt Simulator</h2>
-        <p>Tải plugins.zip, giải nén và cho 3 file jar vào trong thư mục plugin của Momentics như ảnh:</p>
+        <h2># Bước 6: Cài đặt Simulator</h2>
+        <p>Tải plugins.zip, giải nén chúng và cho 3 file jar vào trong thư mục plugin của Momentics như ảnh:</p>
+
         <div class="note note-yellow">
-          <ul style="background:none;border:none;padding:4px 0 8px 20px;margin:0">
+          <ul style="background:transparent;border:none;padding:4px 0 4px 20px;margin:0">
             <li><a href="https://www.mediafire.com/file/jv1xf42c5p0oqpu/plugins.zip/file">plugins.zip</a></li>
           </ul>
         </div>
+
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-03-224842.png" alt="Thêm file jar vào plugin">
-          <figcaption>Cho 3 file jar vào thư mục plugin của Momentics</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-03-224842.png" alt="Thư mục plugin của Momentics">
         </figure>
 
         <ol>
           <li>Vào menu <strong>Windows</strong> → chọn <strong>Preferences</strong></li>
           <li>Chuyển sang tab <strong>BlackBerry → Targets</strong></li>
-          <li>Ở phần Deployment → tích bỏ lựa chọn đầu, và tích chọn 2 cái tiếp theo <strong>như ảnh 1</strong></li>
+          <li>Ở phần Deployment → tích bỏ lựa chọn đầu (tôi bị quên tích lúc chụp ảnh), và tích chọn 2 cái tiếp theo <strong>như ảnh 1</strong></li>
           <li>Nhấn <strong>OK</strong> → Sau đó chọn <strong>New Configuration (Làm theo như ảnh 2)</strong></li>
-          <li>Sau khi <strong>Add New Configuration</strong> xong, bấm vào cái hộp bên cạnh như ảnh và <strong>Add New Device</strong></li>
+          <li>Sau khi <strong>Add New Configuration</strong> xong, bấm vào cái hộp bên cạnh như ảnh 4 và <strong>Add New Device</strong> (Không nhớ rõ đúng không nhưng mà chỉ có 1 lựa chọn thôi mà)</li>
         </ol>
+
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-03-225248.png" alt="Preferences BlackBerry Targets">
-          <figcaption>Ảnh 1 — Cài đặt Deployment</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-03-225248.png" alt="Cài đặt Simulator bước 1">
         </figure>
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-03-225513.png" alt="New Configuration">
-          <figcaption>Ảnh 2 — New Configuration</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-03-225513.png" alt="Cài đặt Simulator bước 2">
         </figure>
 
-        <p>Tải BlackBerry Simulator, VMware 12 và key giải nén — cài đặt chúng và cho toàn bộ thư mục Simulator vào Documents như ảnh:</p>
+        <p>Tải BlackBerry Simulator, VMware 12 và key giải nén - cài đặt chúng và cho toàn bộ thư mục (chỉ Simulator, VMware bạn có thể tự cài đặt và điền key) vào trong documents như ảnh:</p>
+
         <div class="note note-yellow">
-          <ul style="background:none;border:none;padding:4px 0 8px 20px;margin:0">
+          <ul style="background:transparent;border:none;padding:4px 0 4px 20px;margin:0">
             <li><a href="https://www.mediafire.com/file/yfhgbnqhlyn3r37/BlackBerry10Simulator-BB10_3_1_995.zip/file">BlackBerry Simulator 10.3.1_995.zip</a></li>
             <li><a href="https://www.mediafire.com/file/95am8cfn6hoktng/VMware_12.5.9_and_Keys.rar/file">VMware 12.5.9 and Keys.zip</a></li>
           </ul>
         </div>
+
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122200.png" alt="Thư mục Simulator trong Documents">
-          <figcaption>Cho thư mục Simulator vào Documents</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-122200.png" alt="Thư mục Documents với Simulator">
         </figure>
 
         <ol>
           <li><strong>Device Manager</strong> sẽ hiện ra</li>
           <li>Chuyển sang tab <strong>Simulators</strong> và nhấn <strong>Begin Simulator Setup</strong></li>
-          <li>Chọn <strong>Pair a simulator downloaded from another sources</strong></li>
-          <li>Browse đến thư mục <strong>Documents</strong> và chọn file .vmx chứa trong thư mục <strong>Simulator</strong> (VMware sẽ mở lên)</li>
-          <li>Khi VMware đã mở lên, <strong>Power On This Virtual Machine</strong></li>
-          <li><strong>Xong!</strong></li>
+          <li>Sau đó chọn <strong>Pair a simulator downloaded from another sources</strong></li>
+          <li>Browse đến thư mục <strong>Documents</strong> và chọn file .vmx chứa trong thư mục <strong>Simulator</strong> bạn vừa đưa vào (VMware sẽ mở lên)</li>
+          <li>Khi VMware đã mở lên, đơn giản <strong>Power On This Virtual Machine</strong></li>
+          <li><strong>Xong</strong></li>
         </ol>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122448.png" alt="Begin Simulator Setup">
-        </figure>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122513.png" alt="Pair simulator">
-        </figure>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122538.png" alt="Browse vmx file">
-        </figure>
-        <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122607.png" alt="Power On VMware">
-        </figure>
-
-        <p>Bạn sẽ nhận thấy ở góc trái <strong>BlackBerry 10 Simulator</strong> trên <strong>VMware</strong> sẽ <strong>hiện 1 dòng IP nhỏ</strong>. Hãy <strong>nhập dòng IP đó vào Momentics</strong> — nơi mà bạn đang setup cái simulator đó để chạy được app tự dev trên đó nhé.</p>
 
         <figure class="article-img-wrap">
-          <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-003300.png" alt="IP Simulator trên VMware">
-          <figcaption>IP Simulator hiển thị góc trái VMware</figcaption>
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-122448.png" alt="Simulator setup bước 1">
+        </figure>
+        <figure class="article-img-wrap">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-122513.png" alt="Simulator setup bước 2">
+        </figure>
+        <figure class="article-img-wrap">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-122538.png" alt="Simulator setup bước 3">
+        </figure>
+        <figure class="article-img-wrap">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-122607.png" alt="Simulator setup bước 4">
+        </figure>
+
+        <p>Bạn sẽ nhận thấy ở góc trái <strong>BlackBerry 10 Simulator</strong> trên <strong>VMware</strong> sẽ <strong>hiện 1 dòng IP nhỏ</strong> (ở hình dưới mình quên không kéo dịch xuống cho các bạn xem), hãy <strong>nhập dòng IP đó vào Momentics - nơi mà bạn đang setup cái simulator đó để chạy được app tự dev trên đó nhé. (Rất xin lỗi vì mình luôn thiếu thông tin quan trọng)</strong></p>
+
+        <figure class="article-img-wrap">
+          <img src="https://wordbooksorg.wordpress.com/wp-content/uploads/2026/03/screenshot-2026-03-04-003300.png" alt="IP của BlackBerry 10 Simulator trên VMware">
         </figure>
 
         <div class="note note-green">
-          <strong>Vậy là xong!</strong> Giờ bạn có thể tạo một dự án BlackBerry mẫu và bắt đầu phát triển ứng dụng trên BB10.
+          ✅ <strong>Vậy là xong!</strong> Giờ bạn có thể tạo một dự án BlackBerry mẫu và bắt đầu phát triển ứng dụng trên BB10.
         </div>
 
       </div>
 
-      <!-- FOLLOW -->
+      <!-- FOLLOW BANNER -->
       <div class="follow-banner">
-        <h2>Theo Dõi Chúng Tôi</h2>
+        <h2>📬 Theo Dõi Chúng Tôi</h2>
         <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
         <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
       </div>
@@ -440,14 +621,14 @@
         <div class="cat-group">
           <div class="cat-group-label">Hệ Điều Hành</div>
           <div class="cat-links">
-            <a href="/Pages/Category/BlackBerry%2010/BlackBerry-10.html" style="color:#2196f3;border:2px solid #2196f3">BlackBerry 10</a>
-            <a href="/Pages/Category/BlackBerry%207.1/BlackBerry-7-1.html" style="color:#00bcd4;border:2px solid #00bcd4">BlackBerry 7.1</a>
-            <a href="/Pages/Category/BlackBerry%206/BlackBerry-6.html" style="color:#009688;border:2px solid #009688">BlackBerry 6</a>
+            <a href="/category/blackberry-10" style="color:#2196f3;border:2px solid #2196f3">BlackBerry 10</a>
+            <a href="/category/blackberry-7-1" style="color:#00bcd4;border:2px solid #00bcd4">BlackBerry 7.1</a>
+            <a href="/category/blackberry-6" style="color:#009688;border:2px solid #009688">BlackBerry 6</a>
           </div>
         </div>
       </div>
 
-      <a href="/Pages/BerryBus.html" class="berrybus-btn">Đóng Góp Dữ Liệu BerryBus</a>
+      <a href="/berrybus/" class="berrybus-btn">Đóng Góp Dữ Liệu BerryBus</a>
 
     </div>
   </aside>
