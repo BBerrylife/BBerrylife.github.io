@@ -75,10 +75,23 @@
     align-items: start;
   }
 
+  /* ── COVER IMAGE ── */
+  .cover-img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    border-bottom: 3px solid var(--blue);
+  }
+
   /* ── ARTICLE ── */
+  main { min-width: 0; }
   .article-wrap {
     background: var(--bg-light);
     border: 2px solid var(--border);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .article-header {
@@ -103,6 +116,8 @@
 
   /* Article body */
   .article-body {
+    overflow-wrap: break-word;
+    word-break: break-word;
     padding: 28px 32px 36px;
     font-size: 0.97em;
     line-height: 1.75;
