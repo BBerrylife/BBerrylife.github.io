@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unsigned Apps Chạy Trên BlackBerry 10! – BerryLife</title>
-<style>
-  :root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
+<style>:root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#efefef;color:var(--text-dark)}
   /* HEADER */
@@ -61,11 +60,11 @@
   .game-card-imgs{text-align:center;margin:15px 0}
   .game-card-imgs img{max-width:45%;width:45%;display:inline-block;margin:5px;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.2)}
   .game-card-dl{text-align:center;margin:16px 0}
-  .btn-dl{display:inline-block;background:var(--blue);color:white;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
+  .btn-dl{display:inline-block;background:#70cbff;color:#ffffff !important;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
   .btn-dl:hover{opacity:.85}
   /* INLINE BUTTONS */
   .btn-inline{display:inline-block;padding:11px 22px;text-decoration:none;font-weight:bold;font-size:.93em;margin:18px 8px 18px 0}
-  .btn-primary{background:var(--blue);color:white}
+  .btn-primary{background:#70cbff;color:#ffffff}
   .btn-outline-link{background:white;color:var(--blue);border:2px solid var(--blue)}
   .btn-inline:hover{opacity:.85}
   /* SOURCE BOX */
@@ -80,7 +79,7 @@
   .article-footer{padding:22px 32px;border-top:3px solid var(--blue);background:white;display:flex;gap:14px;flex-wrap:wrap}
   .article-footer a{flex:1;min-width:150px;text-align:center;padding:12px 18px;font-weight:bold;font-size:.9em;text-decoration:none}
   .btn-outline{background:white;color:var(--blue);border:2px solid var(--blue)}
-  .btn-solid  {background:var(--blue);color:white;border:2px solid var(--blue)}
+  .btn-solid  {background:#70cbff;color:#ffffff;border:2px solid var(--blue)}
   .btn-outline:hover,.btn-solid:hover{opacity:.85}
   /* SIDEBAR */
   .sidebar{display:flex;flex-direction:column;gap:22px}
@@ -135,53 +134,41 @@
       </div>
 
       <div class="article-body">
-<div class="note note-success"><strong>🎉 Khoảnh khắc lịch sử:</strong> Đây là những hình ảnh đầu tiên cho thấy ứng dụng native BlackBerry 10 không được ký (unsigned) đang chạy thành công trên thiết bị thật - BlackBerry Q20. Sau hơn 10 năm, rào cản cuối cùng đã được phá vỡ!
+<div class="note note-success"><strong>Khoảnh khắc lịch sử:</strong>Đây là những hình ảnh đầu tiên cho thấy ứng dụng native BlackBerry 10 không được ký (unsigned) đang chạy thành công trên thiết bị thật - BlackBerry Q20. Sau hơn 10 năm, rào cản cuối cùng đã được phá vỡ!
 
-<h2>Bằng Chứng</h2>
-
-Hai bức ảnh được chia sẻ trong bài viết này là minh chứng sống cho một thành tựu mà cộng đồng BlackBerry đã mơ ước suốt hơn một thập kỷ: <strong>ứng dụng native BB10 không có chữ ký đang chạy trên thiết bị thật</strong>.
+<h2>Bằng Chứng</h2>Hai bức ảnh được chia sẻ trong bài viết này là minh chứng sống cho một thành tựu mà cộng đồng BlackBerry đã mơ ước suốt hơn một thập kỷ: <strong>ứng dụng native BB10 không có chữ ký đang chạy trên thiết bị thật</strong>.
 
 <div><img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Unsigned%20Bars/rn_image_picker_lib_temp_5f588acb-0778-4147-bba6-287f2cf5d565.webp" alt="" /></div>
 </div>
 <div></div>
 <div><img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Unsigned%20Bars/5792161581239045861-2.jpg" alt="" /></div>
 
-<span style="letter-spacing: -0.1px">Điều này có nghĩa là gì?</span>
+<span style="letter-spacing: -0.1px">Điều này có nghĩa là gì?</span>Cả hai ứng dụng này đều là file .BAR <strong>không có chữ ký từ BlackBerry</strong>- điều mà trước đây được coi là hoàn toàn không thể thực hiện trên thiết bị thật.
 
-Cả hai ứng dụng này đều là file .BAR <strong>không có chữ ký từ BlackBerry</strong> - điều mà trước đây được coi là hoàn toàn không thể thực hiện trên thiết bị thật.
+<h2>Công Cụ Đằng Sau Phép Màu</h2>Thành công này đạt được nhờ <strong>BlackBerry 10 Tools phiên bản 8</strong>, được phát hành vào ngày 11/2/2026. Đây là phiên bản đột phá cho phép:
+<h3>Root (Không hẳn là hoàn toàn)</h3>Root, nhưng chỉ dừng lại ở quyền truy cập read-only.
+<h3>Cài Đặt Unsigned Apps</h3>Lần đầu tiên trong lịch sử BB10, người dùng có thể cài đặt và chạy các file .BAR không có chữ ký.
+<h3>Chạy Trên Thiết Bị Thật</h3>Đây không phải là giả lập hay môi trường ảo - đây là BlackBerry Q20 thật 100%, với phần cứng và hệ thống thật.
 
-<h2>Công Cụ Đằng Sau Phép Màu</h2>
+<div class="note note-yellow"><strong>Cảnh báo quan trọng:</strong>BlackBerry 10 Tools phiên bản 8 vẫn đang trong giai đoạn beta. Một số người dùng phản ánh gặp nhiều khó khăn hơn cả phiên bản 7 (3/9/2025).
 
-Thành công này đạt được nhờ <strong>BlackBerry 10 Tools phiên bản 8</strong>, được phát hành vào ngày 11/2/2026. Đây là phiên bản đột phá cho phép:
-<h3>🔓 Root (Không hẳn là hoàn toàn)</h3>
-Root, nhưng chỉ dừng lại ở quyền truy cập read-only.
-<h3>📦 Cài Đặt Unsigned Apps</h3>
-Lần đầu tiên trong lịch sử BB10, người dùng có thể cài đặt và chạy các file .BAR không có chữ ký.
-<h3>🚀 Chạy Trên Thiết Bị Thật</h3>
-Đây không phải là giả lập hay môi trường ảo - đây là BlackBerry Q20 thật 100%, với phần cứng và hệ thống thật.
-
-<div class="note note-yellow"><strong>⚠️ Cảnh báo quan trọng:</strong> BlackBerry 10 Tools phiên bản 8 vẫn đang trong giai đoạn beta. Một số người dùng phản ánh gặp nhiều khó khăn hơn cả phiên bản 7 (3/9/2025).
-
-<div class="note note-red"><strong>🚨 LƯU Ý CỰC KỲ QUAN TRỌNG:</strong>
-Sau khi cài đặt ROM được tạo bởi BB10 Tools v8, <strong>TUYỆT ĐỐI KHÔNG REBOOT</strong> thiết bị. Một khi reboot, bạn sẽ gặp nhiều vấn đề nghiêm trọng. Đây là cách duy nhất để giữ cho unsigned apps tiếp tục hoạt động.</div>
-<h2>Ý Nghĩa Của Thành Tựu Này</h2>
-
-Việc có thể chạy unsigned apps trên BB10 không chỉ là một thành tích kỹ thuật - nó mở ra cả một thế giới khả năng mới:
-<h3>👨‍💻 Cho Developers</h3>
+<div class="note note-red"><strong>LƯU Ý CỰC KỲ QUAN TRỌNG:</strong>Sau khi cài đặt ROM được tạo bởi BB10 Tools v8, <strong>TUYỆT ĐỐI KHÔNG REBOOT</strong>thiết bị. Một khi reboot, bạn sẽ gặp nhiều vấn đề nghiêm trọng. Đây là cách duy nhất để giữ cho unsigned apps tiếp tục hoạt động.</div>
+<h2>Ý Nghĩa Của Thành Tựu Này</h2>Việc có thể chạy unsigned apps trên BB10 không chỉ là một thành tích kỹ thuật - nó mở ra cả một thế giới khả năng mới:
+<h3>‍ Cho Developers</h3>
 <ul>
  <li>Test ứng dụng trực tiếp trên thiết bị thật</li>
  <li>Không cần đăng ký developer account với BlackBerry</li>
  <li>Không cần submit app lên BlackBerry World</li>
  <li>Phát triển và chia sẻ apps tự do</li>
 </ul>
-<h3>🎮 Cho Người Dùng</h3>
+<h3>Cho Người Dùng</h3>
 <ul>
  <li>Cài đặt các ứng dụng không có trên BlackBerry World</li>
  <li>Sử dụng các phiên bản mod của ứng dụng chính thức</li>
  <li>Chạy các công cụ và tiện ích từ cộng đồng</li>
  <li>Kéo dài tuổi thọ và tăng giá trị sử dụng của thiết bị</li>
 </ul>
-<h3>🌍 Cho Cộng Đồng</h3>
+<h3>Cho Cộng Đồng</h3>
 <ul>
  <li>Tái sinh hệ sinh thái BB10 development</li>
  <li>Bảo tồn một phần lịch sử công nghệ di động</li>
@@ -189,24 +176,22 @@ Việc có thể chạy unsigned apps trên BB10 không chỉ là một thành t
  <li>Tạo động lực cho các dự án preservation khác</li>
 </ul>
 
-<h2>Tiềm Năng Trong Tương Lai</h2>
-
-Nếu BlackBerry 10 Tools tiếp tục được phát triển và hoàn thiện, những khả năng này có thể trở thành hiện thực:
-<h3>🔧 Sửa Đổi Hệ Thống Sâu</h3>
+<h2>Tiềm Năng Trong Tương Lai</h2>Nếu BlackBerry 10 Tools tiếp tục được phát triển và hoàn thiện, những khả năng này có thể trở thành hiện thực:
+<h3>Sửa Đổi Hệ Thống Sâu</h3>
 <ul>
  <li>Ghi dữ liệu vào system partition một cách ổn định</li>
  <li>Sửa đổi các ứng dụng hệ thống (Hub, Browser, Settings)</li>
  <li>Custom boot animation và splash screen</li>
  <li>Thay đổi system fonts và themes</li>
 </ul>
-<h3>📱 Android Runtime Enhancement</h3>
+<h3>Android Runtime Enhancement</h3>
 <ul>
  <li>Nâng cấp Android runtime lên phiên bản mới hơn</li>
  <li>Cài đặt Google Play Services hoàn chỉnh</li>
  <li>Cải thiện khả năng tương thích với ứng dụng Android</li>
  <li>Tối ưu hiệu năng Android apps trên BB10</li>
 </ul>
-<h3>⚡ Performance Tuning</h3>
+<h3>Performance Tuning</h3>
 <ul>
  <li>Overclock/underclock CPU và GPU</li>
  <li>Kernel modifications</li>
@@ -216,35 +201,33 @@ Nếu BlackBerry 10 Tools tiếp tục được phát triển và hoàn thiện,
 
 <h2>Hạn Chế Hiện Tại</h2>
 
-<div class="note note-blue"><strong>📝 Những điều cần lưu ý:</strong>
+<div class="note note-blue"><strong>Những điều cần lưu ý:</strong>
 <ul>
- <li><strong>Không ổn định:</strong> Phiên bản 8 vẫn đang trong giai đoạn beta và có nhiều bugs</li>
- <li><strong>Không được reboot:</strong> Sau khi cài ROM, việc reboot sẽ gây ra nhiều vấn đề</li>
- <li><strong>Có thể brick máy:</strong> Nếu không làm đúng hướng dẫn</li>
+ <li><strong>Không ổn định:</strong>Phiên bản 8 vẫn đang trong giai đoạn beta và có nhiều bugs</li>
+ <li><strong>Không được reboot:</strong>Sau khi cài ROM, việc reboot sẽ gây ra nhiều vấn đề</li>
+ <li><strong>Có thể brick máy:</strong>Nếu không làm đúng hướng dẫn</li>
 </ul>
 
-<strong>Khuyến nghị:</strong> Chỉ nên thử nghiệm trên thiết bị backup, không phải thiết bị chính đang sử dụng hàng ngày.
+<strong>Khuyến nghị:</strong>Chỉ nên thử nghiệm trên thiết bị backup, không phải thiết bị chính đang sử dụng hàng ngày.
 
 </div>
 
 <p style="font-style: italic;margin: 0">"Cuối cùng tôi cũng có thể chạy các app tự viết trên Q10 của mình."</p>
 <p style="margin: 10px 0 0 0;color: #666;font-size: 0.9em">- Developer trên Reddit</p>
 
-<h2>Ý Nghĩa Với Cộng Đồng</h2>
-
-Thành công này mang ý nghĩa to lớn không chỉ về mặt kỹ thuật mà còn về mặt tinh thần:
+<h2>Ý Nghĩa Với Cộng Đồng</h2>Thành công này mang ý nghĩa to lớn không chỉ về mặt kỹ thuật mà còn về mặt tinh thần:
 <ul>
- <li><strong>Kéo dài tuổi thọ thiết bị:</strong> BB10 devices có thể được sử dụng lâu hơn nhiều với khả năng mod và customization</li>
- <li><strong>Mở rộng khả năng:</strong> Cài đặt các ứng dụng và tính năng mà trước đây không thể có được</li>
- <li><strong>Khuyến khích phát triển:</strong> Developers được động viên tiếp tục tạo ứng dụng cho BB10</li>
- <li><strong>Bảo tồn di sản:</strong> Giữ gìn một phần quan trọng của lịch sử công nghệ di động</li>
- <li><strong>Tinh thần cộng đồng:</strong> Chứng minh rằng passion và dedication có thể chinh phục mọi thách thức</li>
- <li><strong>Học hỏi và nghiên cứu:</strong> Hiểu sâu hơn về bảo mật và kiến trúc hệ thống di động</li>
+ <li><strong>Kéo dài tuổi thọ thiết bị:</strong>BB10 devices có thể được sử dụng lâu hơn nhiều với khả năng mod và customization</li>
+ <li><strong>Mở rộng khả năng:</strong>Cài đặt các ứng dụng và tính năng mà trước đây không thể có được</li>
+ <li><strong>Khuyến khích phát triển:</strong>Developers được động viên tiếp tục tạo ứng dụng cho BB10</li>
+ <li><strong>Bảo tồn di sản:</strong>Giữ gìn một phần quan trọng của lịch sử công nghệ di động</li>
+ <li><strong>Tinh thần cộng đồng:</strong>Chứng minh rằng passion và dedication có thể chinh phục mọi thách thức</li>
+ <li><strong>Học hỏi và nghiên cứu:</strong>Hiểu sâu hơn về bảo mật và kiến trúc hệ thống di động</li>
 </ul>
 
 <h2>Hướng Dẫn Và Tài Nguyên</h2>
 
-<div class="note note-yellow"><strong>⚠️ Cảnh báo:</strong> Tài liệu hướng dẫn chi tiết vẫn đang được hoàn thiện. Việc sử dụng BlackBerry 10 Tools phiên bản 8 hiện tại đòi hỏi kiến thức kỹ thuật cao và sẵn sàng chấp nhận rủi ro.
+<div class="note note-yellow"><strong>Cảnh báo:</strong>Tài liệu hướng dẫn chi tiết vẫn đang được hoàn thiện. Việc sử dụng BlackBerry 10 Tools phiên bản 8 hiện tại đòi hỏi kiến thức kỹ thuật cao và sẵn sàng chấp nhận rủi ro.
 
 <b>Hướng dẫn của chúng tôi: <a href="https://wordbooksorg.wordpress.com/2026/02/11/bb10tools8/">Link</a></b>
 
@@ -262,7 +245,7 @@ Thành công này mang ý nghĩa to lớn không chỉ về mặt kỹ thuật m
       </div>
 
       <div class="follow-banner">
-        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <h2>Theo Dõi Chúng Tôi</h2>
         <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
         <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
       </div>

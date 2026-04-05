@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phát Triển Ứng Dụng BlackBerry 10 Trong Năm 2026 – BerryLife</title>
-<style>
-  :root {
+<style>:root {
     --blue: #70cbff;
     --blue-dark: #4fa3d1;
     --orange: #ff5722;
@@ -386,9 +385,9 @@
         <p>Vậy bạn phải làm gì nếu muốn bắt đầu tự phát triển ứng dụng BlackBerry trong năm 2022 trở đi? Về cơ bản bạn cần <strong>ba thành phần chính</strong>:</p>
 
         <ul>
-          <li><strong>Momentics IDE</strong> — Môi trường phát triển tích hợp của BlackBerry</li>
-          <li><strong>API level files (SDK)</strong> — Phải cài đặt offline vì Momentics không còn tải được từ máy chủ BlackBerry nữa</li>
-          <li><strong>Simulator</strong> — Môi trường để chạy ứng dụng</li>
+          <li><strong>Momentics IDE</strong>— Môi trường phát triển tích hợp của BlackBerry</li>
+          <li><strong>API level files (SDK)</strong>— Phải cài đặt offline vì Momentics không còn tải được từ máy chủ BlackBerry nữa</li>
+          <li><strong>Simulator</strong>— Môi trường để chạy ứng dụng</li>
         </ul>
 
         <h2># Bước 1: Tải Momentics IDE</h2>
@@ -399,7 +398,7 @@
         </ul>
 
         <div class="note note-yellow">
-          <p>⚠️ <strong>Lưu ý quan trọng:</strong> Các file API level dưới đây <strong>chỉ dành cho nền tảng Windows</strong>. Nếu bạn dùng macOS hoặc Linux, bạn sẽ gặp khó khăn hơn vì các file tương ứng hiện chưa tìm lại được.</p>
+          <p> <strong>Lưu ý quan trọng:</strong>Các file API level dưới đây <strong>chỉ dành cho nền tảng Windows</strong>. Nếu bạn dùng macOS hoặc Linux, bạn sẽ gặp khó khăn hơn vì các file tương ứng hiện chưa tìm lại được.</p>
         </div>
 
         <h2># Bước 2: Tải API Level Files</h2>
@@ -412,9 +411,9 @@
         <div class="note note-blue">
           <p>Trong đó:</p>
           <ul style="background:transparent;border:none;padding:8px 0 0 20px;margin:0">
-            <li><code>&lt;API_LEVEL&gt;</code> — Phiên bản API, ví dụ: <code>10.3.1.995</code></li>
-            <li><code>&lt;PLATFORM&gt;</code> — Nền tảng: <code>win32</code> / <code>macosx</code> / <code>linux</code></li>
-            <li><code>&lt;PACKAGE&gt;</code> — Tên gói: <code>libraries</code>, <code>tools</code>, <code>documents</code>,…</li>
+            <li><code>&lt;API_LEVEL&gt;</code>— Phiên bản API, ví dụ: <code>10.3.1.995</code></li>
+            <li><code>&lt;PLATFORM&gt;</code>— Nền tảng: <code>win32</code>/ <code>macosx</code>/ <code>linux</code></li>
+            <li><code>&lt;PACKAGE&gt;</code>— Tên gói: <code>libraries</code>, <code>tools</code>, <code>documents</code>,…</li>
           </ul>
         </div>
 
@@ -470,11 +469,11 @@
         </div>
 
         <h2># Bước 3: Giải Nén Các File</h2>
-        <p>Tạo thư mục <code>c:\bbndk_api\</code> trước, sau đó:</p>
+        <p>Tạo thư mục <code>c:\bbndk_api\</code>trước, sau đó:</p>
 
         <div class="step-box">
-          <p><strong>1.</strong> Giải nén <code>bbndk.win32.tools.10.3.1.12.zip</code> vào <code>c:\bbndk_api\</code> → sẽ tạo ra thư mục <code>host_10_3_1_12</code></p>
-          <p style="margin-top:10px"><strong>2.</strong> Giải nén các file còn lại (cshost, libraries, documents, qconfigmk, samples) vào <code>c:\bbndk_api\</code> → sẽ tạo ra thư mục <code>target_10_3_1_995</code></p>
+          <p><strong>1.</strong>Giải nén <code>bbndk.win32.tools.10.3.1.12.zip</code>vào <code>c:\bbndk_api\</code>→ sẽ tạo ra thư mục <code>host_10_3_1_12</code></p>
+          <p style="margin-top:10px"><strong>2.</strong>Giải nén các file còn lại (cshost, libraries, documents, qconfigmk, samples) vào <code>c:\bbndk_api\</code>→ sẽ tạo ra thư mục <code>target_10_3_1_995</code></p>
         </div>
 
         <figure class="article-img-wrap">
@@ -484,14 +483,13 @@
           <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-01-221706.png" alt="Cấu trúc thư mục chi tiết">
         </figure>
 
-        <div class="note note-green">
-          ✅ Sau khi xong, bạn sẽ có thư mục <code>c:\bbndk_api\</code> chứa hai thư mục con: <strong>target_10_3_1_995</strong> và <strong>host_10_3_1_12</strong>.
+        <div class="note note-green">Sau khi xong, bạn sẽ có thư mục <code>c:\bbndk_api\</code>chứa hai thư mục con: <strong>target_10_3_1_995</strong>và <strong>host_10_3_1_12</strong>.
         </div>
 
         <h2># Bước 4: Cài Đặt Momentics IDE</h2>
 
         <div class="step-box">
-          <p><strong>Cài đặt:</strong> Nhấp đúp vào file <code>momentics-2.1.2-201503050937.win32.x86.setup.exe</code>. Để nguyên thư mục cài đặt mặc định là <code>C:\bbndk</code> và nhấn <strong>Next</strong> vài lần cho đến khi quá trình cài đặt bắt đầu. Sau khi hoàn tất, bạn mở Momentics lên và thấy như ảnh thì chọn <strong>Cancel</strong>:</p>
+          <p><strong>Cài đặt:</strong>Nhấp đúp vào file <code>momentics-2.1.2-201503050937.win32.x86.setup.exe</code>. Để nguyên thư mục cài đặt mặc định là <code>C:\bbndk</code>và nhấn <strong>Next</strong>vài lần cho đến khi quá trình cài đặt bắt đầu. Sau khi hoàn tất, bạn mở Momentics lên và thấy như ảnh thì chọn <strong>Cancel</strong>:</p>
         </div>
 
         <figure class="article-img-wrap">
@@ -502,12 +500,12 @@
         <p>Sau khi Momentics IDE mở lên, thực hiện theo các bước sau:</p>
 
         <ol>
-          <li>Vào menu <strong>Help</strong> → chọn <strong>Update API Levels...</strong></li>
+          <li>Vào menu <strong>Help</strong>→ chọn <strong>Update API Levels...</strong></li>
           <li>Chuyển sang tab <strong>Custom</strong></li>
-          <li>Nhấn nút <strong>Add New Custom SDK</strong> → cửa sổ <em>Import SDK Platform</em> hiện ra</li>
+          <li>Nhấn nút <strong>Add New Custom SDK</strong>→ cửa sổ <em>Import SDK Platform</em>hiện ra</li>
           <li>Trong ô <strong>Target Path</strong>: dẫn đến <code>c:\bbndk_api\target_10_3_1_995\</code></li>
           <li>Trong ô <strong>Host Path</strong>: dẫn đến <code>c:\bbndk_api\host_10_3_1_12\</code></li>
-          <li>Trường <strong>Version</strong> sẽ tự điền là <code>10.3.1.995</code></li>
+          <li>Trường <strong>Version</strong>sẽ tự điền là <code>10.3.1.995</code></li>
           <li>Nhấn <strong>Finish</strong></li>
         </ol>
 
@@ -529,11 +527,11 @@
         </figure>
 
         <ol>
-          <li>Vào menu <strong>Windows</strong> → chọn <strong>Preferences</strong></li>
+          <li>Vào menu <strong>Windows</strong>→ chọn <strong>Preferences</strong></li>
           <li>Chuyển sang tab <strong>BlackBerry → Targets</strong></li>
           <li>Ở phần Deployment → tích bỏ lựa chọn đầu (tôi bị quên tích lúc chụp ảnh), và tích chọn 2 cái tiếp theo <strong>như ảnh 1</strong></li>
-          <li>Nhấn <strong>OK</strong> → Sau đó chọn <strong>New Configuration (Làm theo như ảnh 2)</strong></li>
-          <li>Sau khi <strong>Add New Configuration</strong> xong, bấm vào cái hộp bên cạnh như ảnh 4 và <strong>Add New Device</strong> (Không nhớ rõ đúng không nhưng mà chỉ có 1 lựa chọn thôi mà)</li>
+          <li>Nhấn <strong>OK</strong>→ Sau đó chọn <strong>New Configuration (Làm theo như ảnh 2)</strong></li>
+          <li>Sau khi <strong>Add New Configuration</strong>xong, bấm vào cái hộp bên cạnh như ảnh 4 và <strong>Add New Device</strong>(Không nhớ rõ đúng không nhưng mà chỉ có 1 lựa chọn thôi mà)</li>
         </ol>
 
         <figure class="article-img-wrap">
@@ -557,10 +555,10 @@
         </figure>
 
         <ol>
-          <li><strong>Device Manager</strong> sẽ hiện ra</li>
-          <li>Chuyển sang tab <strong>Simulators</strong> và nhấn <strong>Begin Simulator Setup</strong></li>
+          <li><strong>Device Manager</strong>sẽ hiện ra</li>
+          <li>Chuyển sang tab <strong>Simulators</strong>và nhấn <strong>Begin Simulator Setup</strong></li>
           <li>Sau đó chọn <strong>Pair a simulator downloaded from another sources</strong></li>
-          <li>Browse đến thư mục <strong>Documents</strong> và chọn file .vmx chứa trong thư mục <strong>Simulator</strong> bạn vừa đưa vào (VMware sẽ mở lên)</li>
+          <li>Browse đến thư mục <strong>Documents</strong>và chọn file .vmx chứa trong thư mục <strong>Simulator</strong>bạn vừa đưa vào (VMware sẽ mở lên)</li>
           <li>Khi VMware đã mở lên, đơn giản <strong>Power On This Virtual Machine</strong></li>
           <li><strong>Xong</strong></li>
         </ol>
@@ -578,21 +576,21 @@
           <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-122607.png" alt="Simulator setup bước 4">
         </figure>
 
-        <p>Bạn sẽ nhận thấy ở góc trái <strong>BlackBerry 10 Simulator</strong> trên <strong>VMware</strong> sẽ <strong>hiện 1 dòng IP nhỏ</strong> (ở hình dưới mình quên không kéo dịch xuống cho các bạn xem), hãy <strong>nhập dòng IP đó vào Momentics - nơi mà bạn đang setup cái simulator đó để chạy được app tự dev trên đó nhé. (Rất xin lỗi vì mình luôn thiếu thông tin quan trọng)</strong></p>
+        <p>Bạn sẽ nhận thấy ở góc trái <strong>BlackBerry 10 Simulator</strong>trên <strong>VMware</strong>sẽ <strong>hiện 1 dòng IP nhỏ</strong>(ở hình dưới mình quên không kéo dịch xuống cho các bạn xem), hãy <strong>nhập dòng IP đó vào Momentics - nơi mà bạn đang setup cái simulator đó để chạy được app tự dev trên đó nhé. (Rất xin lỗi vì mình luôn thiếu thông tin quan trọng)</strong></p>
 
         <figure class="article-img-wrap">
           <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Development/screenshot-2026-03-04-003300.png" alt="IP của BlackBerry 10 Simulator trên VMware">
         </figure>
 
         <div class="note note-green">
-          ✅ <strong>Vậy là xong!</strong> Giờ bạn có thể tạo một dự án BlackBerry mẫu và bắt đầu phát triển ứng dụng trên BB10.
+           <strong>Vậy là xong!</strong>Giờ bạn có thể tạo một dự án BlackBerry mẫu và bắt đầu phát triển ứng dụng trên BB10.
         </div>
 
       </div>
 
       <!-- FOLLOW BANNER -->
       <div class="follow-banner">
-        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <h2>Theo Dõi Chúng Tôi</h2>
         <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
         <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
       </div>

@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hướng Dẫn Root và Cài Đặt Unsigned Bars trên BlackBerry 10 – BerryLife</title>
-<style>
-  :root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
+<style>:root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#efefef;color:var(--text-dark)}
   /* HEADER */
@@ -61,11 +60,11 @@
   .game-card-imgs{text-align:center;margin:15px 0}
   .game-card-imgs img{max-width:45%;width:45%;display:inline-block;margin:5px;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.2)}
   .game-card-dl{text-align:center;margin:16px 0}
-  .btn-dl{display:inline-block;background:var(--blue);color:white;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
+  .btn-dl{display:inline-block;background:#70cbff;color:#ffffff !important;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
   .btn-dl:hover{opacity:.85}
   /* INLINE BUTTONS */
   .btn-inline{display:inline-block;padding:11px 22px;text-decoration:none;font-weight:bold;font-size:.93em;margin:18px 8px 18px 0}
-  .btn-primary{background:var(--blue);color:white}
+  .btn-primary{background:#70cbff;color:#ffffff}
   .btn-outline-link{background:white;color:var(--blue);border:2px solid var(--blue)}
   .btn-inline:hover{opacity:.85}
   /* SOURCE BOX */
@@ -80,7 +79,7 @@
   .article-footer{padding:22px 32px;border-top:3px solid var(--blue);background:white;display:flex;gap:14px;flex-wrap:wrap}
   .article-footer a{flex:1;min-width:150px;text-align:center;padding:12px 18px;font-weight:bold;font-size:.9em;text-decoration:none}
   .btn-outline{background:white;color:var(--blue);border:2px solid var(--blue)}
-  .btn-solid  {background:var(--blue);color:white;border:2px solid var(--blue)}
+  .btn-solid  {background:#70cbff;color:#ffffff;border:2px solid var(--blue)}
   .btn-outline:hover,.btn-solid:hover{opacity:.85}
   /* SIDEBAR */
   .sidebar{display:flex;flex-direction:column;gap:22px}
@@ -135,37 +134,35 @@
       </div>
 
       <div class="article-body">
-<div class="note note-yellow"><strong>⚠️ Lời Khuyên Quan Trọng:</strong> Hướng dẫn này được biên soạn dựa trên video của <strong>Ferreira</strong> <strong>Pablo từ <a href="https://www.patreon.com/c/waitberry/">WaitBerry</a></strong>. Phương pháp root và cài đặt Android apps được phát triển bởi <a href="https://bb10.root.sx/"><strong>Oleksandr</strong></a>. Đây là công trình nghiên cứu của cộng đồng BlackBerry.
+<div class="note note-yellow"><strong>Lời Khuyên Quan Trọng:</strong>Hướng dẫn này được biên soạn dựa trên video của <strong>Ferreira</strong> <strong>Pablo từ <a href="https://www.patreon.com/c/waitberry/">WaitBerry</a></strong>. Phương pháp root và cài đặt Android apps được phát triển bởi <a href="https://bb10.root.sx/"><strong>Oleksandr</strong></a>. Đây là công trình nghiên cứu của cộng đồng BlackBerry.
 
 </div>
 
-<h2>📋 Giới Thiệu</h2>
-
-Hướng dẫn này sẽ giúp bạn:
+<h2>Giới Thiệu</h2>Hướng dẫn này sẽ giúp bạn:
 <ul>
- <li><strong>Root thiết bị BlackBerry 10</strong> để có quyền truy cập (read-only)</li>
+ <li><strong>Root thiết bị BlackBerry 10</strong>để có quyền truy cập (read-only)</li>
  <li><strong>Cài đặt native apps không cần sign </strong>(unsigned apps)</li>
- <li><strong>Truy cập SSH</strong> với quyền root (tùy chọn)</li>
- <li><strong>Mở rộng khả năng</strong> của thiết bị BlackBerry 10</li>
+ <li><strong>Truy cập SSH</strong>với quyền root (tùy chọn)</li>
+ <li><strong>Mở rộng khả năng</strong>của thiết bị BlackBerry 10</li>
 </ul>
-<div class="note note-red"><strong>⚠️ Cảnh Báo:</strong>
-<strong>• Quá trình này sẽ reset thiết bị của bạn.</strong> Hãy sao lưu dữ liệu quan trọng trước khi bắt đầu.
-<strong>• Chỉ sử dụng autoloader gốc từ BlackBerry.</strong> Không dùng autoloader đã được mod trước đó vì sẽ bị lỗi.
-<strong>• Làm theo hướng dẫn một cách cẩn thận.</strong> Sai bước có thể khiến thiết bị gặp sự cố.
+<div class="note note-red"><strong>Cảnh Báo:</strong>
+<strong>• Quá trình này sẽ reset thiết bị của bạn.</strong>Hãy sao lưu dữ liệu quan trọng trước khi bắt đầu.
+<strong>• Chỉ sử dụng autoloader gốc từ BlackBerry.</strong>Không dùng autoloader đã được mod trước đó vì sẽ bị lỗi.
+<strong>• Làm theo hướng dẫn một cách cẩn thận.</strong>Sai bước có thể khiến thiết bị gặp sự cố.
 
-<h2>🛠️ Công Cụ Cần Thiết</h2>
+<h2>Công Cụ Cần Thiết</h2>
 
 <strong>Danh Sách Công Cụ và File:</strong>
 <ul>
- <li><a href="https://drive.google.com/drive/folders/1zs51uLkfxbyziyE-GmGxFp6cWvWQlTYe?usp=drive_link"><strong>Autoloader gốc</strong></a> - File cài đặt hệ điều hành cho thiết bị của bạn
+ <li><a href="https://drive.google.com/drive/folders/1zs51uLkfxbyziyE-GmGxFp6cWvWQlTYe?usp=drive_link"><strong>Autoloader gốc</strong></a>- File cài đặt hệ điều hành cho thiết bị của bạn
 <ul>
  <li>Phải là bản gốc từ BlackBerry (KHÔNG dùng bản đã mod)</li>
  <li>Tương thích với model thiết bị của bạn</li>
  <li>Khuyến nghị: Phiên bản mới nhất (ví dụ: 10.3.3)</li>
 </ul>
 </li>
- <li><strong>Darcy BB Tools</strong> - Công cụ để extract (tách) file từ autoloader (đã được chúng mình tích hợp luôn vào tools nên không cần tải riêng.)</li>
- <li><b><a href="https://www.mediafire.com/file/3kogqd4om8poa6m/BlackBerry_10_Tools_%255B10-3-2026%255D.rar/file">BlackBerry 10 Tools</a></b> - Gói công cụ để mod autoloader và thêm file root
+ <li><strong>Darcy BB Tools</strong>- Công cụ để extract (tách) file từ autoloader (đã được chúng mình tích hợp luôn vào tools nên không cần tải riêng.)</li>
+ <li><b><a href="https://www.mediafire.com/file/3kogqd4om8poa6m/BlackBerry_10_Tools_%255B10-3-2026%255D.rar/file">BlackBerry 10 Tools</a></b>- Gói công cụ để mod autoloader và thêm file root
 <ul>
  <li>Tự động patch các file cần thiết</li>
  <li>Xóa các app không cần thiết</li>
@@ -174,15 +171,14 @@ Hướng dẫn này sẽ giúp bạn:
 </li>
 </ul>
 <ul>
- <li><strong>SSH và SSH Keys</strong> (Tùy chọn) - Để truy cập vào thiết bị với quyền root</li>
+ <li><strong>SSH và SSH Keys</strong>(Tùy chọn) - Để truy cập vào thiết bị với quyền root</li>
 </ul>
-<div class="note note-blue"><strong>💡 Lưu Ý về Autoloader:</strong> Nếu bạn tìm thấy autoloader trên Google từ Pablo, đó có thể là bản đã được clean up và mod. <strong>KHÔNG SỬ DỤNG</strong> những bản này cho quá trình root vì sẽ bị lỗi. Hãy tìm và tải autoloader gốc chính thức từ BlackBerry.
+<div class="note note-blue"><strong>Lưu Ý về Autoloader:</strong>Nếu bạn tìm thấy autoloader trên Google từ Pablo, đó có thể là bản đã được clean up và mod. <strong>KHÔNG SỬ DỤNG</strong>những bản này cho quá trình root vì sẽ bị lỗi. Hãy tìm và tải autoloader gốc chính thức từ BlackBerry.
 
 </div>
-<h2>📝 Các Bước Thực Hiện</h2>
+<h2>Các Bước Thực Hiện</h2>
 <h3><strong>Phần 1: Chuẩn Bị File</strong></h3>
-<h3><strong>Bước 1: Tạo thư mục làm việc</strong></h3>
-Tạo một thư mục trên máy tính để chứa tất cả các công cụ và file cần thiết. Điều này giúp bạn dễ quản lý và không bị nhầm lẫn.
+<h3><strong>Bước 1: Tạo thư mục làm việc</strong></h3>Tạo một thư mục trên máy tính để chứa tất cả các công cụ và file cần thiết. Điều này giúp bạn dễ quản lý và không bị nhầm lẫn.
 
 <strong>Trong thư mục này, bạn cần có:</strong>
 <ul>
@@ -194,58 +190,54 @@ Tạo một thư mục trên máy tính để chứa tất cả các công cụ 
 <strong>Sử dụng Darcy BB Tools:</strong>
 <ol>
  <li>Mở <strong>Darcy BB Tools</strong></li>
- <li>Chuyển sang tab <strong>"File Extraction"</strong> (thường là tab mặc định)</li>
- <li>Click chọn file <strong>Autoloader</strong> của bạn</li>
+ <li>Chuyển sang tab <strong>"File Extraction"</strong>(thường là tab mặc định)</li>
+ <li>Click chọn file <strong>Autoloader</strong>của bạn</li>
  <li>Click nút <strong>"Split Autoloader"</strong></li>
  <li>Chờ quá trình tách file hoàn tất (rất nhanh)</li>
 </ol>
 <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%208/screenshot-2026-02-11-011936.png" alt="" />
 
-<strong>Kết quả:</strong> Trong thư mục chứa autoloader, bạn sẽ thấy 2 file mới:
+<strong>Kết quả:</strong>Trong thư mục chứa autoloader, bạn sẽ thấy 2 file mới:
 <ul>
- <li><code>OS.signed</code> - File hệ điều hành</li>
- <li><code>Radio.signed</code> - File radio/modem</li>
+ <li><code>OS.signed</code>- File hệ điều hành</li>
+ <li><code>Radio.signed</code>- File radio/modem</li>
 </ul>
-<h3><strong>Bước 3: Giải nén AutoPatch (BlackBerry 10 Tools/10.3.1 Trở Lên/Chuẩn Bị)</strong></h3>
-Giải nén file <strong>AutoPatcher</strong> (click chuột phải → Extract All)
+<h3><strong>Bước 3: Giải nén AutoPatch (BlackBerry 10 Tools/10.3.1 Trở Lên/Chuẩn Bị)</strong></h3>Giải nén file <strong>AutoPatcher</strong>(click chuột phải → Extract All)
 
 <strong>Bên trong thư mục AutoPatcher bạn sẽ thấy:</strong>
 <ul>
- <li><strong>Patch</strong> - Danh sách các lệnh sẽ chạy</li>
- <li><strong>Signed folder</strong> - Thư mục quan trọng nhất, nơi bạn đặt file OS và Radio</li>
- <li><strong>Include</strong> - Thư mục chứa các file cấu hình</li>
- <li><strong>BlackBerry System Packer</strong> - File thực thi chính</li>
+ <li><strong>Patch</strong>- Danh sách các lệnh sẽ chạy</li>
+ <li><strong>Signed folder</strong>- Thư mục quan trọng nhất, nơi bạn đặt file OS và Radio</li>
+ <li><strong>Include</strong>- Thư mục chứa các file cấu hình</li>
+ <li><strong>BlackBerry System Packer</strong>- File thực thi chính</li>
 </ul>
-<h3><strong>Bước 4: Đưa file OS và Radio vào thư mục Signed</strong></h3>
-Di chuyển 2 file <code>OS.signed</code> và <code>Radio.signed</code> vừa tách được vào thư mục <strong>Signed</strong> trong AutoPatcher.
+<h3><strong>Bước 4: Đưa file OS và Radio vào thư mục Signed</strong></h3>Di chuyển 2 file <code>OS.signed</code>và <code>Radio.signed</code>vừa tách được vào thư mục <strong>Signed</strong>trong AutoPatcher.
 
 <strong>Đổi tên file cho đúng:</strong>
 <ul>
- <li><code>OS.signed</code> → Giữ nguyên hoặc đảm bảo tên đúng</li>
- <li><code>Radio.signed</code> → Giữ nguyên hoặc đảm bảo tên đúng</li>
+ <li><code>OS.signed</code>→ Giữ nguyên hoặc đảm bảo tên đúng</li>
+ <li><code>Radio.signed</code>→ Giữ nguyên hoặc đảm bảo tên đúng</li>
 </ul>
 <em>Lưu ý: Tên file phải chính xác như hướng dẫn trong thư mục Signed.</em>
 <h3><strong>Phần 2: Cấu Hình SSH (Tùy Chọn)</strong></h3>
-<div class="note note-blue"><strong>🔐 SSH là gì và tại sao cần?</strong>
-<strong>SSH (Secure Shell)</strong> cho phép bạn kết nối từ xa đến thiết bị BlackBerry và chạy các lệnh với quyền root. Đây là bước <strong>hoàn toàn tùy chọn</strong>. Nếu bạn không cần SSH, hãy bỏ qua phần này.</div>
-<h3><strong>Bước 5: Cấu hình SSH Key (Nếu muốn)</strong></h3>
-Nếu bạn muốn truy cập SSH ngay sau khi root, làm theo các bước sau:
+<div class="note note-blue"><strong>SSH là gì và tại sao cần?</strong>
+<strong>SSH (Secure Shell)</strong>cho phép bạn kết nối từ xa đến thiết bị BlackBerry và chạy các lệnh với quyền root. Đây là bước <strong>hoàn toàn tùy chọn</strong>. Nếu bạn không cần SSH, hãy bỏ qua phần này.</div>
+<h3><strong>Bước 5: Cấu hình SSH Key (Nếu muốn)</strong></h3>Nếu bạn muốn truy cập SSH ngay sau khi root, làm theo các bước sau:
 <ol>
  <li>Vào thư mục: <code>AutoPatcher → Include → accounts → devuser → .ssh</code></li>
  <li>Mở file cấu hình SSH</li>
  <li>Điền thông tin:
 <ul>
- <li><strong>Local IP:</strong> Địa chỉ IP của máy tính bạn trên mạng LAN</li>
- <li><strong>Public SSH Key:</strong> Public key RSA của bạn</li>
+ <li><strong>Local IP:</strong>Địa chỉ IP của máy tính bạn trên mạng LAN</li>
+ <li><strong>Public SSH Key:</strong>Public key RSA của bạn</li>
 </ul>
 </li>
  <li>Lưu file</li>
 </ol>
-<strong>Lợi ích:</strong> Sau khi hoàn tất quá trình, bạn có thể SSH vào thiết bị ngay lập tức với quyền root.
-<div class="note note-yellow"><strong>💡 Mẹo:</strong> Nếu bạn bỏ qua bước này, bạn vẫn có thể thêm SSH key sau bằng cách sử dụng Development Mode. Video riêng sẽ hướng dẫn chi tiết cách làm điều này.</div>
+<strong>Lợi ích:</strong>Sau khi hoàn tất quá trình, bạn có thể SSH vào thiết bị ngay lập tức với quyền root.
+<div class="note note-yellow"><strong>Mẹo:</strong>Nếu bạn bỏ qua bước này, bạn vẫn có thể thêm SSH key sau bằng cách sử dụng Development Mode. Video riêng sẽ hướng dẫn chi tiết cách làm điều này.</div>
 <h3><strong>Phần 3: Tạo Autoloader Đã Mod</strong></h3>
-<h3><strong>Bước 6: Chạy BlackBerry System Packer</strong></h3>
-Quay lại thư mục gốc của AutoPatcher và double-click vào <strong>BlackBerry System Packer.exe</strong>
+<h3><strong>Bước 6: Chạy BlackBerry System Packer</strong></h3>Quay lại thư mục gốc của AutoPatcher và double-click vào <strong>BlackBerry System Packer.exe</strong>
 
 <strong>Quá trình này sẽ:</strong>
 <ul>
@@ -256,16 +248,15 @@ Quay lại thư mục gốc của AutoPatcher và double-click vào <strong>Blac
  <li>Thêm các file root cần thiết</li>
  <li>Tạo autoloader mới đã được mod</li>
 </ul>
-<strong>Thời gian:</strong> Khoảng 1-2 phút tùy thuộc vào tốc độ máy tính và nơi bạn đặt file (desktop là tốt nhất).
-<h3><strong>Bước 7: Lấy Autoloader đã mod</strong></h3>
-Sau khi quá trình hoàn tất, vào thư mục <strong>Output</strong> trong AutoPatcher.
+<strong>Thời gian:</strong>Khoảng 1-2 phút tùy thuộc vào tốc độ máy tính và nơi bạn đặt file (desktop là tốt nhất).
+<h3><strong>Bước 7: Lấy Autoloader đã mod</strong></h3>Sau khi quá trình hoàn tất, vào thư mục <strong>Output</strong>trong AutoPatcher.
 
 Bạn sẽ thấy <strong>Autoloader.exe </strong>mới đã được tạo ra - đây là autoloader đã được mod với đầy đủ tính năng root!
 
 <div class="note note-yellow"><b>Lưu ý: Nếu bạn không thấy tệp Autoloader.exe, hãy bỏ thư mục /Autopatch V6 ra ngoài DESKTOP, xóa tất cả file trong thư mục /output rồi chạy lại nhé.</b>
 
 </div>
-<div class="note note-green"><strong>✅ Hoàn tất!</strong> Autoloader này có thể được sử dụng nhiều lần cho cùng thiết bị. Hãy lưu lại để dùng cho lần sau.</div>
+<div class="note note-green"><strong>Hoàn tất!</strong>Autoloader này có thể được sử dụng nhiều lần cho cùng thiết bị. Hãy lưu lại để dùng cho lần sau.</div>
 <h3><strong>Phần 4: Flash Autoloader lên Thiết Bị</strong></h3>
 <h3><strong>Bước 8: Kết nối thiết bị và chạy Autoloader</strong></h3>
 <strong>Chuẩn bị:</strong>
@@ -277,7 +268,7 @@ Bạn sẽ thấy <strong>Autoloader.exe </strong>mới đã được tạo ra -
 <strong>Thực hiện:</strong>
 <ol>
  <li>Tắt nguồn BlackBerry của bạn (giữ nút nguồn lâu)</li>
- <li>Double-click vào <strong>autoloader đã mod</strong> trong thư mục Output</li>
+ <li>Double-click vào <strong>autoloader đã mod</strong>trong thư mục Output</li>
  <li>Nhập password thiết bị nếu được yêu cầu</li>
  <li>Autoloader sẽ tự động:
 <ul>
@@ -287,34 +278,29 @@ Bạn sẽ thấy <strong>Autoloader.exe </strong>mới đã được tạo ra -
 </ul>
 </li>
 </ol>
-<em><strong>Lưu ý:</strong> Quá trình này có thể mất 5-10 phút. Không ngắt kết nối USB trong quá trình flash! Không thì sẽ phải load lại nhiều lần.</em>
-<h3><strong>Bước 9: Chờ thiết bị khởi động</strong></h3>
-Sau khi flash hoàn tất:
+<em><strong>Lưu ý:</strong>Quá trình này có thể mất 5-10 phút. Không ngắt kết nối USB trong quá trình flash! Không thì sẽ phải load lại nhiều lần.</em>
+<h3><strong>Bước 9: Chờ thiết bị khởi động</strong></h3>Sau khi flash hoàn tất:
 <ul>
  <li>Autoloader sẽ tự động đóng</li>
  <li>Thiết bị sẽ khởi động lại</li>
  <li>Chờ cho đến khi thiết bị boot up hoàn toàn</li>
-</ul>
-Bạn có thể thiết lập Wi-Fi và các cài đặt cơ bản nếu cần.
+</ul>Bạn có thể thiết lập Wi-Fi và các cài đặt cơ bản nếu cần.
 <h3><strong>Phần 5: Kích Hoạt Root và Android Runtime</strong></h3>
 <h3><strong>Bước 10: Khởi động Amazon App</strong></h3>
-<strong>Bước quan trọng:</strong> Mở ứng dụng <strong>Amazon Appstore</strong> để setup Android runtime.
+<strong>Bước quan trọng:</strong>Mở ứng dụng <strong>Amazon Appstore</strong>để setup Android runtime.
 
 <strong>Chờ đợi:</strong>
 <ul>
  <li>Lần đầu tiên sẽ mất một chút thời gian</li>
- <li>Chờ cho đến khi thấy <strong>logo Amazon</strong> xuất hiện</li>
+ <li>Chờ cho đến khi thấy <strong>logo Amazon</strong>xuất hiện</li>
  <li>Đợi qua tất cả các loading bars và messages</li>
 </ul>
-<div class="note note-red"><strong>⚠️ Quan trọng:</strong> Nếu bạn <strong>không thấy logo Amazon</strong>, nghĩa là quá trình chưa hoàn tất. Hãy tiếp tục chờ!</div>
-<h3><strong>Bước 11: Mở Term49 và chạy lệnh root</strong></h3>
-Sau khi Amazon app đã load xong, quay về home screen và mở <b>Term49</b> (terminal app).
+<div class="note note-red"><strong>Quan trọng:</strong>Nếu bạn <strong>không thấy logo Amazon</strong>, nghĩa là quá trình chưa hoàn tất. Hãy tiếp tục chờ!</div>
+<h3><strong>Bước 11: Mở Term49 và chạy lệnh root</strong></h3>Sau khi Amazon app đã load xong, quay về home screen và mở <b>Term49</b>(terminal app).
 
 <strong>Chạy các lệnh sau theo thứ tự:</strong>
 
-<code>cd /accounts/1000/shared/.installer</code>
-
-Sau đó chạy:
+<code>cd /accounts/1000/shared/.installer</code>Sau đó chạy:
 
 <code>./run.sh</code>
 
@@ -327,9 +313,9 @@ Sau đó chạy:
  <li>Cuối cùng sẽ hỏi bạn có muốn chạy script tự động không (chọn có).</li>
 </ul>
 <h3><strong>Bước 12: Thiết lập tự động chạy root mỗi lần boot</strong></h3>
-<strong>Vấn đề:</strong> Root - patch bị xóa mỗi lần khởi động lại thiết bị.
+<strong>Vấn đề:</strong>Root - patch bị xóa mỗi lần khởi động lại thiết bị.
 
-<strong>Giải pháp:</strong> Script tự động sẽ cài lại getroot mỗi lần boot. (<strong>MỚI: Script không phải lúc nào cũng hoạt động, tôi khuyên bạn nên làm thủ công.</strong>)
+<strong>Giải pháp:</strong>Script tự động sẽ cài lại getroot mỗi lần boot. (<strong>MỚI: Script không phải lúc nào cũng hoạt động, tôi khuyên bạn nên làm thủ công.</strong>)
 
 <strong>Cách hoạt động:</strong>
 <ul>
@@ -339,36 +325,30 @@ Sau đó chạy:
  <li>Patch sẽ được giữ cho lần boot tiếp theo</li>
 </ul>
 <h3><strong>Phần 6: Kiểm Tra và Sử Dụng</strong></h3>
-<h3><strong>Bước 13: Kiểm tra SSH (Nếu đã cấu hình)</strong></h3>
-Nếu bạn đã thêm SSH key ở bước 5, giờ bạn có thể test kết nối:
+<h3><strong>Bước 13: Kiểm tra SSH (Nếu đã cấu hình)</strong></h3>Nếu bạn đã thêm SSH key ở bước 5, giờ bạn có thể test kết nối:
 
-<code>ssh root@[IP_CUA_THIET_BI]</code>
+<code>ssh root@[IP_CUA_THIET_BI]</code>Ví dụ:
 
-Ví dụ:
-
-<code>ssh <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01736e6e75413038332f3037392f302f303131">[email&#160;protected]</a></code>
-
-Nếu kết nối thành công, bạn sẽ có quyền root truy cập vào thiết bị!
-<h3><strong>Bước 14: Cài đặt Android Apps không cần chữ ký</strong></h3>
-Bây giờ bạn có thể:
+<code>ssh <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01736e6e75413038332f3037392f302f303131">[email&#160;protected]</a></code>Nếu kết nối thành công, bạn sẽ có quyền root truy cập vào thiết bị!
+<h3><strong>Bước 14: Cài đặt Android Apps không cần chữ ký</strong></h3>Bây giờ bạn có thể:
 <ul>
- <li><strong>Sử dụng Darcy BB Tools</strong> để cài đặt unsigned apps</li>
- <li><strong>Modify existing apps</strong> và cài lại chúng</li>
- <li><strong>Sử dụng Momentics</strong> để phát triển apps</li>
- <li><strong>Làm bất cứ điều gì</strong> bạn muốn với thiết bị!</li>
+ <li><strong>Sử dụng Darcy BB Tools</strong>để cài đặt unsigned apps</li>
+ <li><strong>Modify existing apps</strong>và cài lại chúng</li>
+ <li><strong>Sử dụng Momentics</strong>để phát triển apps</li>
+ <li><strong>Làm bất cứ điều gì</strong>bạn muốn với thiết bị!</li>
 </ul>
-<div class="note note-green"><strong>🎉 Chúc Mừng!</strong> Thiết bị BlackBerry 10 của bạn đã được root thành công! Bạn có thể cài đặt mọi ứng dụng native unsigned.</div>
-<div class="note note-yellow"><strong>🙏 Lời Cảm Ơn:</strong> Hãy nhớ ủng hộ <a href="https://bb10.root.sx/"><strong>Oleksandr</strong></a> - người phát triển các công cụ này và <strong>Pablo</strong> từ <a href="https://www.patreon.com/c/waitberry/"><strong>WaitBerry</strong></a> - người chia sẻ kiến thức với cộng đồng. Nhờ có họ, cộng đồng BlackBerry mới có thể tiếp tục phát triển!</div>
-<div class="note note-red"><strong>⚠️ Nhắc Nhở Cuối Cùng:</strong>
-<strong>Mỗi lần reboot:</strong> Hãy nhớ mở Term49 để script tự động chạy và giữ root hoạt động.
-<strong>Backup:</strong> Luôn sao lưu dữ liệu quan trọng trước khi thực hiện bất kỳ thay đổi nào.</div>
+<div class="note note-green"><strong>Chúc Mừng!</strong>Thiết bị BlackBerry 10 của bạn đã được root thành công! Bạn có thể cài đặt mọi ứng dụng native unsigned.</div>
+<div class="note note-yellow"><strong>Lời Cảm Ơn:</strong>Hãy nhớ ủng hộ <a href="https://bb10.root.sx/"><strong>Oleksandr</strong></a>- người phát triển các công cụ này và <strong>Pablo</strong>từ <a href="https://www.patreon.com/c/waitberry/"><strong>WaitBerry</strong></a>- người chia sẻ kiến thức với cộng đồng. Nhờ có họ, cộng đồng BlackBerry mới có thể tiếp tục phát triển!</div>
+<div class="note note-red"><strong>Nhắc Nhở Cuối Cùng:</strong>
+<strong>Mỗi lần reboot:</strong>Hãy nhớ mở Term49 để script tự động chạy và giữ root hoạt động.
+<strong>Backup:</strong>Luôn sao lưu dữ liệu quan trọng trước khi thực hiện bất kỳ thay đổi nào.</div>
 <div>Nếu bạn không thích hướng dẫn của chúng mình: <a href="https://www.youtube.com/watch?v=TG2ztbtAvD0">Link Video Gốc</a></div>
 
 </div>
       </div>
 
       <div class="follow-banner">
-        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <h2>Theo Dõi Chúng Tôi</h2>
         <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
         <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
       </div>

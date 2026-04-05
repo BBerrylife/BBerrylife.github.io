@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hướng Dẫn Duy Trì Patch & Xóa Thông Báo BBID trên BB10 – BerryLife</title>
-<style>
-  :root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
+<style>:root{--blue:#70cbff;--blue-dark:#4fa3d1;--text-dark:#2c3e50;--text-light:#999;--bg-light:#f8f9fa;--border:#e0e0e0;--teal:#17a2b8}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#efefef;color:var(--text-dark)}
   /* HEADER */
@@ -61,11 +60,11 @@
   .game-card-imgs{text-align:center;margin:15px 0}
   .game-card-imgs img{max-width:45%;width:45%;display:inline-block;margin:5px;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.2)}
   .game-card-dl{text-align:center;margin:16px 0}
-  .btn-dl{display:inline-block;background:var(--blue);color:white;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
+  .btn-dl{display:inline-block;background:#70cbff;color:#ffffff !important;padding:11px 28px;text-decoration:none;font-weight:bold;font-size:.95em}
   .btn-dl:hover{opacity:.85}
   /* INLINE BUTTONS */
   .btn-inline{display:inline-block;padding:11px 22px;text-decoration:none;font-weight:bold;font-size:.93em;margin:18px 8px 18px 0}
-  .btn-primary{background:var(--blue);color:white}
+  .btn-primary{background:#70cbff;color:#ffffff}
   .btn-outline-link{background:white;color:var(--blue);border:2px solid var(--blue)}
   .btn-inline:hover{opacity:.85}
   /* SOURCE BOX */
@@ -80,7 +79,7 @@
   .article-footer{padding:22px 32px;border-top:3px solid var(--blue);background:white;display:flex;gap:14px;flex-wrap:wrap}
   .article-footer a{flex:1;min-width:150px;text-align:center;padding:12px 18px;font-weight:bold;font-size:.9em;text-decoration:none}
   .btn-outline{background:white;color:var(--blue);border:2px solid var(--blue)}
-  .btn-solid  {background:var(--blue);color:white;border:2px solid var(--blue)}
+  .btn-solid  {background:#70cbff;color:#ffffff;border:2px solid var(--blue)}
   .btn-outline:hover,.btn-solid:hover{opacity:.85}
   /* SIDEBAR */
   .sidebar{display:flex;flex-direction:column;gap:22px}
@@ -135,42 +134,36 @@
       </div>
 
       <div class="article-body">
-<div class="note note-yellow"><strong>⚠️ Lưu ý quan trọng:</strong> Hướng dẫn này dành cho thiết bị BB10 chạy ROM được mod thông qua BlackBerry 10 Tools và có sẵn ứng dụng <strong>Term49</strong>.Trước khi thực hiện, bạn nên tạo và flash bản ROM được tạo bởi <strong><a href="https://www.mediafire.com/file/n4pi1o8hxflx0ev/BlackBerry_10_Tools_%255B3-9-2025%255D.rar/file">BlackBerry 10 Tools (3/9/2025)</a></strong>.
+<div class="note note-yellow"><strong>Lưu ý quan trọng:</strong>Hướng dẫn này dành cho thiết bị BB10 chạy ROM được mod thông qua BlackBerry 10 Tools và có sẵn ứng dụng <strong>Term49</strong>.Trước khi thực hiện, bạn nên tạo và flash bản ROM được tạo bởi <strong><a href="https://www.mediafire.com/file/n4pi1o8hxflx0ev/BlackBerry_10_Tools_%255B3-9-2025%255D.rar/file">BlackBerry 10 Tools (3/9/2025)</a></strong>.
 Hướng dẫn tạo - flash ROM tại đây: <strong><a href="https://wordbooksorg.wordpress.com/2026/02/11/bb10tools8/">Link</a></strong>.
 
-<strong>Hãy tải</strong> bản 3/9/2025 bằng link trên thay vì link trong bài viết hướng dẫn đó vì bản này <strong>ỔN ĐỊNH</strong> hơn bản 11/2/2026 (mặc dù thiếu Root SSH và Unsigned Apps). Nếu bạn muốn trải nghiệm tính năng mới và không ngại rủi ro, có thể chọn bản 11/2/2026.
+<strong>Hãy tải</strong>bản 3/9/2025 bằng link trên thay vì link trong bài viết hướng dẫn đó vì bản này <strong>ỔN ĐỊNH</strong>hơn bản 11/2/2026 (mặc dù thiếu Root SSH và Unsigned Apps). Nếu bạn muốn trải nghiệm tính năng mới và không ngại rủi ro, có thể chọn bản 11/2/2026.
 
-<h2>1. Hướng Dẫn Duy Trì Patch (Getroot)</h2>
-
-Nếu bạn gặp tình trạng mỗi lần khởi động lại máy đều xuất hiện thông báo BBID hoặc không tìm thấy thư mục <code>/q</code> hoặc <code>/.installer</code> do bị xóa, hãy thực hiện các bước sau:
+<h2>1. Hướng Dẫn Duy Trì Patch (Getroot)</h2>Nếu bạn gặp tình trạng mỗi lần khởi động lại máy đều xuất hiện thông báo BBID hoặc không tìm thấy thư mục <code>/q</code>hoặc <code>/.installer</code>do bị xóa, hãy thực hiện các bước sau:
 <ol>
  <li>Sau khi chạy <strong>Autoloader.exe</strong>, hãy đợi máy khởi động hoàn tất.</li>
- <li>Mở ứng dụng <strong>[Term49]</strong> trên điện thoại.</li>
+ <li>Mở ứng dụng <strong>[Term49]</strong>trên điện thoại.</li>
  <li>Nhập chính xác các dòng lệnh sau (nhấn Enter sau mỗi dòng):</li>
 </ol>
 <pre><code>cd /accounts/1000/shared/.installer
 ./run.sh</code></pre>
-<div class="note note-red"><strong>🚨 Cảnh báo:</strong> Bạn <strong>BẮT BUỘC</strong> phải làm điều này ngay sau khi máy khởi động xong. Nếu bạn quên, để máy hết sạch pin hoặc khởi động lại xong mới gõ thì lệnh không còn tác dụng, bạn sẽ phải <strong>chạy lại ROM</strong> và <strong>làm lại từ đầu</strong>.
+<div class="note note-red"><strong>Cảnh báo:</strong>Bạn <strong>BẮT BUỘC</strong>phải làm điều này ngay sau khi máy khởi động xong. Nếu bạn quên, để máy hết sạch pin hoặc khởi động lại xong mới gõ thì lệnh không còn tác dụng, bạn sẽ phải <strong>chạy lại ROM</strong>và <strong>làm lại từ đầu</strong>.
 
 </div>
-<h2>2. Hướng Dẫn Xóa Thông Báo BBID Tạm Thời</h2>
-
-Để loại bỏ thông báo BBID:
+<h2>2. Hướng Dẫn Xóa Thông Báo BBID Tạm Thời</h2>Để loại bỏ thông báo BBID:
 <ol>
  <li>Mở ứng dụng <strong>[Term49]</strong>.</li>
  <li>Nhập các lệnh sau (nhấn Enter sau mỗi dòng):</li>
 </ol>
 <pre><code>/q/u_bbid
-slay bbidd</code></pre>
+slay bbidd</code></pre>Sau đó, bạn chỉ cần vào <strong>BlackBerry Hub</strong>và xóa thông báo BBID đi.
+<p style="margin-top: 15px"><strong>Kết quả:</strong>Thông báo BBID sẽ biến mất hoàn toàn cho đến khi bạn khởi động lại máy.</p>
 
-Sau đó, bạn chỉ cần vào <strong>BlackBerry Hub</strong> và xóa thông báo BBID đi.
-<p style="margin-top: 15px"><strong>Kết quả:</strong> Thông báo BBID sẽ biến mất hoàn toàn cho đến khi bạn khởi động lại máy.</p>
-
-<h2>🎯 Ghi Nhớ</h2>
+<h2>Ghi Nhớ</h2>
 <div class="note note-blue">
 <ul>
- <li><strong>Duy trì Root:</strong> Phải thực hiện Getroot liên tục ngay sau mỗi lần khởi động thiết bị.</li>
- <li><strong>Hậu quả khi không duy trì:</strong> Nếu mất Root, các thư mục hệ thống quan trọng sẽ bị khóa hoặc bị xóa, buộc bạn phải flash lại ROM.</li>
+ <li><strong>Duy trì Root:</strong>Phải thực hiện Getroot liên tục ngay sau mỗi lần khởi động thiết bị.</li>
+ <li><strong>Hậu quả khi không duy trì:</strong>Nếu mất Root, các thư mục hệ thống quan trọng sẽ bị khóa hoặc bị xóa, buộc bạn phải flash lại ROM.</li>
 </ul>
 </div>
 
@@ -178,7 +171,7 @@ Sau đó, bạn chỉ cần vào <strong>BlackBerry Hub</strong> và xóa thông
       </div>
 
       <div class="follow-banner">
-        <h2>📬 Theo Dõi Chúng Tôi</h2>
+        <h2>Theo Dõi Chúng Tôi</h2>
         <p>Cập nhật tin tức mới nhất về BlackBerry trên Facebook</p>
         <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
       </div>
