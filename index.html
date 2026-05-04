@@ -313,6 +313,82 @@
     transition: opacity .15s;
   }
   .berrybus-btn:hover { opacity: 0.88; }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+
+    /* Header */
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 16px 16px;
+      gap: 12px;
+    }
+    .header-brand h1 { font-size: 2em; }
+    .header-follow a { width: 100%; text-align: center; padding: 10px 16px; }
+
+    /* Nav: scrollable horizontally */
+    .nav-inner {
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-inner a {
+      white-space: nowrap;
+      font-size: 0.82em;
+      padding: 11px 13px;
+    }
+
+    /* Main layout: stack sidebar below content */
+    .site-wrapper {
+      grid-template-columns: 1fr;
+      margin: 16px auto;
+      padding: 0 12px;
+      gap: 16px;
+    }
+
+    /* Featured grid: 1 column on mobile */
+    .featured-section,
+    .latest-section,
+    .recent-section {
+      padding: 16px;
+    }
+    .featured-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .card img { height: 200px; }
+
+    /* Latest & Recent cards */
+    .latest-body { padding: 14px; }
+    .latest-body h3 { font-size: 1.05em; }
+
+    .recent-body { padding: 12px; }
+    .recent-body h3 { font-size: 0.95em; }
+    .recent-body p { font-size: 0.83em; }
+
+    /* Sidebar: disable sticky on mobile */
+    .sidebar-sticky { position: static; }
+    .sidebar { gap: 14px; }
+    .sidebar-box { padding: 16px; }
+    .follow-box { padding: 20px 14px; }
+
+    /* Section titles */
+    .section-title { font-size: 1.2em; }
+
+    /* Buttons full-width feel on small screens */
+    .btn { padding: 8px 14px; font-size: 0.82em; }
+  }
+
+  @media (max-width: 420px) {
+    .header-brand h1 { font-size: 1.7em; }
+    .card img { height: 170px; }
+    .tags { gap: 4px; }
+    .tag { font-size: 0.72em; padding: 3px 8px; }
+  }
 </style>
 </head>
 <body>
