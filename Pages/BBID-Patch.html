@@ -134,10 +134,8 @@
       </div>
 
       <div class="article-body">
-<div class="note note-yellow"><strong>Lưu ý quan trọng:</strong>Hướng dẫn này dành cho thiết bị BB10 chạy ROM được mod thông qua BlackBerry 10 Tools và có sẵn ứng dụng <strong>Term49</strong>.Trước khi thực hiện, bạn nên tạo và flash bản ROM được tạo bởi <strong><a href="https://www.mediafire.com/file/n4pi1o8hxflx0ev/BlackBerry_10_Tools_%255B3-9-2025%255D.rar/file">BlackBerry 10 Tools (3/9/2025)</a></strong>.
-Hướng dẫn tạo - flash ROM tại đây: <strong><a href="https://wordbooksorg.wordpress.com/2026/02/11/bb10tools8/">Link</a></strong>.
-
-<strong>Hãy tải</strong>bản 3/9/2025 bằng link trên thay vì link trong bài viết hướng dẫn đó vì bản này <strong>ỔN ĐỊNH</strong>hơn bản 11/2/2026 (mặc dù thiếu Root SSH và Unsigned Apps). Nếu bạn muốn trải nghiệm tính năng mới và không ngại rủi ro, có thể chọn bản 11/2/2026.
+<div class="note note-yellow"><strong>Lưu ý quan trọng:</strong>Hướng dẫn này dành cho thiết bị BB10 chạy ROM được mod thông qua BlackBerry 10 Tools và có sẵn ứng dụng <strong>Term49</strong>.Trước khi thực hiện, bạn nên tạo và flash bản ROM được tạo bởi <strong>BlackBerry 10 Tools mới nhất</strong>.
+Hướng dẫn tạo - flash ROM tại đây: <strong><a href="https://bberrylife.github.io/Pages/BB10-Tools-8.html">Link</a></strong>.
 
 </div>
 
@@ -161,12 +159,23 @@ Hướng dẫn tạo - flash ROM tại đây: <strong><a href="https://wordbooks
 slay bbidd</code></pre>Sau đó, bạn chỉ cần vào <strong>BlackBerry Hub</strong>và xóa thông báo BBID đi.
 <p style="margin-top: 15px"><strong>Kết quả:</strong>Thông báo BBID sẽ biến mất hoàn toàn cho đến khi bạn khởi động lại máy.</p>
 
+<h2>3. Hướng Dẫn Xóa OS BLOCK để hạ cấp</h2>Để xóa OS BLOCK:
+<ol>
+ <li>Mở ứng dụng <strong>[Term49]</strong>.</li>
+ <li>Nhập các lệnh sau (nhấn Enter sau mỗi dòng):</li>
+</ol>
+<pre><code>cd /accounts/1000/shared/documents
+./clearblock.sh</code></pre>Sau đó, nếu bạn thấy 4 dòng sau thì đã thành công.
+<pre><code>Delete OS BLOCK done 0
+Delete secure OS BLOCK done 0
+Delete RADIO BLOCK done 0
+Delete secure RADIO BLOCK done 0</code></pre>
+<p style="margin-top: 15px"><strong>Kết quả:</strong>Blocklist đã bị xóa hoàn toàn cho đến khi bạn chạy lại rom gốc</p>
+
 <h2>Ghi Nhớ</h2>
 <div class="note note-blue">
-<ul>
  <li><strong>Duy trì Root:</strong>Phải thực hiện Getroot liên tục ngay sau mỗi lần khởi động thiết bị.</li>
  <li><strong>Hậu quả khi không duy trì:</strong>Nếu mất Root, các thư mục hệ thống quan trọng sẽ bị khóa hoặc bị xóa, buộc bạn phải flash lại ROM.</li>
-</ul>
 </div>
 
 </div>
