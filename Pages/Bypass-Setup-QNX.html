@@ -142,6 +142,24 @@
   }
 
   .article-body p { margin-bottom: 14px; }
+  
+    /* Article images */
+  .article-img-wrap {
+    text-align: center;
+    margin: 28px 0;
+  }
+  .article-img-wrap img {
+    max-width: 100%;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: inline-block;
+  }
+  .article-img-wrap figcaption {
+    color: var(--text-light);
+    font-size: 0.85em;
+    font-style: italic;
+    margin-top: 8px;
+  }
 
   /* Note boxes */
   .note {
@@ -374,7 +392,7 @@
 	  <!-- COVER -->
       <img
         class="cover-img"
-        src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/thumbnail.png"
+        src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/thumbnail.jpg"
         alt="BerryCore"
         onerror="this.style.display='none'">
 
@@ -394,16 +412,16 @@
       <div class="article-body">
 
         <div class="note note-red">
-          <strong>⚠️ Cảnh Báo:</strong> Hướng dẫn này liên quan đến việc chỉnh sửa trực tiếp vào firmware của thiết bị. Dành cho người dùng nâng cao. Thực hiện sai bước có thể <strong>brick máy</strong> vĩnh viễn. Tác giả không chịu trách nhiệm về bất kỳ thiệt hại nào xảy ra với thiết bị của bạn.
+          <strong>Cảnh Báo:</strong> Hướng dẫn này liên quan đến việc chỉnh sửa trực tiếp vào firmware của thiết bị. Dành cho người dùng nâng cao. Thực hiện sai bước có thể <strong>brick máy</strong> vĩnh viễn. Tác giả không chịu trách nhiệm về bất kỳ thiệt hại nào xảy ra với thiết bị của bạn.
         </div>
 
         <div class="note note-yellow">
-          <strong>Bối Cảnh:</strong> Kể từ khi BlackBerry tắt toàn bộ server vào năm 2022, các thiết bị BB10 và PlayBook sau khi factory reset hoặc security wipe sẽ <strong>bị kẹt ở màn hình cài đặt ban đầu</strong> (initial setup) và không thể tiếp tục. Hướng dẫn này giúp bạn vá firmware để bỏ qua hoàn toàn màn hình đó, đồng thời áp dụng cho việc hạ cấp OS xuống thấp hơn 10.3.0 và làm debloated ROM.
+          Kể từ khi BlackBerry tắt toàn bộ server vào năm 2022, các thiết bị BB10 và PlayBook sau khi factory reset hoặc security wipe sẽ <strong>bị kẹt ở màn hình cài đặt ban đầu</strong> (initial setup) và không thể tiếp tục. Hướng dẫn này giúp bạn vá firmware để bỏ qua hoàn toàn màn hình đó, đồng thời áp dụng cho việc hạ cấp OS xuống thấp hơn 10.3.0 và làm debloated ROM.
         </div>
 
         <!-- TOC -->
         <div class="toc">
-          <div class="toc-title">📋 Mục Lục</div>
+          <div class="toc-title">Mục Lục</div>
           <ol>
             <li><a href="#tested">Thiết bị đã được kiểm tra</a></li>
             <li><a href="#requirements">Yêu cầu chuẩn bị</a></li>
@@ -423,21 +441,19 @@
           <li><strong>BlackBerry Z30</strong> – OS 10.3.3.3216 hạ cấp xuống 10.2.1.1057, bị kẹt ở màn hình setup (đã vượt qua bằng hướng dẫn này)</li>
         </ul>
 
-        <div class="note note-blue">
-          <strong>Lưu Ý:</strong> Hướng dẫn này về mặt lý thuyết áp dụng được cho hầu hết các thiết bị BlackBerry 10 và PlayBook, tuy nhiên chỉ các thiết bị trên đã được xác nhận thực tế.
-        </div>
-
         <!-- SECTION: REQUIREMENTS -->
         <h2 id="requirements">Yêu Cầu Chuẩn Bị</h2>
-        <p>Trước khi bắt đầu, hãy chắc chắn bạn đã có đầy đủ các công cụ sau:</p>
+        <p>Trước khi bắt đầu, hãy chắc chắn bạn đã có đầy đủ các công cụ sau (đa số đã đều ở trong mục <code>10.3.0 Trở Xuống</code> của BlackBerry 10 Tools):</p>
         <ul>
           <li><strong>Cáp USB</strong> chất lượng tốt</li>
-          <li><strong>File Autoloader</strong> (.exe) đúng với model thiết bị của bạn</li>
-          <li><strong><a href="https://github.com/xsacha/Sachesi" target="_blank">Sachesi</a></strong> – công cụ extract file từ BlackBerry Autoloader</li>
-          <li><strong><a href="https://bb10.root.sx/bb10mt.zip" target="_blank">bb10mt</a></strong> – BlackBerry 10 MultiTool (dùng để unpack/repack QCFM)</li>
-          <li><strong>Hex Editor</strong> – ví dụ <a href="https://mh-nexus.de/en/hxd/" target="_blank">HxD</a> (miễn phí, dễ dùng)</li>
-          <li><strong>DBBT (Darcy's BlackBerry Tools)</strong> – dùng để tạo Autoloader cuối cùng</li>
-          <li><strong><a href="https://github.com/FerreiraPablo/BlackberrySystemPacker/blob/main/cap.exe" target="_blank">cap.exe của FerreiraPablo</a></strong> – Autoloader đã chỉnh sửa để load file QCFM chưa ký</li>
+          <li><strong>2 File Autoloader</strong> (.exe) đúng với model thiết bị của bạn. 1 cái là bản bạn muốn xuống <code>10.2, 10.1, 10.0</code> và bản GỐC <a href="https://drive.google.com/drive/folders/1PDbSoBXxEvLIvPXGhn84hYAgFbMAFSKv?usp=drive_link" target="_blank"> 10.3.3.3216</a> để hạ cấp.</li>
+          <li><strong>DBBT (Darcy's BlackBerry Tools)</strong> – công cụ extract file từ BlackBerry Autoloader</li>
+          <li><strong>bb10mt</strong> – BlackBerry 10 MultiTool (dùng để unpack/repack QCFM)</li>
+          <li><strong>Hex Editor</strong></li>
+          <li><strong>DBBT (Darcy's BlackBerry Tools) - Modified</strong> – Chỉnh sửa để load file QCFM chưa ký và tạo Autoloader cuối cùng</li>
+		  
+          <p>Bạn có thể tải bộ công cụ BlackBerry 10 Tools tại đây:</p>
+          <a href="https://drive.google.com/drive/folders/1olUGP0GIbvPx5NfkFvISGZEfWWikjCli?usp=drive_link" class="btn-inline btn-outline btn-primary">BlackBerry 10 Tools</a>
         </ul>
 
         <div class="note note-yellow">
@@ -453,9 +469,9 @@
         <p>Đầu tiên, bạn cần extract các file OS và Radio từ file Autoloader chính.</p>
         <ol>
           <li>Đặt file Autoloader <code>.exe</code> vào một thư mục mới.</li>
-          <li>Mở <strong>Sachesi</strong>, chuyển sang tab <strong>Extract</strong>.</li>
-          <li>Nhấn <strong>"Extract Signed"</strong> và chọn file Autoloader của bạn.</li>
-          <li>Sachesi sẽ xử lý và xuất ra <strong>hai file <code>.signed</code></strong> trong cùng thư mục:
+          <li>Mở <strong>DBBT</strong>, chuyển sang tab <strong>Extract</strong>.</li>
+          <li>Nhấn <strong>Browse</strong> và chọn file Autoloader của bạn và bấm tiếp <strong>Split Autoloader</strong> </li>
+          <li>DBBT sẽ xử lý và xuất ra <strong>hai file <code>.signed</code></strong> trong cùng thư mục với Autoloader:
             <ul>
               <li>File OS (ví dụ: <code>filename@...OS.signed</code>)</li>
               <li>File Radio (ví dụ: <code>...Radio.signed</code>)</li>
@@ -463,6 +479,16 @@
           </li>
           <li>Để dễ làm việc, hãy đổi tên chúng thành <code>OS.signed</code> và <code>Radio.signed</code>.</li>
         </ol>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%208/screenshot-2026-02-11-011936.png"
+        </figure>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/01.webp"
+        </figure>
 
         <!-- STEP 2 -->
         <div class="step-header" id="step2">
@@ -470,7 +496,7 @@
           <h2>Giải Nén File OS (Unpack QCFM)</h2>
         </div>
 
-        <p>File <code>.signed</code> chứa OS là một archive QCFM. Dùng <code>bb10mt</code> để giải nén nó.</p>
+        <p>File <code>.signed</code> chứa OS là một archive QCFM. Dùng <code>bb10mt</code> để giải nén nó. Tuy nhiên, để dễ dàng làm việc và bạn có thể copy phần ví dụ, hãy tạo thư mục <code>BlackBerry</code> trong ổ C:\ và mang <code>bb10mt</code>, <code>2 file .signed</code> đến thư mục đó.</p>
         <ol>
           <li>Mở <strong>Command Prompt</strong> hoặc <strong>PowerShell</strong> trong thư mục chứa <code>bb10mt.exe</code>.<br>
           <em>Mẹo: Giữ Shift + chuột phải vào thư mục → chọn "Open PowerShell window here".</em></li>
@@ -483,6 +509,16 @@
         <div class="note note-blue">
           <strong>Mẹo:</strong> Trên Windows Terminal, bạn có thể kéo thả file trực tiếp vào cửa sổ terminal để điền đường dẫn tự động.
         </div>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/02.webp"
+        </figure>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/03.webp"
+        </figure>
 
         <p>Sau khi unpack, bạn sẽ có một thư mục chứa nhiều file. <strong>Chúng ta chỉ cần file <code>.ufs</code></strong>.</p>
 
@@ -501,15 +537,40 @@
           <li>Mở file <code>.ufs</code> vừa unpack (kéo thả vào Hex Editor).</li>
           <li>Nhấn <strong>Ctrl+F</strong> để tìm kiếm, nhập chuỗi văn bản: <code>autorun::1</code></li>
         </ol>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/04.webp"
+        </figure>
 
         <h3>Dành cho thiết bị BlackBerry 10:</h3>
         <p>Tìm <code>autorun::1</code> và đổi giá trị <code>1</code> thành <code>0</code>:</p>
         <pre><code>autorun::1  →  autorun::0</code></pre>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/05.webp"
+        </figure>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/06.webp"
+        </figure>
 
         <h3>Dành cho BlackBerry PlayBook:</h3>
         <p>Tìm và sửa <strong>cả hai</strong> giá trị sau (lưu ý có <strong>2 entry trùng lặp</strong>, phải sửa hết):</p>
         <pre><code>deactivate_mode::1  →  deactivate_mode::0
 autorun::1          →  autorun::0</code></pre>
+
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/07.webp"
+        </figure>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/08.webp"
+        </figure>
 
         <div class="note note-yellow">
           <strong>Lưu Ý PlayBook:</strong> Có hai entry <code>autorun::1</code> trùng lặp trong file. Bạn phải tìm và đổi <strong>cả hai</strong>, không chỉ một.
@@ -525,10 +586,10 @@ autorun::1          →  autorun::0</code></pre>
           <h2>Đóng Gói Lại File QCFM (Pack)</h2>
         </div>
 
-        <p>Sau khi đã vá file, cần đóng gói lại thành file <code>.signed</code> mới.</p>
+        <p>Sau khi đã vá file, cần đóng gói lại thành file <code>.signed</code> mới. Để cho dễ dàng, tạo thêm 1 thư mục <code>Output</code> bên trong thư mục <code>BlackBerry</code> để tránh việc 2 tệp OS.signed "đánh nhau", nếu bạn không thích thì xóa OS.signed cũ đi cho lẹ;)</p>
         <ol>
           <li>Quay lại cửa sổ terminal.</li>
-          <li>Gõ lệnh theo cấu trúc sau (chưa nhấn Enter):</li>
+          <li>Gõ lệnh theo cấu trúc sau (CHƯA NHẤN ENTER):</li>
         </ol>
         <pre><code>bb10mt.exe pack -c "đường_dẫn\output\Patched_OS.signed" --input</code></pre>
         <ol start="3">
@@ -544,12 +605,20 @@ autorun::1          →  autorun::0</code></pre>
           <li>Thêm dấu phẩy (<code>,</code>) giữa các đường dẫn file. <strong>Bỏ qua</strong> các file <code>.sig</code> và <code>.sig2</code>.</li>
         </ol>
 
-        <p>Lệnh hoàn chỉnh sẽ trông như sau:</p>
-        <pre><code>bb10mt.exe pack -c C:\BlackBerry\Patched_OS.signed --input C:\BlackBerry\unpacked\OS.ufs,C:\BlackBerry\unpacked\OS.ifs,C:\BlackBerry\unpacked\OS.mbr,C:\BlackBerry\unpacked\OS.rcfs</code></pre>
+        <p>Lệnh hoàn chỉnh sẽ trông như sau (NẾU BẠN TẠO THƯ MỤC Output trong BlackBerry):</p>
+        <pre><code>bb10mt.exe pack -c C:\BlackBerry\Output\OS.signed --input C:\BlackBerry\unpacked\OS.ufs,C:\BlackBerry\unpacked\OS.ifs,C:\BlackBerry\unpacked\OS.mbr,C:\BlackBerry\unpacked\OS.rcfs</code></pre>
+		
+		<p>Lệnh hoàn chỉnh sẽ trông như sau (NẾU BẠN <strong>KHÔNG</strong> TẠO THƯ MỤC Output trong BlackBerry):</p>
+        <pre><code>bb10mt.exe pack -c C:\BlackBerry\OS.signed --input C:\BlackBerry\unpacked\OS.ufs,C:\BlackBerry\unpacked\OS.ifs,C:\BlackBerry\unpacked\OS.mbr,C:\BlackBerry\unpacked\OS.rcfs</code></pre>
 
         <ol start="6">
           <li>Nhấn <strong>Enter</strong>. <code>bb10mt</code> sẽ tạo ra file <code>Patched_OS.signed</code> tại đường dẫn bạn chỉ định.</li>
         </ol>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/09.webp"
+        </figure>
 
         <!-- STEP 5 -->
         <div class="step-header" id="step5">
@@ -559,17 +628,21 @@ autorun::1          →  autorun::0</code></pre>
 
         <p>Với file OS đã vá, bước cuối là đóng gói thành một Autoloader <code>.exe</code> hoàn chỉnh.</p>
         <ol>
-          <li>Mở <strong>DBBT (Darcy's BlackBerry Tools)</strong>.</li>
-          <li><strong>Quan trọng:</strong> Trước đó, hãy <strong>thay thế file <code>cap.exe</code></strong> đi kèm DBBT bằng bản <code>cap.exe</code> của <strong>FerreiraPablo</strong>. File này phải nằm cùng thư mục với <code>DBBTool.exe</code>.</li>
+          <li>Mở <strong>DBBT (Darcy's BlackBerry Tools) - modified</strong>.</li>
           <li>Trong tab <strong>"Build Autoloader"</strong>:
             <ul>
-              <li>Chọn file <code>Patched_OS.signed</code> vừa tạo ở Bước 4.</li>
+              <li>Chọn file <code>OS.signed</code> vừa tạo ở Bước 4.</li>
               <li>Chọn file <code>Radio.signed</code> gốc từ Bước 1 (nếu thiết bị yêu cầu).</li>
             </ul>
           </li>
           <li>Nhập tên cho file Autoloader mới.</li>
           <li>Nhấn <strong>"Build it!"</strong>. DBBT sẽ tạo ra file Autoloader <code>.exe</code> trong cùng thư mục.</li>
         </ol>
+		
+		<figure class="article-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/Bypass%20Setup%20QNX/10.png"
+        </figure>
 
         <div class="note note-green">
           <strong>Hoàn Tất!</strong> Bạn đã có một Autoloader tùy chỉnh, sẵn sàng để flash vào thiết bị.
@@ -591,16 +664,11 @@ autorun::1          →  autorun::0</code></pre>
         </ol>
 
         <div class="note note-green">
-          <strong>🎉 Chúc Mừng!</strong> Bạn đã hồi sinh thành công thiết bị BlackBerry của mình. Thiết bị sẽ khởi động thẳng vào home screen mà không cần trải qua màn hình cài đặt ban đầu nữa.
+          <strong>Chúc Mừng!</strong> Bạn đã hạ cấp thành công thiết bị BlackBerry của mình. Thiết bị sẽ khởi động thẳng vào home screen mà không cần trải qua màn hình cài đặt ban đầu nữa.
         </div>
 
-        <h2>Công Cụ Hỗ Trợ</h2>
-        <p>Hướng dẫn này sử dụng cùng bộ công cụ với <strong>BlackBerry 10 Tools</strong>. Bạn có thể tải bộ công cụ tổng hợp tại đây:</p>
-
-        <a href="/Pages/BB10-Tools-9.html" class="btn-inline btn-primary">Xem BlackBerry 10 Tools</a>
-
         <div class="note note-blue">
-          <strong>Nguồn Tham Khảo:</strong> Hướng dẫn kỹ thuật này dựa trên nghiên cứu của cộng đồng BlackBerry, bao gồm công trình của <a href="https://bb10.root.sx/" target="_blank"><strong>Oleksandr</strong></a>, <strong>FerreiraPablo</strong> từ <a href="https://www.patreon.com/c/waitberry/" target="_blank"><strong>WaitBerry</strong></a>, và các thành viên cộng đồng khác.
+          <strong>Nguồn Tham Khảo:</strong> Hướng dẫn kỹ thuật này dựa trên nghiên cứu của cộng đồng BlackBerry, bao gồm công trình của <a href="https://bb10.root.sx/" target="_blank"><strong>Oleksandr</strong></a>, <strong>FerreiraPablo</strong> từ <a href="https://www.patreon.com/c/waitberry/" target="_blank"><strong>WaitBerry</strong></a>, và các thành viên cộng đồng khác như Michioxd. Hướng dẫn gốc nằm ở <strong><a href="https://blog.michioxd.ch/blog/02-how-to-completely-skip-initial-setup-in-bbqnx/" target="_blank">đây</a></strong> 
         </div>
 
       </div>
@@ -640,25 +708,6 @@ autorun::1          →  autorun::0</code></pre>
             <a href="/category/blackberry-7-1" style="color:#00bcd4;border:2px solid #00bcd4">BlackBerry 7.1</a>
             <a href="/category/blackberry-6" style="color:#009688;border:2px solid #009688">BlackBerry 6</a>
           </div>
-        </div>
-        <div class="cat-group">
-          <div class="cat-group-label">Loại Bài Viết</div>
-          <div class="cat-links">
-            <a href="/Pages/Category/Tutorials/Tutorials.html" style="color:#388e3c;border:2px solid #388e3c">Hướng Dẫn</a>
-            <a href="/Pages/Category/Tips/Tips.html" style="color:#f57c00;border:2px solid #f57c00">Mẹo & Thủ Thuật</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="sidebar-box">
-        <h3 class="sidebar-title">Bài Viết Liên Quan</h3>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <a href="/Pages/BB10-Tools-9.html" style="display:block;background:white;padding:12px 14px;border:2px solid var(--border);color:var(--text-dark);text-decoration:none;font-size:0.88em;font-weight:bold;">
-            BlackBerry 10 Tools – Cập Nhật Thứ 9
-          </a>
-          <a href="/Pages/Category/Tutorials/Tutorials.html" style="display:block;background:white;padding:12px 14px;border:2px solid var(--border);color:var(--text-dark);text-decoration:none;font-size:0.88em;font-weight:bold;">
-            Xem Tất Cả Hướng Dẫn
-          </a>
         </div>
       </div>
 
