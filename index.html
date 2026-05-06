@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BerryLife - Everything for BlackBerry Users</title>
 <style>
-  :root {
-    --blue: #70cbff;
-    --blue-dark: #4fa3d1;
-    --orange: #ff5722;
-    --pink: #ff66c4;
-    --purple: #667eea;
-    --green: #4caf50;
-    --text-dark: #2c3e50;
-    --text-muted: #666;
-    --text-light: #999;
-    --bg-light: #f8f9fa;
-    --border: #e0e0e0;
-    --white: #ffffff;
-  }
+/* === IE / BB10 WebKit Compatible CSS ===
+   - No CSS variables (replaced with literal values)
+   - No CSS Grid (replaced with float + clearfix or table layout)
+   - No flexbox gap (replaced with margins)
+   - No position:sticky (replaced with static)
+   - No inset shorthand
+   - No @keyframes animation (graceful degradation)
+   - Explicit -webkit- prefixes for BB10
+*/
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #efefef;
-    color: var(--text-dark);
+    color: #2c3e50;
   }
 
   /* ── HEADER ── */
   .site-header {
-    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    background: #70cbff;
+    background: -webkit-linear-gradient(315deg, #70cbff 0%, #4fa3d1 100%);
+    background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);
     color: white;
     padding: 0;
   }
@@ -38,110 +36,134 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 40px 30px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
   }
+  /* clearfix */
+  .header-inner:after { content: ''; display: table; clear: both; }
+  .header-brand { float: left; }
+  .header-follow { float: right; padding-top: 8px; }
   .header-brand h1 {
     font-size: 3em;
     font-weight: bold;
     letter-spacing: -1px;
     line-height: 1;
+    color: white;
   }
   .header-brand p {
     font-size: 1em;
     opacity: 0.9;
     margin-top: 6px;
+    color: white;
   }
   .header-follow a {
     background: white;
-    color: var(--blue);
+    color: #4fa3d1;
     padding: 10px 22px;
     font-weight: bold;
     font-size: 0.9em;
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
-    transition: opacity .15s;
   }
   .header-follow a:hover { opacity: 0.85; }
 
   /* ── NAV BAR ── */
   .site-nav {
-    background: var(--blue-dark);
+    background: #4fa3d1;
     border-top: 2px solid rgba(255,255,255,0.25);
+    overflow: hidden;
   }
   .nav-inner {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 30px;
-    display: flex;
-    gap: 0;
-    flex-wrap: wrap;
+    /* Use table layout for nav items to fit in one row */
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
   .nav-inner a {
+    display: table-cell;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.85em;
-    padding: 12px 16px;
-    display: inline-block;
-    transition: background .15s;
+    font-size: 0.78em;
+    padding: 12px 6px;
+    text-align: center;
     border-right: 1px solid rgba(255,255,255,0.15);
+    white-space: nowrap;
+    vertical-align: middle;
   }
+  .nav-inner a:last-child { border-right: none; }
   .nav-inner a:hover { background: rgba(255,255,255,0.15); }
 
-  /* ── MAIN LAYOUT ── */
+  /* ── MAIN LAYOUT (float-based 2 columns) ── */
   .site-wrapper {
     max-width: 1280px;
     margin: 30px auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 320px; /* ~70% / 30% */
-    gap: 24px;
-    align-items: start;
   }
+  .site-wrapper:after { content: ''; display: table; clear: both; }
 
-  main { min-width: 0; }
+  main {
+    float: left;
+    width: 72%;
+    min-width: 0;
+  }
+  .sidebar {
+    float: right;
+    width: 26%;
+    margin-left: 2%;
+  }
 
   /* ── SECTION TITLE ── */
   .section-title {
-    color: var(--text-dark);
+    color: #2c3e50;
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 20px;
-    border-bottom: 3px solid var(--blue);
+    border-bottom: 3px solid #70cbff;
     padding-bottom: 10px;
   }
 
-  /* ── FEATURED NEWS GRID ── */
+  /* ── FEATURED NEWS GRID (float 3-col) ── */
   .featured-section {
-    background: var(--bg-light);
+    background: #f8f9fa;
     padding: 28px;
     margin-bottom: 24px;
-    border: 2px solid var(--border);
+    border: 2px solid #e0e0e0;
   }
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+  .featured-grid:after { content: ''; display: table; clear: both; }
   .card {
     background: white;
+    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     overflow: hidden;
-    border: 2px solid var(--border);
-    display: flex;
-    flex-direction: column;
+    border: 2px solid #e0e0e0;
+    float: left;
+    width: 31.33%;
+    margin-right: 3%;
   }
-  .card img {
+  .card:last-child { margin-right: 0; }
+  /* IE: prevent text cursor (blinking | ) on clickable cards */
+  .card, .card * { cursor: default; }
+  .card a, .card a * { cursor: pointer; }
+  .card-img-link { cursor: pointer; }
+  .service-card { -ms-user-select: none; -webkit-user-select: none; user-select: none; }
+  /* IE/BB10: overflow:hidden wrapper + img centered */
+  .card-img-link { display: block; }
+  .card-img-wrap {
     width: 100%;
     height: 180px;
-    object-fit: cover;
-    display: block;
+    overflow: hidden;
+    position: relative;
+    background: #e0e0e0;
   }
-  .card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+  .card-img {
+    display: block;
+    /* Size set by JS */
+    max-width: none;
+  }
+  .card-body { padding: 18px; }
   .card-badge {
     display: inline-block;
     color: white;
@@ -151,40 +173,45 @@
     margin-bottom: 10px;
   }
   .card h3 { font-size: 1em; font-weight: bold; margin-bottom: 8px; line-height: 1.4; }
-  .card h3 a { color: var(--text-dark); text-decoration: none; }
-  .card h3 a:hover { color: var(--blue-dark); }
-  .card-date { color: var(--text-light); font-size: 0.82em; margin-top: auto; padding-top: 8px; }
+  .card h3 a { color: #2c3e50; text-decoration: none; }
+  .card h3 a:hover { color: #4fa3d1; }
+  .card-date { color: #999; font-size: 0.82em; margin-top: 8px; }
 
   /* ── LATEST POST ── */
   .latest-section {
-    background: var(--bg-light);
+    background: #f8f9fa;
     padding: 28px;
     margin-bottom: 24px;
-    border: 2px solid var(--border);
+    border: 2px solid #e0e0e0;
   }
   .latest-card {
     background: white;
-    border: 2px solid var(--border);
-    overflow: hidden;
-    display: flex;
-    gap: 0;
+    border: 2px solid #e0e0e0;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
   .latest-accent {
-    background: var(--blue);
+    background: #70cbff;
     width: 8px;
-    flex-shrink: 0;
+    display: table-cell;
+    vertical-align: top;
   }
-  .latest-body { padding: 22px; flex: 1; }
-  .latest-body .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; align-items: center; }
+  .latest-body { display: table-cell; padding: 22px; vertical-align: top; }
+  .latest-body .tags { margin-bottom: 10px; }
+  .latest-body .tags:after { content: ''; display: table; clear: both; }
   .tag {
+    display: inline-block;
     padding: 3px 10px;
     font-size: 0.78em;
     font-weight: bold;
+    margin-right: 4px;
+    margin-bottom: 4px;
   }
   .latest-body h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
-  .latest-body h3 a { color: var(--text-dark); text-decoration: none; }
-  .latest-body h3 a:hover { color: var(--blue-dark); }
-  .latest-body p { color: var(--text-muted); font-size: 0.9em; line-height: 1.6; margin-bottom: 15px; }
+  .latest-body h3 a { color: #2c3e50; text-decoration: none; }
+  .latest-body h3 a:hover { color: #4fa3d1; }
+  .latest-body p { color: #666; font-size: 0.9em; line-height: 1.6; margin-bottom: 15px; }
   .btn {
     display: inline-block;
     color: white;
@@ -192,78 +219,78 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 0.85em;
-    transition: opacity .15s;
   }
   .btn:hover { opacity: 0.85; }
 
   /* ── RECENT POSTS ── */
   .recent-section {
-    background: var(--bg-light);
+    background: #f8f9fa;
     padding: 28px;
     margin-bottom: 24px;
-    border: 2px solid var(--border);
+    border: 2px solid #e0e0e0;
   }
-  .recent-list { display: flex; flex-direction: column; gap: 16px; }
+  .recent-list { }
   .recent-card {
     background: white;
-    border: 2px solid var(--border);
-    overflow: hidden;
-    display: flex;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 16px;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
   .recent-accent {
     width: 8px;
-    flex-shrink: 0;
+    display: table-cell;
+    vertical-align: top;
   }
-  .recent-body { padding: 16px; flex: 1; }
-  .recent-body .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; align-items: center; }
+  .recent-body { display: table-cell; padding: 16px; vertical-align: top; }
+  .recent-body .tags { margin-bottom: 8px; }
+  .recent-body .tags:after { content: ''; display: table; clear: both; }
   .recent-body h3 { font-size: 1em; font-weight: bold; margin-bottom: 6px; line-height: 1.4; }
-  .recent-body h3 a { color: var(--text-dark); text-decoration: none; }
-  .recent-body h3 a:hover { color: var(--blue-dark); }
-  .recent-body p { color: var(--text-muted); font-size: 0.85em; line-height: 1.5; margin-bottom: 10px; }
+  .recent-body h3 a { color: #2c3e50; text-decoration: none; }
+  .recent-body h3 a:hover { color: #4fa3d1; }
+  .recent-body p { color: #666; font-size: 0.85em; line-height: 1.5; margin-bottom: 10px; }
 
-  .view-all {
-    text-align: center;
-    margin-top: 20px;
-  }
+  .view-all { text-align: center; margin-top: 20px; }
   .view-all a {
-    background: var(--blue);
+    background: #70cbff;
     color: white;
     padding: 10px 28px;
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    transition: background .15s;
   }
-  .view-all a:hover { background: var(--blue-dark); }
+  .view-all a:hover { background: #4fa3d1; }
 
   /* ── SIDEBAR ── */
-  .sidebar { display: flex; flex-direction: column; gap: 22px; }
-
   .sidebar-box {
-    background: var(--bg-light);
-    border: 2px solid var(--border);
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
     padding: 22px;
+    margin-bottom: 22px;
   }
   .sidebar-title {
-    color: var(--text-dark);
+    color: #2c3e50;
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 16px;
-    border-bottom: 3px solid var(--blue);
+    border-bottom: 3px solid #70cbff;
     padding-bottom: 8px;
   }
+  /* No sticky — static works fine */
+  .sidebar-sticky { }
 
   /* Categories */
   .cat-group { margin-bottom: 18px; }
   .cat-group-label {
-    color: var(--blue-dark);
+    color: #4fa3d1;
     font-size: 0.8em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .05em;
     margin-bottom: 10px;
   }
-  .cat-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cat-links:after { content: ''; display: table; clear: both; }
   .cat-links a {
     background: white;
     padding: 7px 14px;
@@ -271,124 +298,376 @@
     font-weight: bold;
     font-size: 0.82em;
     display: inline-block;
-    transition: background .15s, color .15s;
+    margin-right: 6px;
+    margin-bottom: 6px;
   }
+  .cat-links a:hover { background: #e8f4ff; }
 
   /* Follow box */
   .follow-box {
-    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    background: #70cbff;
+    background: -webkit-linear-gradient(315deg, #70cbff 0%, #4fa3d1 100%);
+    background: linear-gradient(135deg, #70cbff 0%, #4fa3d1 100%);
     color: white;
     text-align: center;
     padding: 26px 20px;
-    border: 2px solid var(--blue-dark);
+    border: 2px solid #4fa3d1;
+    margin-bottom: 22px;
   }
-  .follow-box h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
-  .follow-box p { font-size: 0.88em; opacity: 0.92; margin-bottom: 18px; line-height: 1.5; }
+  .follow-box h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; color: white; }
+  .follow-box p { font-size: 0.88em; opacity: 0.92; margin-bottom: 18px; line-height: 1.5; color: white; }
   .follow-box a {
     background: white;
-    color: var(--blue);
+    color: #4fa3d1;
     padding: 10px 22px;
     font-weight: bold;
     font-size: 0.88em;
     text-decoration: none;
     display: inline-block;
-    transition: opacity .15s;
   }
   .follow-box a:hover { opacity: 0.85; }
 
-  /* Sticky sidebar on scroll */
-  .sidebar-sticky { position: sticky; top: 20px; }
-
-  /* BerryBus button */
-  .berrybus-btn {
-    display: block;
-    background: #667eea;
+  /* ── HELP BUTTON (floating) ── */
+  .help-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    background: #0e91e8;
+    background: -webkit-linear-gradient(315deg, #0e91e8 0%, #1366a8 100%);
+    background: linear-gradient(135deg, #0e91e8 0%, #1366a8 100%);
     color: white;
-    text-align: center;
-    padding: 16px 20px;
+    border: none;
+    padding: 14px 22px;
+    font-family: inherit;
+    font-size: 0.95em;
     font-weight: bold;
-    font-size: 1em;
-    text-decoration: none;
-    border: 2px solid #5567d4;
-    transition: opacity .15s;
+    cursor: pointer;
+    -webkit-box-shadow: 0 4px 18px rgba(14,145,232,0.45);
+    box-shadow: 0 4px 18px rgba(14,145,232,0.45);
   }
-  .berrybus-btn:hover { opacity: 0.88; }
+  .help-fab:hover { opacity: 0.88; }
+  .help-fab svg { width: 18px; height: 18px; vertical-align: middle; margin-right: 6px; }
 
-  /* ── MOBILE RESPONSIVE ── */
-  @media (max-width: 768px) {
+  /* ── MODAL OVERLAY ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+    padding: 20px;
+    /* IE: center with table trick */
+    text-align: center;
+    white-space: nowrap;
+  }
+  .modal-overlay:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .modal-overlay.open { display: block; }
 
-    /* Header */
-    .header-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px 16px 16px;
-      gap: 12px;
-    }
+  .modal-box {
+    background: #ffffff;
+    border-top: 4px solid #0e91e8;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    white-space: normal;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  /* Modal header */
+  .modal-header {
+    background: #0e91e8;
+    background: -webkit-linear-gradient(315deg, #0e91e8 0%, #1366a8 100%);
+    background: linear-gradient(135deg, #0e91e8 0%, #1366a8 100%);
+    color: white;
+    padding: 22px 26px 18px;
+  }
+  .modal-header:after { content: ''; display: table; clear: both; }
+  .modal-header-text { float: left; width: 85%; }
+  .modal-header-text h2 { font-size: 1.15em; font-weight: bold; margin-bottom: 4px; color: white; }
+  .modal-header-text p  { font-size: 0.83em; opacity: 0.88; line-height: 1.45; color: white; }
+  .modal-close {
+    float: right;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 1.3em;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.35); }
+
+  /* Service picker */
+  .modal-picker {
+    padding: 22px 26px 8px;
+    overflow: hidden;
+  }
+  .service-card {
+    border: 2px solid #d0eaf9;
+    background: #f4faff;
+    padding: 16px 14px;
+    cursor: pointer;
+    text-align: left;
+    float: left;
+    width: 48%;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-bottom: 8px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .service-card + .service-card { margin-left: 4%; }
+  .service-card:hover, .service-card.selected {
+    border-color: #0e91e8;
+    background: #e6f4ff;
+  }
+  .service-card .sc-title { font-weight: bold; font-size: 0.92em; color: #1a3a5c; margin-bottom: 3px; }
+  .service-card .sc-desc  { font-size: 0.78em; color: #4a6a8a; line-height: 1.4; }
+
+  /* BerryBus accordion row */
+  .bb-accordion {
+    margin: 10px 16px 0;
+    border: 2px solid #c5b8f0;
+    background: #f5f0ff;
+  }
+  .bb-accordion.bb-open { border-color: #667eea; }
+  .bb-accordion-header {
+    padding: 13px 16px;
+    cursor: pointer;
+  }
+  .bb-accordion-header:after { content: ''; display: table; clear: both; }
+  .bb-accordion-header:hover { background: #ede8ff; }
+  .bb-acc-info { float: left; }
+  .bb-acc-title { font-weight: bold; font-size: 0.9em; color: #3a2a7a; margin-bottom: 2px; }
+  .bb-acc-desc  { font-size: 0.78em; color: #6a5aaa; line-height: 1.4; }
+  .bb-acc-arrow { float: right; color: #667eea; font-size: 0.8em; line-height: 2.5; }
+
+  .bb-accordion-body {
+    display: none;
+    border-top: 2px solid #d5caff;
+    padding: 16px 16px 18px;
+    background: white;
+  }
+
+  /* BerryBus sub-tabs */
+  .bb-subtab-bar:after { content: ''; display: table; clear: both; }
+  .bb-subtab-bar {
+    border-bottom: 2px solid #d0eaf9;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .bb-subtab {
+    float: left;
+    width: 50%;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-size: 0.86em;
+    font-weight: bold;
+    color: #4a6a8a;
+    background: #f4faff;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .bb-subtab:hover { color: #0e91e8; }
+  .bb-subtab.active { color: #0e60a0; border-bottom-color: #0e91e8; background: white; }
+  .bb-subtab-panel { display: none; }
+  .bb-subtab-panel.active { display: block; }
+
+  /* Facebook quick-help row */
+  .modal-fb-row {
+    margin: 10px 16px 0;
+    background: #e8f4ff;
+    border: 2px solid #b3d8f6;
+    padding: 12px 16px;
+    overflow: hidden;
+  }
+  .mfb-info { overflow: hidden; }
+  .mfb-title { font-weight: bold; font-size: 0.88em; color: #1a3a5c; margin-bottom: 2px; }
+  .mfb-desc  { font-size: 0.77em; color: #3a6a9a; line-height: 1.4; }
+  .mfb-btn-wrap { float: right; margin-left: 12px; }
+  .mfb-btn {
+    background: #1877f2;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.82em;
+    padding: 8px 16px;
+    white-space: nowrap;
+    border: 2px solid #1460c4;
+    display: inline-block;
+  }
+  .mfb-btn:hover { opacity: 0.88; }
+
+  /* Modal form area */
+  .modal-form-area {
+    padding: 8px 26px 24px;
+    display: none;
+  }
+  .modal-form-area.visible { display: block; }
+  .modal-divider {
+    border: none;
+    border-top: 2px dashed #d0eaf9;
+    margin: 16px 0 18px;
+  }
+  .modal-form-area label {
+    display: block;
+    font-size: 0.83em;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-bottom: 5px;
+  }
+  .modal-form-area .req { color: #e74c3c; margin-left: 2px; }
+  .modal-form-area .opt { color: #999; font-weight: normal; font-size: 0.88em; margin-left: 4px; }
+  .modal-form-area .mfg { margin-bottom: 14px; }
+  .modal-form-area input[type="text"],
+  .modal-form-area input[type="email"],
+  .modal-form-area select,
+  .modal-form-area textarea,
+  .bb-accordion-body input[type="text"],
+  .bb-accordion-body input[type="email"],
+  .bb-accordion-body select,
+  .bb-accordion-body textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 2px solid #cde5f6;
+    font-family: inherit;
+    font-size: 0.88em;
+    color: #2c3e50;
+    background: white;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .modal-form-area input:focus,
+  .modal-form-area select:focus,
+  .modal-form-area textarea:focus,
+  .bb-accordion-body input:focus,
+  .bb-accordion-body select:focus,
+  .bb-accordion-body textarea:focus { border-color: #0e91e8; }
+  .modal-form-area textarea { min-height: 88px; resize: vertical; }
+
+  .bb-accordion-body label {
+    display: block;
+    font-size: 0.83em;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-bottom: 5px;
+  }
+  .bb-accordion-body .req { color: #e74c3c; margin-left: 2px; }
+  .bb-accordion-body .opt { color: #999; font-weight: normal; font-size: 0.88em; margin-left: 4px; }
+  .bb-accordion-body .mfg { margin-bottom: 14px; }
+  .bb-accordion-body textarea { min-height: 88px; resize: vertical; }
+
+  .modal-note {
+    background: #e6f4ff;
+    border-left: 4px solid #0e91e8;
+    padding: 10px 14px;
+    font-size: 0.82em;
+    color: #1a3a5c;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .modal-note strong { color: #0e60a0; }
+
+  .btn-modal-submit {
+    width: 100%;
+    background: #0e91e8;
+    background: -webkit-linear-gradient(315deg, #0e91e8 0%, #1366a8 100%);
+    background: linear-gradient(135deg, #0e91e8 0%, #1366a8 100%);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .btn-modal-submit:hover { opacity: 0.88; }
+  .btn-modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .modal-success {
+    display: none;
+    background: #eaf7ec;
+    border-left: 5px solid #28a745;
+    padding: 14px 18px;
+    font-size: 0.9em;
+    color: #155724;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  .modal-back-btn {
+    background: none;
+    border: none;
+    color: #0e91e8;
+    font-size: 0.83em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 0 0;
+    display: block;
+    text-decoration: underline;
+  }
+  .modal-back-btn:hover { color: #1366a8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    main { float: none; width: 100%; }
+    .sidebar { float: none; width: 100%; margin-left: 0; }
+
+    .header-inner { padding: 20px 16px 16px; }
+    .header-brand { float: none; }
+    .header-follow { float: none; padding-top: 10px; }
+    .header-follow a { display: block; text-align: center; padding: 10px 16px; }
     .header-brand h1 { font-size: 2em; }
-    .header-follow a { width: 100%; text-align: center; padding: 10px 16px; }
 
-    /* Nav: scrollable horizontally */
-    .nav-inner {
-      padding: 0;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .nav-inner::-webkit-scrollbar { display: none; }
-    .nav-inner a {
-      white-space: nowrap;
-      font-size: 0.82em;
-      padding: 11px 13px;
-    }
+    /* Nav: scroll horizontally on small screens */
+    .site-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-inner { display: block; white-space: nowrap; width: auto; padding: 0; }
+    .nav-inner a { display: inline-block; padding: 11px 13px; font-size: 0.82em; }
 
-    /* Main layout: stack sidebar below content */
-    .site-wrapper {
-      grid-template-columns: 1fr;
-      margin: 16px auto;
-      padding: 0 12px;
-      gap: 16px;
-    }
+    .featured-grid:after { content: ''; display: table; clear: both; }
+    .card { float: none; width: 100%; margin-right: 0; margin-bottom: 14px; }
+    .card-img-wrap { height: 200px !important; }
 
-    /* Featured grid: 1 column on mobile */
     .featured-section,
     .latest-section,
-    .recent-section {
-      padding: 16px;
-    }
-    .featured-grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .card img { height: 200px; }
-
-    /* Latest & Recent cards */
-    .latest-body { padding: 14px; }
-    .latest-body h3 { font-size: 1.05em; }
-
-    .recent-body { padding: 12px; }
-    .recent-body h3 { font-size: 0.95em; }
-    .recent-body p { font-size: 0.83em; }
-
-    /* Sidebar: disable sticky on mobile */
-    .sidebar-sticky { position: static; }
-    .sidebar { gap: 14px; }
-    .sidebar-box { padding: 16px; }
-    .follow-box { padding: 20px 14px; }
-
-    /* Section titles */
+    .recent-section { padding: 16px; }
     .section-title { font-size: 1.2em; }
+    .latest-body { padding: 14px; }
+    .recent-body { padding: 12px; }
+    .site-wrapper { padding: 0 12px; margin: 16px auto; }
 
-    /* Buttons full-width feel on small screens */
-    .btn { padding: 8px 14px; font-size: 0.82em; }
+    .service-card { float: none; width: 100%; margin-left: 0; }
+    .service-card + .service-card { margin-left: 0; }
+    .help-fab { bottom: 16px; right: 16px; padding: 12px 16px; font-size: 0.88em; }
   }
 
   @media (max-width: 420px) {
     .header-brand h1 { font-size: 1.7em; }
     .card img { height: 170px; }
-    .tags { gap: 4px; }
     .tag { font-size: 0.72em; padding: 3px 8px; }
   }
+
 </style>
 </head>
 <body>
@@ -431,8 +710,8 @@
       <div class="featured-grid">
 
         <article class="card">
-          <a href="/Pages/BerryBus.html">
-            <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BerryBus/IMG_20260423_195722.png" alt="BerryBus – Ứng dụng tra cứu xe buýt Hà Nội Native cho BB10">
+          <a href="/Pages/BerryBus.html" class="card-img-link">
+            <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BerryBus/IMG_20260423_195722.png" alt="BerryBus – Ứng dụng tra cứu xe buýt Hà Nội Native cho BB10" class="card-img"></div>
           </a>
           <div class="card-body">
             <span class="card-badge" style="background:#17a2b8">ỨNG DỤNG</span>
@@ -441,18 +720,18 @@
           </div>
         </article>
         <article class="card">
-          <a href="/Pages/BB10-Tools-10.html">
-            <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%2010/BB10-Tools-10.png" alt="BlackBerry 10 Tools – Cập Nhật Thứ 10 [6-4-2026]">
+          <a href="/Pages/BB10-Tools-10.html" class="card-img-link">
+            <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%2010/BB10-Tools-10.png" alt="BlackBerry 10 Tools – Cập Nhật Thứ 10 [6-4-2026]" class="card-img"></div>
           </a>
           <div class="card-body">
             <span class="card-badge" style="background:#ff5722">TIN TỨC</span>
-            <h3><a href="/Pages/BB10-Tools-10.html">BlackBerry 10 Tools – Cập Nhật Thứ 10 [6-4-2026]</a></h3>
+            <h3><a href="/Pages/BB10-Tools-10.html">BlackBerry 10 Tools – Cập Nhật Thứ 10 Đã Ra Mắt! [6-4-2026]</a></h3>
             <div class="card-date">06/04/2026</div>
           </div>
         </article>
         <article class="card">
-          <a href="/Pages/BB10-Tools-9.html">
-            <img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%209/copy-of-blackberry-10-toolse381aee382b3e38394e383bc.png" alt="BlackBerry 10 Tools – Cập Nhật Thứ 9 Đã Ra Mắt! [10-3-2026]">
+          <a href="/Pages/BB10-Tools-9.html" class="card-img-link">
+            <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/BBerryLife/BBerrylife.github.io/main/Media/BB10%20Tools%209/copy-of-blackberry-10-toolse381aee382b3e38394e383bc.png" alt="BlackBerry 10 Tools – Cập Nhật Thứ 9 Đã Ra Mắt! [10-3-2026]" class="card-img"></div>
           </a>
           <div class="card-body">
             <span class="card-badge" style="background:#ff5722">TIN TỨC</span>
@@ -468,17 +747,17 @@
     <section class="latest-section">
       <h2 class="section-title">Bài Viết Mới Nhất</h2>
       <div class="latest-card">
-        <div class="latest-accent" style="background:var(--blue)"></div>
+        <div class="latest-accent" style="background:#70cbff"></div>
         <div class="latest-body">
           <div class="tags">
             <span class="tag" style="background:#e1f5fe;color:#01579b">HƯỚNG DẪN</span>
             <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
             <span class="tag" style="background:#fce4ec;color:#c2185b">PLAYBOOK</span>
-            <span style="color:var(--text-light);font-size:0.82em">04/05/2026</span>
+            <span style="color:#999;font-size:0.82em">04/05/2026</span>
           </div>
           <h3><a href="/Pages/Bypass-Setup-QNX.html">Hạ Cấp BlackBerry 10 Xuống Bản Thấp Hơn 10.3.0 Và Vượt Initial Setup Cho PlayBook / Làm Debloated ROM 10.3.0 Trở Xuống</a></h3>
           <p>Hướng dẫn vá firmware để bỏ qua màn hình cài đặt ban đầu (initial setup) trên BB10 và PlayBook sau khi factory reset, đồng thời áp dụng cho hạ cấp OS xuống thấp hơn 10.3.0 và làm debloated ROM.</p>
-          <a href="/Pages/Bypass-Setup-QNX.html" class="btn" style="background:var(--blue)">Xem Ngay →</a>
+          <a href="/Pages/Bypass-Setup-QNX.html" class="btn" style="background:#70cbff">Xem Ngay →</a>
         </div>
       </div>
     </section>
@@ -494,7 +773,7 @@
             <div class="tags">
               <span class="tag" style="background:#e8eeff;color:#667eea">ỨNG DỤNG</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">08/04/2026</span>
+              <span style="color:#999;font-size:0.8em">08/04/2026</span>
             </div>
             <h3><a href="/Pages/Bar-Installer.html">Bar Installer – Cài Đặt File .BAR Trực Tiếp Trên BB10</a></h3>
             <p>Không còn cần máy tính để cài file .bar nữa! Bar Installer do Aleksandr phát triển cho phép cài đặt ứng dụng .bar ngay trực tiếp trên thiết bị BlackBerry 10. Lưu ý: thiết bị cần được root trước.</p>
@@ -508,7 +787,7 @@
             <div class="tags">
               <span class="tag" style="background:#e0f7fa;color:#17a2b8">ỨNG DỤNG</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">23/04/2026</span>
+              <span style="color:#999;font-size:0.8em">23/04/2026</span>
             </div>
             <h3><a href="/Pages/BerryBus.html">BerryBus – Ứng dụng tra cứu xe buýt Hà Nội Native cho BB10</a></h3>
             <p>Ứng dụng tra cứu xe buýt Hà Nội đầu tiên chạy native trên BlackBerry 10, giúp bạn tìm tuyến xe và lịch trình trực tiếp từ thiết bị BB10 của mình.</p>
@@ -522,7 +801,7 @@
             <div class="tags">
               <span class="tag" style="background:#fff3cd;color:#ff5722">TIN TỨC</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">06/04/2026</span>
+              <span style="color:#999;font-size:0.8em">06/04/2026</span>
             </div>
             <h3><a href="/Pages/BB10-Tools-10.html">BlackBerry 10 Tools – Cập Nhật Thứ 10 [6-4-2026]</a></h3>
             <p>Bản cập nhật thứ 10 của BlackBerry 10 Tools chính thức ra mắt với nhiều cải tiến và tính năng mới dành cho người dùng BB10.</p>
@@ -536,7 +815,7 @@
             <div class="tags">
               <span class="tag" style="background:#fff3cd;color:#ff5722">TIN TỨC</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">10/03/2026</span>
+              <span style="color:#999;font-size:0.8em">10/03/2026</span>
             </div>
             <h3><a href="/Pages/BB10-Tools-9.html">BlackBerry 10 Tools – Cập Nhật Thứ 9 Đã Ra Mắt! [10-3-2026]</a></h3>
             <p>Bản cập nhật thứ 9 của BlackBerry 10 Tools ra mắt: dung lượng giảm ~20%, sửa lỗi BB-10-005 trên Q5 và Q10, loại bỏ các file không cần thiết.</p>
@@ -550,7 +829,7 @@
             <div class="tags">
               <span class="tag" style="background:#e1f5fe;color:#01579b">HƯỚNG DẪN</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">04/03/2026</span>
+              <span style="color:#999;font-size:0.8em">04/03/2026</span>
             </div>
             <h3><a href="/Pages/BB10-Development.html">Phát Triển Ứng Dụng BlackBerry 10 Trong Năm 2026 (Và Sau Đó)</a></h3>
             <p>Hướng dẫn đầy đủ cách thiết lập môi trường phát triển ứng dụng BB10 trong năm 2026: từ Momentics IDE, API level files, Simulator cho đến cách nhập SDK offline vào Momentics.</p>
@@ -564,7 +843,7 @@
             <div class="tags">
               <span class="tag" style="background:#e1f5fe;color:#01579b">HƯỚNG DẪN</span>
               <span class="tag" style="background:#e3f2fd;color:#1976d2">BLACKBERRY 10</span>
-              <span style="color:var(--text-light);font-size:0.8em">22/02/2026</span>
+              <span style="color:#999;font-size:0.8em">22/02/2026</span>
             </div>
             <h3><a href="/Pages/BBID-Patch.html">Hướng Dẫn Duy Trì Patch &amp; Xóa Thông Báo BBID trên BB10</a></h3>
             <p>Hướng dẫn cách duy trì Root (Getroot) sau mỗi lần khởi động và loại bỏ thông báo BBID phiền phức trên BlackBerry 10 đã được mod ROM.</p>
@@ -605,13 +884,416 @@
         </div>
       </div>
 
-      <!-- BerryBus -->
-      <a href="/Data/BerryBus/BerryBus.html" class="berrybus-btn">Đóng Góp Dữ Liệu BerryBus</a>
 
     </div>
   </aside>
 
 </div>
+
+<!-- ═══ HELP FLOATING BUTTON ═══ -->
+<button class="help-fab" onclick="openHelpModal()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+  Cần Trợ Giúp?
+</button>
+
+<!-- ═══ HELP MODAL ═══ -->
+<div class="modal-overlay" id="helpModal" onclick="onOverlayClick(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <h2 id="modalTitle">Yêu Cầu Trợ Giúp</h2>
+        <p>Không có thời gian hoặc gặp khó khăn khi tự làm? Chúng tôi có thể hỗ trợ bạn trực tiếp!</p>
+      </div>
+      <button class="modal-close" onclick="closeHelpModal()" aria-label="Đóng">✕</button>
+    </div>
+
+    <!-- Picker: 2 nút chính -->
+    <div id="step-pick">
+      <div class="modal-picker">
+        <div class="service-card" id="card-unlock" onclick="selectService('unlock')">
+          <div class="sc-title">Mở Khóa Nhà Mạng</div>
+          <div class="sc-desc">Carrier Unlock cho BlackBerry 10 — xóa khóa SIM để dùng mọi nhà mạng, trừ <strong>Sprint</strong></div>
+        </div>
+        <div class="service-card" id="card-rom" onclick="selectService('rom')">
+          <div class="sc-title">Tạo ROM Tùy Chỉnh</div>
+          <div class="sc-desc">Tạo bản ROM Debloated hoặc ROM root thông qua bộ công cụ BB10 Tools một cách nhanh chóng</div>
+        </div>
+      </div>
+
+      <!-- BerryBus: ô dẹt có thể bấm để mở/đóng -->
+      <div class="bb-accordion" id="bb-accordion">
+        <div class="bb-accordion-header" onclick="toggleBerryBus()">
+          <span class="bb-acc-arrow" id="bb-arrow">▼</span>
+          <div class="bb-acc-info">
+            <div class="bb-acc-title">Đóng Góp Dữ Liệu BerryBus</div>
+            <div class="bb-acc-desc">Bổ sung tuyến xe buýt hoặc địa điểm cho ứng dụng BB10</div>
+          </div>
+        </div>
+        <div class="bb-accordion-body" id="bb-body">
+
+          <!-- BerryBus sub-tabs -->
+          <div class="bb-subtab-bar">
+            <button class="bb-subtab active" id="bbtab-route-btn" onclick="switchBBTab('route')">Tuyến Xe</button>
+            <button class="bb-subtab" id="bbtab-place-btn" onclick="switchBBTab('place')">Địa Điểm</button>
+          </div>
+
+          <!-- Tab: Tuyến xe -->
+          <div id="bbtab-route" class="bb-subtab-panel active">
+            <form id="form-berrybus-route" action="https://formspree.io/f/xdawvere" method="POST" onsubmit="handleModalSubmit(event,'berrybus-route')">
+              <input type="hidden" name="_subject" value="[BerryBus] Đóng góp dữ liệu tuyến xe">
+              <input type="hidden" name="loai_dong_gop" value="Tuyến Xe">
+              <div class="mfg">
+                <label>Số / Tên tuyến <span class="req">*</span></label>
+                <input type="text" name="so_tuyen" placeholder="Ví dụ: 01, 150, Metro số 1..." required>
+              </div>
+              <div class="mfg">
+                <label>Điểm đầu <span class="req">*</span></label>
+                <input type="text" name="diem_dau" placeholder="Tên bến/trạm đầu" required>
+              </div>
+              <div class="mfg">
+                <label>Điểm cuối <span class="req">*</span></label>
+                <input type="text" name="diem_cuoi" placeholder="Tên bến/trạm cuối" required>
+              </div>
+              <div class="mfg">
+                <label>Giờ hoạt động <span class="opt">(tùy chọn)</span></label>
+                <input type="text" name="gio_hoat_dong" placeholder="Ví dụ: 5:00 – 21:30">
+              </div>
+              <div class="mfg">
+                <label>Tần suất (phút/chuyến) <span class="opt">(tùy chọn)</span></label>
+                <input type="text" name="tan_suat" placeholder="Ví dụ: 10-15 phút">
+              </div>
+              <div class="mfg">
+                <label>Giá vé <span class="opt">(tùy chọn)</span></label>
+                <input type="text" name="gia_ve" placeholder="Ví dụ: 10.000đ / 12.000đ">
+              </div>
+              <div class="mfg">
+                <label>Khu vực / Thành phố <span class="req">*</span></label>
+                <input type="text" name="khu_vuc" placeholder="Ví dụ: Hà Nội, TP. Hồ Chí Minh..." required>
+              </div>
+              <div class="mfg">
+                <label>Ghi chú thêm <span class="opt">(tùy chọn)</span></label>
+                <textarea name="ghi_chu" placeholder="Biến thể tuyến, chỉ chạy ngày thường, v.v..."></textarea>
+              </div>
+              <div class="mfg">
+                <label>Email của bạn <span class="opt">(tùy chọn)</span></label>
+                <input type="email" name="email" placeholder="email@example.com">
+              </div>
+              <button type="submit" class="btn-modal-submit" id="btn-berrybus-route">Gửi Đóng Góp Tuyến Xe</button>
+              <div id="success-berrybus-route" class="modal-success">
+                <strong>Cảm ơn bạn!</strong> Thông tin tuyến xe đã được gửi. Chúng tôi sẽ xem xét và cập nhật vào BerryBus.
+              </div>
+            </form>
+          </div>
+
+          <!-- Tab: Địa điểm -->
+          <div id="bbtab-place" class="bb-subtab-panel">
+            <form id="form-berrybus-place" action="https://formspree.io/f/xdawvere" method="POST" onsubmit="handleModalSubmit(event,'berrybus-place')">
+              <input type="hidden" name="_subject" value="[BerryBus] Đóng góp dữ liệu địa điểm">
+              <input type="hidden" name="loai_dong_gop" value="Địa Điểm">
+              <div class="mfg">
+                <label>Tên địa điểm <span class="req">*</span></label>
+                <input type="text" name="ten_dia_diem" placeholder="Tên chính xác của địa điểm" required>
+              </div>
+              <div class="mfg">
+                <label>Loại địa điểm <span class="req">*</span></label>
+                <select name="loai_dia_diem" required>
+                  <option value="">-- Chọn loại --</option>
+                  <option>Bến xe / Nhà ga</option>
+                  <option>Trạm dừng xe buýt</option>
+                  <option>Trạm metro / Tàu điện</option>
+                  <option>Bệnh viện</option>
+                  <option>Trường học / Đại học</option>
+                  <option>Trung tâm thương mại</option>
+                  <option>Điểm tham quan</option>
+                  <option>Chợ / Siêu thị</option>
+                  <option>Khác</option>
+                </select>
+              </div>
+              <div class="mfg">
+                <label>Địa chỉ <span class="req">*</span></label>
+                <input type="text" name="dia_chi" placeholder="Số nhà, tên đường, phường/xã, quận/huyện" required>
+              </div>
+              <div class="mfg">
+                <label>Khu vực / Thành phố <span class="req">*</span></label>
+                <input type="text" name="khu_vuc" placeholder="Hà Nội, TP. Hồ Chí Minh..." required>
+              </div>
+              <div class="mfg">
+                <label>Các tuyến xe đi qua <span class="opt">(tùy chọn)</span></label>
+                <input type="text" name="tuyen_di_qua" placeholder="Ví dụ: 01, 02, 150, Metro số 1...">
+              </div>
+              <div class="mfg">
+                <label>Mô tả / Ghi chú <span class="opt">(tùy chọn)</span></label>
+                <textarea name="mo_ta" placeholder="Giờ mở cửa, thông tin đặc biệt, v.v..."></textarea>
+              </div>
+              <div class="mfg">
+                <label>Email của bạn <span class="opt">(tùy chọn)</span></label>
+                <input type="email" name="email" placeholder="email@example.com">
+              </div>
+              <button type="submit" class="btn-modal-submit" id="btn-berrybus-place">Gửi Đóng Góp Địa Điểm</button>
+              <div id="success-berrybus-place" class="modal-success">
+                <strong>Cảm ơn bạn!</strong> Thông tin địa điểm đã được gửi. Chúng tôi sẽ xem xét và cập nhật vào BerryBus.
+              </div>
+            </form>
+          </div>
+
+        </div><!-- /bb-accordion-body -->
+      </div><!-- /bb-accordion -->
+
+      <!-- Facebook quick-help -->
+      <div class="modal-fb-row">
+        <div class="mfb-btn-wrap"><a href="https://www.facebook.com/BBerryLife/" target="_blank" class="mfb-btn">Nhắn Tin</a></div>
+        <div class="mfb-info">
+          <div class="mfb-title">Hỏi Nhanh Qua Facebook</div>
+          <div class="mfb-desc">Cần chỉ bảo vài bước nhỏ hoặc sửa lỗi nhanh? Nhắn tin trực tiếp!</div>
+        </div>
+      </div>
+
+      <div style="padding:8px 26px 20px;text-align:center;color:#4a6a8a;font-size:0.82em">
+        Chọn dịch vụ bạn cần để tiếp tục
+      </div>
+    </div>
+
+    <!-- Step 2: Form sau khi chọn nút chính -->
+    <div class="modal-form-area" id="step-form">
+      <hr class="modal-divider">
+
+      <!-- Unlock form -->
+      <div id="form-wrap-unlock" style="display:none">
+        <div class="modal-note">
+          <strong>Mở Khóa Nhà Mạng (Carrier Unlock)</strong> — Chúng tôi sẽ hỗ trợ bạn unlock SIM lock trên thiết bị BlackBerry 10 <strong>(Bạn sẽ phải gửi thiết bị đến chúng mình)</strong>. Ghi nhớ: <strong>Việc mở khóa SIM sẽ tốn 100.000đ. Cam kết hoàn tiền 100% nếu không thành công.</strong>
+        </div>
+        <form id="form-unlock" action="https://formspree.io/f/xdawvere" method="POST" onsubmit="handleModalSubmit(event,'unlock')">
+          <input type="hidden" name="_subject" value="[BerryLife] Yêu cầu trợ giúp – Mở Khóa Nhà Mạng BB10">
+          <input type="hidden" name="loai_yeu_cau" value="Mở Khóa Nhà Mạng (Carrier Unlock BB10)">
+          <div class="mfg">
+            <label>Họ tên / Nickname <span class="req">*</span></label>
+            <input type="text" name="ten" placeholder="Tên của bạn" required>
+          </div>
+          <div class="mfg">
+            <label>Email liên hệ <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="email@example.com" required>
+          </div>
+		  <div class="mfg">
+            <label>Facebook của bạn <span class="req">*</span></label>
+            <input type="text" name="facebook" placeholder="www.facebook.com/example/" required>
+          </div>
+          <div class="mfg">
+            <label>Máy BlackBerry của bạn <span class="req">*</span></label>
+            <input type="text" name="model_may" placeholder="Ví dụ: BlackBerry Q10, Z30, Passport..." required>
+          </div>
+          <div class="mfg">
+            <label>Phiên bản OS hiện tại <span class="opt">(tùy chọn)</span></label>
+            <input type="text" name="phien_ban_os" placeholder="Ví dụ: 10.3.3.3216">
+          </div>
+          <div class="mfg">
+            <label>Nhà mạng đang bị khóa <span class="req">*</span></label>
+            <input type="text" name="nha_mang" placeholder="Ví dụ: Verizon, AT&T, Rogers..." required>
+          </div>
+          <div class="mfg">
+            <label>Mô tả thêm / Câu hỏi <span class="opt">(tùy chọn)</span></label>
+            <textarea name="mo_ta" placeholder="Bạn đã thử cách nào chưa? Thiết bị hiện trạng thế nào?..."></textarea>
+          </div>
+          <button type="submit" class="btn-modal-submit" id="btn-unlock">Gửi Yêu Cầu Mở Khóa</button>
+          <div id="success-unlock" class="modal-success">
+            <strong>Đã nhận yêu cầu!</strong> Chúng tôi sẽ liên hệ với bạn qua email sớm nhất có thể để sắp xếp hỗ trợ. Trong khoảng thời gian tới, hãy chấp nhận kết bạn Facebook để được hỗ trợ.
+          </div>
+        </form>
+      </div>
+
+      <!-- ROM form -->
+      <div id="form-wrap-rom" style="display:none">
+        <div class="modal-note">
+          <strong>Tạo ROM Tùy Chỉnh bằng BB10 Tools</strong> — Chúng tôi sẽ tạo Debloated / ROM Root cho thiết bị của bạn thông qua <strong>BB10 Tools</strong>. Vui lòng điền thông tin bên dưới để chúng tôi liên hệ.
+        </div>
+        <form id="form-rom" action="https://formspree.io/f/xdawvere" method="POST" onsubmit="handleModalSubmit(event,'rom')">
+          <input type="hidden" name="_subject" value="[BerryLife] Yêu cầu trợ giúp – Tạo ROM BB10 Tools">
+          <input type="hidden" name="loai_yeu_cau" value="Tạo ROM Tùy Chỉnh bằng BB10 Tools">
+          <div class="mfg">
+            <label>Họ tên / Nickname <span class="req">*</span></label>
+            <input type="text" name="ten" placeholder="Tên của bạn" required>
+          </div>
+          <div class="mfg">
+            <label>Email liên hệ <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="email@example.com" required>
+          </div>
+		  <div class="mfg">
+            <label>Facebook của bạn <span class="req">*</span></label>
+            <input type="text" name="facebook" placeholder="www.facebook.com/example/" required>
+          </div>
+          <div class="mfg">
+            <label>Model máy BlackBerry <span class="req">*</span></label>
+            <input type="text" name="model_may" placeholder="Ví dụ: Q10, Z10, Passport, Classic..." required>
+          </div>
+          <div class="mfg">
+            <label>Phiên bản OS gốc (autoloader) <span class="req">*</span></label>
+            <input type="text" name="phien_ban_os" placeholder="Ví dụ: 10.3.3.3216" required>
+          </div>
+          <div class="mfg">
+            <label>Loại ROM muốn tạo <span class="req">*</span> <span class="opt">— Ghi thêm tùy chọn Root vào ô bên dưới (trừ lựa chọn 3)</span></label>
+            <select name="loai_rom" required>
+              <option value="">-- Chọn loại --</option>
+              <option>1. Debloated ROM (xóa app cũ) + Bypass Initial Setup</option>
+              <option>2. Hạ cấp xuống 10.3.1 hoặc 10.3.2 (dành cho Classic và Passport)</option>
+              <option>3. Hạ cấp xuống 10.2, 10.1 hoặc 10.0</option>
+              <option>Chưa biết – cần tư vấn</option>
+            </select>
+          </div>
+          <div class="mfg">
+            <label>Yêu cầu đặc biệt <span class="opt">(tùy chọn)</span></label>
+            <textarea name="yeu_cau" placeholder="Các ứng dụng muốn giữ lại, loại bỏ, hoặc cấu hình đặc biệt..."></textarea>
+          </div>
+          <button type="submit" class="btn-modal-submit" id="btn-rom">Gửi Yêu Cầu Tạo ROM</button>
+          <div id="success-rom" class="modal-success">
+            <strong>Đã nhận yêu cầu!</strong> Chúng tôi sẽ liên hệ với bạn qua email để xác nhận thông tin và tiến hành tạo ROM.
+          </div>
+        </form>
+      </div>
+
+      <button class="modal-back-btn" onclick="resetToStep1()">← Chọn dịch vụ khác</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openHelpModal() {
+    document.getElementById('helpModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeHelpModal() {
+    document.getElementById('helpModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function onOverlayClick(e) {
+    if (e.target === document.getElementById('helpModal')) closeHelpModal();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeHelpModal();
+  });
+
+  function selectService(type) {
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('card-' + type).classList.add('selected');
+    document.getElementById('step-form').classList.add('visible');
+    document.getElementById('form-wrap-unlock').style.display = 'none';
+    document.getElementById('form-wrap-rom').style.display = 'none';
+    document.getElementById('form-wrap-' + type).style.display = 'block';
+    setTimeout(function() {
+      document.getElementById('step-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
+  }
+
+  function resetToStep1() {
+    document.getElementById('step-form').classList.remove('visible');
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('form-wrap-unlock').style.display = 'none';
+    document.getElementById('form-wrap-rom').style.display = 'none';
+    document.querySelectorAll('.modal-success').forEach(el => el.style.display = 'none');
+  }
+
+  var bbOpen = false;
+  function toggleBerryBus() {
+    bbOpen = !bbOpen;
+    var body = document.getElementById('bb-body');
+    var arrow = document.getElementById('bb-arrow');
+    var acc = document.getElementById('bb-accordion');
+    body.style.display = bbOpen ? 'block' : 'none';
+    arrow.textContent = bbOpen ? '▲' : '▼';
+    acc.classList.toggle('bb-open', bbOpen);
+  }
+
+  function switchBBTab(tab) {
+    document.querySelectorAll('.bb-subtab').forEach(b => b.classList.remove('active'));
+    document.getElementById('bbtab-' + tab + '-btn').classList.add('active');
+    document.querySelectorAll('.bb-subtab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('bbtab-' + tab).classList.add('active');
+  }
+
+  function handleModalSubmit(e, formId) {
+    e.preventDefault();
+    var form = e.target;
+    var successEl = document.getElementById('success-' + formId);
+    var btn = document.getElementById('btn-' + formId);
+    btn.disabled = true;
+    btn.textContent = 'Đang gửi...';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (res.ok) {
+        form.reset();
+        successEl.style.display = 'block';
+        btn.textContent = 'Đã Gửi!';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Gửi Lại';
+        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Gửi Lại';
+      alert('Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.');
+    });
+  }
+</script>
+
+
+<script>
+/* IE/BB10: Fill and center card images inside fixed-height wrapper */
+function centerCardImages() {
+  var wraps = document.getElementsByClassName ? 
+    document.getElementsByClassName('card-img-wrap') : [];
+  for (var i = 0; i < wraps.length; i++) {
+    (function(wrap) {
+      var img = wrap.getElementsByTagName('img')[0];
+      if (!img) return;
+      function adjustImg() {
+        var wrapH = wrap.offsetHeight || 180;
+        var wrapW = wrap.offsetWidth || 300;
+        // Reset styles first
+        img.style.width  = '';
+        img.style.height = '';
+        img.style.marginTop  = '0';
+        img.style.marginLeft = '0';
+        var natW = img.naturalWidth  || img.width  || wrapW;
+        var natH = img.naturalHeight || img.height || wrapH;
+        // Scale to cover: find which dimension is the bottleneck
+        var scaleW = wrapW / natW;
+        var scaleH = wrapH / natH;
+        var scale  = scaleW > scaleH ? scaleW : scaleH;
+        var newW = Math.ceil(natW * scale);
+        var newH = Math.ceil(natH * scale);
+        img.style.width  = newW + 'px';
+        img.style.height = newH + 'px';
+        // Center
+        if (newW > wrapW) img.style.marginLeft = '-' + Math.floor((newW - wrapW) / 2) + 'px';
+        if (newH > wrapH) img.style.marginTop  = '-' + Math.floor((newH - wrapH) / 2) + 'px';
+      }
+      if (img.complete && (img.naturalWidth || img.width)) {
+        adjustImg();
+      } else {
+        img.onload = adjustImg;
+      }
+    })(wraps[i]);
+  }
+}
+if (document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', centerCardImages);
+} else if (document.attachEvent) {
+  document.attachEvent('onreadystatechange', function() {
+    if (document.readyState === 'complete') centerCardImages();
+  });
+}
+window.onload = centerCardImages;
+</script>
 
 </body>
 </html>
