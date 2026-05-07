@@ -41,6 +41,8 @@
   .header-inner:after { content: ''; display: table; clear: both; }
   .header-brand { float: left; }
   .header-follow { float: right; padding-top: 8px; }
+  .header-brand a { text-decoration: none; color: white; display: block; }
+  .header-brand a:hover { opacity: 0.88; }
   .header-brand h1 {
     font-size: 3em;
     font-weight: bold;
@@ -132,18 +134,24 @@
     margin-bottom: 24px;
     border: 2px solid #e0e0e0;
   }
-  .featured-grid:after { content: ''; display: table; clear: both; }
+  .featured-grid {
+    display: table;
+    width: 100%;
+    border-spacing: 10px 0;
+    border-collapse: separate;
+    table-layout: fixed;
+  }
   .card {
     background: white;
     -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    overflow: hidden;
     border: 2px solid #e0e0e0;
-    float: left;
-    width: 31.33%;
-    margin-right: 3%;
+    display: table-cell;
+    width: 33.33%;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
-  .card:last-child { margin-right: 0; }
   /* IE: prevent text cursor (blinking | ) on clickable cards */
   .card, .card * { cursor: default; }
   .card a, .card a * { cursor: pointer; }
@@ -157,11 +165,15 @@
     overflow: hidden;
     position: relative;
     background: #e0e0e0;
+    /* IE: clip content strictly */
+    clip: rect(auto, auto, auto, auto);
   }
   .card-img {
     display: block;
-    /* Size set by JS */
     max-width: none;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .card-body { padding: 18px; }
   .card-badge {
@@ -312,7 +324,11 @@
     text-align: center;
     padding: 26px 20px;
     border: 2px solid #4fa3d1;
-    margin-bottom: 22px;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .sidebar-box-first {
+    border-top: none;
   }
   .follow-box h3 { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; color: white; }
   .follow-box p { font-size: 0.88em; opacity: 0.92; margin-bottom: 18px; line-height: 1.5; color: white; }
@@ -351,38 +367,38 @@
 
   /* ── MODAL OVERLAY ── */
   .modal-overlay {
-    display: none;
+    display: none; /* JS sets display:block when open */
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.45);
     z-index: 1000;
-    padding: 20px;
-    /* IE: center with table trick */
+    overflow-y: auto;
+  }
+  /* .modal-overlay.open handled by JS */
+
+  .modal-overlay-cell {
+    padding: 20px 0;
     text-align: center;
-    white-space: nowrap;
   }
-  .modal-overlay:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
-  .modal-overlay.open { display: block; }
 
   .modal-box {
     background: #ffffff;
     border-top: 4px solid #0e91e8;
-    width: 90%;
-    max-width: 560px;
-    max-height: 90%;
+    /* width cố định, không dùng % để tránh IE tính sai */
+    width: 540px;
+    max-width: 540px;
+    max-height: 80vh;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-bottom: 10px;
     -webkit-box-shadow: 0 12px 48px rgba(0,0,0,0.22);
     box-shadow: 0 12px 48px rgba(0,0,0,0.22);
     display: inline-block;
-    vertical-align: middle;
     text-align: left;
-    white-space: normal;
+    margin: 0 auto;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
@@ -393,7 +409,7 @@
     background: -webkit-linear-gradient(315deg, #0e91e8 0%, #1366a8 100%);
     background: linear-gradient(135deg, #0e91e8 0%, #1366a8 100%);
     color: white;
-    padding: 22px 26px 18px;
+    padding: 20px 20px 16px;
   }
   .modal-header:after { content: ''; display: table; clear: both; }
   .modal-header-text { float: left; width: 85%; }
@@ -414,10 +430,15 @@
   .modal-close:hover { background: rgba(255,255,255,0.35); }
 
   /* Service picker */
-  .modal-picker {
-    padding: 22px 26px 8px;
+  .modal-picker-wrap {
+    margin: 14px 14px 6px;
     overflow: hidden;
+    border: 2px solid transparent;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
+  .modal-picker { }
+  .modal-picker:after { content: ''; display: table; clear: both; }
   .service-card {
     border: 2px solid #d0eaf9;
     background: #f4faff;
@@ -425,15 +446,15 @@
     cursor: pointer;
     text-align: left;
     float: left;
-    width: 48%;
+    width: -webkit-calc(50% - 2px);
+    width: calc(50% - 2px);
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    margin-bottom: 8px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .service-card + .service-card { margin-left: 4%; }
+  .service-card + .service-card { margin-left: 4px; }
   .service-card:hover, .service-card.selected {
     border-color: #0e91e8;
     background: #e6f4ff;
@@ -443,7 +464,7 @@
 
   /* BerryBus accordion row */
   .bb-accordion {
-    margin: 10px 16px 0;
+    margin: 8px 14px 0;
     border: 2px solid #c5b8f0;
     background: #f5f0ff;
   }
@@ -495,7 +516,7 @@
 
   /* Facebook quick-help row */
   .modal-fb-row {
-    margin: 10px 16px 0;
+    margin: 8px 14px 0;
     background: #e8f4ff;
     border: 2px solid #b3d8f6;
     padding: 12px 16px;
@@ -520,7 +541,7 @@
 
   /* Modal form area */
   .modal-form-area {
-    padding: 8px 26px 24px;
+    padding: 8px 16px 24px;
     display: none;
   }
   .modal-form-area.visible { display: block; }
@@ -623,7 +644,7 @@
     font-size: 0.83em;
     font-weight: bold;
     cursor: pointer;
-    padding: 6px 0 0;
+    padding: 4px 0 0;
     display: block;
     text-decoration: underline;
   }
@@ -638,7 +659,9 @@
     .header-brand { float: none; }
     .header-follow { float: none; padding-top: 10px; }
     .header-follow a { display: block; text-align: center; padding: 10px 16px; }
-    .header-brand h1 { font-size: 2em; }
+    .header-brand a { text-decoration: none; color: white; display: block; }
+  .header-brand a:hover { opacity: 0.88; }
+  .header-brand h1 { font-size: 2em; }
 
     /* Nav: scroll horizontally on small screens */
     .site-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -646,7 +669,8 @@
     .nav-inner a { display: inline-block; padding: 11px 13px; font-size: 0.82em; }
 
     .featured-grid:after { content: ''; display: table; clear: both; }
-    .card { float: none; width: 100%; margin-right: 0; margin-bottom: 14px; }
+    .featured-grid { display: block; border-spacing: 0; }
+    .card { display: block; width: 100%; margin-bottom: 14px; }
     .card-img-wrap { height: 200px !important; }
 
     .featured-section,
@@ -657,13 +681,14 @@
     .recent-body { padding: 12px; }
     .site-wrapper { padding: 0 12px; margin: 16px auto; }
 
-    .service-card { float: none; width: 100%; margin-left: 0; }
-    .service-card + .service-card { margin-left: 0; }
+    .service-card { float: none; width: 100% !important; margin-left: 0 !important; margin-bottom: 10px; height: auto !important; }
     .help-fab { bottom: 16px; right: 16px; padding: 12px 16px; font-size: 0.88em; }
   }
 
   @media (max-width: 420px) {
-    .header-brand h1 { font-size: 1.7em; }
+    .header-brand a { text-decoration: none; color: white; display: block; }
+  .header-brand a:hover { opacity: 0.88; }
+  .header-brand h1 { font-size: 1.7em; }
     .card img { height: 170px; }
     .tag { font-size: 0.72em; padding: 3px 8px; }
   }
@@ -676,8 +701,8 @@
 <header class="site-header">
   <div class="header-inner">
     <div class="header-brand">
-      <h1>BerryLife</h1>
-      <p>Everything for BlackBerry Users</p>
+      <a href="/"><h1>BerryLife</h1>
+      <p>Everything for BlackBerry Users</p></a>
     </div>
     <div class="header-follow">
       <a href="https://www.facebook.com/BBerryLife/" target="_blank">Theo Dõi Facebook</a>
@@ -725,7 +750,7 @@
           </a>
           <div class="card-body">
             <span class="card-badge" style="background:#ff5722">TIN TỨC</span>
-            <h3><a href="/Pages/BB10-Tools-10.html">BlackBerry 10 Tools – Cập Nhật Thứ 10 Đã Ra Mắt! [6-4-2026]</a></h3>
+            <h3><a href="/Pages/BB10-Tools-10.html">BlackBerry 10 Tools – Cập Nhật Thứ 10 [6-4-2026]</a></h3>
             <div class="card-date">06/04/2026</div>
           </div>
         </article>
@@ -871,7 +896,7 @@
       </div>
 
       <!-- Categories -->
-      <div class="sidebar-box">
+      <div class="sidebar-box sidebar-box-first">
         <h3 class="sidebar-title">Danh Mục</h3>
 
         <div class="cat-group">
@@ -899,8 +924,8 @@
 </button>
 
 <!-- ═══ HELP MODAL ═══ -->
-<div class="modal-overlay" id="helpModal" onclick="onOverlayClick(event)">
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal-overlay" id="helpModal" style="display:none" onclick="onOverlayClick(event)"><div class="modal-overlay-cell">
+  <div class="modal-box" id="helpModalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 
     <!-- Header -->
     <div class="modal-header">
@@ -913,14 +938,14 @@
 
     <!-- Picker: 2 nút chính -->
     <div id="step-pick">
-      <div class="modal-picker">
+      <div class="modal-picker-wrap" id="servicePickerWrap"><div class="modal-picker" id="servicePicker">
         <div class="service-card" id="card-unlock" onclick="selectService('unlock')">
           <div class="sc-title">Mở Khóa Nhà Mạng</div>
           <div class="sc-desc">Carrier Unlock cho BlackBerry 10 — xóa khóa SIM để dùng mọi nhà mạng, trừ <strong>Sprint</strong></div>
         </div>
         <div class="service-card" id="card-rom" onclick="selectService('rom')">
           <div class="sc-title">Tạo ROM Tùy Chỉnh</div>
-          <div class="sc-desc">Tạo bản ROM Debloated hoặc ROM root thông qua bộ công cụ BB10 Tools một cách nhanh chóng</div>
+          <div class="sc-desc">Nhờ tạo Debloated / ROM Root bằng BB10 Tools thay bạn</div>
         </div>
       </div>
 
@@ -1157,92 +1182,190 @@
     </div>
 
   </div>
-</div>
+</div></div>
 
 <script>
-  function openHelpModal() {
-    document.getElementById('helpModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeHelpModal() {
-    document.getElementById('helpModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function onOverlayClick(e) {
-    if (e.target === document.getElementById('helpModal')) closeHelpModal();
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeHelpModal();
-  });
+/* ── BB10/IE compatible JS — NO classList, NO querySelectorAll, NO arrow functions, NO fetch ── */
 
-  function selectService(type) {
-    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
-    document.getElementById('card-' + type).classList.add('selected');
-    document.getElementById('step-form').classList.add('visible');
-    document.getElementById('form-wrap-unlock').style.display = 'none';
-    document.getElementById('form-wrap-rom').style.display = 'none';
-    document.getElementById('form-wrap-' + type).style.display = 'block';
-    setTimeout(function() {
-      document.getElementById('step-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 60);
+/* Helpers */
+function hasClass(el, cls) {
+  if (!el || !el.className) return false;
+  return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') >= 0;
+}
+function addClass(el, cls) {
+  if (!el) return;
+  if (!hasClass(el, cls)) el.className = el.className ? el.className + ' ' + cls : cls;
+}
+function removeClass(el, cls) {
+  if (!el) return;
+  el.className = (' ' + el.className + ' ').replace(' ' + cls + ' ', ' ').replace(/^\s+|\s+$/g, '');
+}
+function byId(id) { return document.getElementById(id); }
+function clampModalWidth() {
+  var box = byId('helpModalBox');
+  if (box) {
+    var vw = document.documentElement.clientWidth || window.innerWidth || 600;
+    box.style.width = Math.min(540, vw - 2) + 'px';
   }
+}
 
-  function resetToStep1() {
-    document.getElementById('step-form').classList.remove('visible');
-    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
-    document.getElementById('form-wrap-unlock').style.display = 'none';
-    document.getElementById('form-wrap-rom').style.display = 'none';
-    document.querySelectorAll('.modal-success').forEach(el => el.style.display = 'none');
-  }
+/* Modal open/close */
+function openHelpModal() {
+  var modal = byId('helpModal');
+  if (!modal) return;
+  modal.style.display = 'block';
+  clampModalWidth();
+  document.body.style.overflow = 'hidden';
+  if (typeof equalizeServiceCards === 'function') setTimeout(equalizeServiceCards, 80);
+}
+function closeHelpModal() {
+  var modal = byId('helpModal');
+  if (!modal) return;
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+function onOverlayClick(e) {
+  var t = e.target || e.srcElement;
+  if (t && t.id === 'helpModal') closeHelpModal();
+}
 
-  var bbOpen = false;
-  function toggleBerryBus() {
-    bbOpen = !bbOpen;
-    var body = document.getElementById('bb-body');
-    var arrow = document.getElementById('bb-arrow');
-    var acc = document.getElementById('bb-accordion');
-    body.style.display = bbOpen ? 'block' : 'none';
-    arrow.textContent = bbOpen ? '▲' : '▼';
-    acc.classList.toggle('bb-open', bbOpen);
-  }
-
-  function switchBBTab(tab) {
-    document.querySelectorAll('.bb-subtab').forEach(b => b.classList.remove('active'));
-    document.getElementById('bbtab-' + tab + '-btn').classList.add('active');
-    document.querySelectorAll('.bb-subtab-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('bbtab-' + tab).classList.add('active');
-  }
-
-  function handleModalSubmit(e, formId) {
-    e.preventDefault();
-    var form = e.target;
-    var successEl = document.getElementById('success-' + formId);
-    var btn = document.getElementById('btn-' + formId);
-    btn.disabled = true;
-    btn.textContent = 'Đang gửi...';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(function(res) {
-      if (res.ok) {
-        form.reset();
-        successEl.style.display = 'block';
-        btn.textContent = 'Đã Gửi!';
-        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Gửi Lại';
-        alert('Có lỗi xảy ra. Vui lòng thử lại.');
-      }
-    })
-    .catch(function() {
-      btn.disabled = false;
-      btn.textContent = 'Gửi Lại';
-      alert('Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.');
+/* Keyboard close — IE8 uses e.keyCode */
+function attachKeyClose() {
+  if (document.addEventListener) {
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Escape') || (e.keyCode === 27)) closeHelpModal();
+    });
+  } else if (document.attachEvent) {
+    document.attachEvent('onkeydown', function() {
+      var e = window.event;
+      if (e && e.keyCode === 27) closeHelpModal();
     });
   }
+}
+attachKeyClose();
+
+/* Service selection */
+function selectService(type) {
+  var cards = ['unlock', 'rom'];
+  for (var i = 0; i < cards.length; i++) {
+    var c = byId('card-' + cards[i]);
+    if (c) removeClass(c, 'selected');
+  }
+  var sel = byId('card-' + type);
+  if (sel) addClass(sel, 'selected');
+
+  var stepForm = byId('step-form');
+  if (stepForm) addClass(stepForm, 'visible');
+
+  var fmts = ['unlock', 'rom'];
+  for (var j = 0; j < fmts.length; j++) {
+    var fw = byId('form-wrap-' + fmts[j]);
+    if (fw) fw.style.display = 'none';
+  }
+  var target = byId('form-wrap-' + type);
+  if (target) target.style.display = 'block';
+
+  setTimeout(function() {
+    var sf = byId('step-form');
+    if (sf && sf.scrollIntoView) sf.scrollIntoView(false);
+  }, 80);
+}
+
+function resetToStep1() {
+  var stepForm = byId('step-form');
+  if (stepForm) removeClass(stepForm, 'visible');
+  var cards = ['unlock', 'rom'];
+  for (var i = 0; i < cards.length; i++) {
+    var c = byId('card-' + cards[i]);
+    if (c) removeClass(c, 'selected');
+  }
+  var fmts = ['unlock', 'rom'];
+  for (var j = 0; j < fmts.length; j++) {
+    var fw = byId('form-wrap-' + fmts[j]);
+    if (fw) fw.style.display = 'none';
+    var sc = byId('success-' + fmts[j]);
+    if (sc) sc.style.display = 'none';
+  }
+}
+
+/* BerryBus accordion */
+var bbOpen = false;
+function toggleBerryBus() {
+  bbOpen = !bbOpen;
+  var body = byId('bb-body');
+  var arrow = byId('bb-arrow');
+  var acc = byId('bb-accordion');
+  if (body)  body.style.display  = bbOpen ? 'block' : 'none';
+  if (arrow) arrow.innerHTML      = bbOpen ? '&#9650;' : '&#9660;';
+  if (acc) {
+    if (bbOpen) addClass(acc, 'bb-open');
+    else removeClass(acc, 'bb-open');
+  }
+}
+
+/* BerryBus sub-tabs */
+function switchBBTab(tab) {
+  var tabs = ['route', 'stop'];
+  for (var i = 0; i < tabs.length; i++) {
+    var btn = byId('bbtab-' + tabs[i] + '-btn');
+    var panel = byId('bbtab-' + tabs[i]);
+    if (btn)   removeClass(btn, 'active');
+    if (panel) removeClass(panel, 'active');
+  }
+  var activeBtn = byId('bbtab-' + tab + '-btn');
+  var activePanel = byId('bbtab-' + tab);
+  if (activeBtn)   addClass(activeBtn, 'active');
+  if (activePanel) addClass(activePanel, 'active');
+}
+
+/* Form submit — XMLHttpRequest instead of fetch for IE/BB10 */
+function handleModalSubmit(e, formId) {
+  if (e.preventDefault) e.preventDefault();
+  else e.returnValue = false;
+
+  var form = e.target || e.srcElement;
+  var successEl = byId('success-' + formId);
+  var btn = byId('btn-' + formId);
+  if (!form || !btn) return false;
+
+  btn.disabled = true;
+  btn.innerHTML = 'Đang gửi...';
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', form.action, true);
+  xhr.setRequestHeader('Accept', 'application/json');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status >= 200 && xhr.status < 300) {
+      form.reset();
+      if (successEl) successEl.style.display = 'block';
+      btn.innerHTML = 'Đã Gửi!';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = 'Gửi Lại';
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  };
+  xhr.onerror = function() {
+    btn.disabled = false;
+    btn.innerHTML = 'Gửi Lại';
+    alert('Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.');
+  };
+  xhr.send(new FormData(form));
+  return false;
+}
+
+/* Resize: re-clamp modal on window resize */
+function onWindowResize() {
+  clampModalWidth();
+  if (typeof centerCardImages === 'function') centerCardImages();
+  if (typeof equalizeServiceCards === 'function') equalizeServiceCards();
+}
+if (window.addEventListener) {
+  window.addEventListener('resize', onWindowResize);
+} else if (window.attachEvent) {
+  window.attachEvent('onresize', onWindowResize);
+}
 </script>
 
 
@@ -1258,14 +1381,14 @@ function centerCardImages() {
       function adjustImg() {
         var wrapH = wrap.offsetHeight || 180;
         var wrapW = wrap.offsetWidth || 300;
-        // Reset styles first
-        img.style.width  = '';
-        img.style.height = '';
-        img.style.marginTop  = '0';
-        img.style.marginLeft = '0';
+        // Reset
+        img.style.width  = 'auto';
+        img.style.height = 'auto';
+        img.style.top    = '0';
+        img.style.left   = '0';
         var natW = img.naturalWidth  || img.width  || wrapW;
         var natH = img.naturalHeight || img.height || wrapH;
-        // Scale to cover: find which dimension is the bottleneck
+        // Scale to cover
         var scaleW = wrapW / natW;
         var scaleH = wrapH / natH;
         var scale  = scaleW > scaleH ? scaleW : scaleH;
@@ -1273,9 +1396,9 @@ function centerCardImages() {
         var newH = Math.ceil(natH * scale);
         img.style.width  = newW + 'px';
         img.style.height = newH + 'px';
-        // Center
-        if (newW > wrapW) img.style.marginLeft = '-' + Math.floor((newW - wrapW) / 2) + 'px';
-        if (newH > wrapH) img.style.marginTop  = '-' + Math.floor((newH - wrapH) / 2) + 'px';
+        // Center with position absolute
+        img.style.left = '-' + Math.floor((newW - wrapW) / 2) + 'px';
+        img.style.top  = '-' + Math.floor((newH - wrapH) / 2) + 'px';
       }
       if (img.complete && (img.naturalWidth || img.width)) {
         adjustImg();
@@ -1295,5 +1418,32 @@ if (document.addEventListener) {
 window.onload = centerCardImages;
 </script>
 
+
+<script>
+/* Equalize service-card heights */
+function equalizeServiceCards() {
+  var picker = document.getElementById ? document.getElementById('servicePicker') : null;
+  if (!picker) return;
+  var cards = picker.getElementsByClassName ? picker.getElementsByClassName('service-card') : [];
+  if (cards.length < 2) return;
+  cards[0].style.height = '';
+  cards[1].style.height = '';
+  var h = Math.max(cards[0].offsetHeight, cards[1].offsetHeight);
+  cards[0].style.height = h + 'px';
+  cards[1].style.height = h + 'px';
+}
+function runEqualize() {
+  equalizeServiceCards();
+  // Run again after short delay to catch any reflow
+  if (typeof setTimeout !== 'undefined') setTimeout(equalizeServiceCards, 200);
+}
+if (document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', runEqualize);
+} else if (document.attachEvent) {
+  document.attachEvent('onreadystatechange', function() {
+    if (document.readyState === 'complete') runEqualize();
+  });
+}
+</script>
 </body>
 </html>
